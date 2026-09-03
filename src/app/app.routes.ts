@@ -7,6 +7,7 @@ import { ContactComponent } from './pages/contact/contact';
 
 import { LoginComponent } from './admin/login/login';
 import { DashboardComponent } from './admin/dashboard/dashboard';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
 
@@ -34,13 +35,16 @@ export const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'admin/dashboard',
-    component: DashboardComponent
-  },
+  path: 'admin/dashboard',
+  component: DashboardComponent,
+  canActivate: [authGuard]
+},
 
   // Unknown URL → Home
   {
     path: '**',
     redirectTo: ''
-  }
+  },
+
+
 ];

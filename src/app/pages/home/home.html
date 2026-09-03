@@ -33,7 +33,7 @@
       aria-hidden="true"
     />
 
-    <!-- Main complete image -->
+    <!-- Main image -->
     <img
       [src]="slides[currentSlide].image"
       [alt]="slides[currentSlide].title"
@@ -46,6 +46,7 @@
 
     <!-- Previous -->
     <button
+      type="button"
       class="carousel-arrow left"
       (click)="previousSlide()"
       aria-label="Previous photo"
@@ -81,6 +82,7 @@
 
     <!-- Next -->
     <button
+      type="button"
       class="carousel-arrow right"
       (click)="nextSlide()"
       aria-label="Next photo"
@@ -95,6 +97,7 @@
       @for (slide of slides; track $index) {
 
         <button
+          type="button"
           [class.active]="currentSlide === $index"
           (click)="goToSlide($index)"
           [attr.aria-label]="'Go to slide ' + ($index + 1)"
@@ -107,6 +110,7 @@
   </div>
 
 </section>
+
 
 <!-- =========================
      INTRODUCTION
@@ -140,9 +144,13 @@
 
       <div class="research-card">
 
-        <div class="card-icon">🔬</div>
+        <div class="card-icon">
+          🔬
+        </div>
 
-        <h3>Research</h3>
+        <h3>
+          Research
+        </h3>
 
         <p>
           Exploring scientific research and new
@@ -154,9 +162,13 @@
 
       <div class="research-card">
 
-        <div class="card-icon">💡</div>
+        <div class="card-icon">
+          💡
+        </div>
 
-        <h3>Innovation</h3>
+        <h3>
+          Innovation
+        </h3>
 
         <p>
           Developing innovative ideas and approaches
@@ -168,9 +180,13 @@
 
       <div class="research-card">
 
-        <div class="card-icon">🏆</div>
+        <div class="card-icon">
+          🏆
+        </div>
 
-        <h3>Achievements</h3>
+        <h3>
+          Achievements
+        </h3>
 
         <p>
           Recognitions and professional accomplishments
@@ -182,9 +198,13 @@
 
       <div class="research-card">
 
-        <div class="card-icon">🌍</div>
+        <div class="card-icon">
+          🌍
+        </div>
 
-        <h3>Impact</h3>
+        <h3>
+          Impact
+        </h3>
 
         <p>
           Creating meaningful impact through science,
@@ -222,6 +242,7 @@
 
       </div>
 
+
       <a
         routerLink="/gallery"
         class="view-gallery"
@@ -236,46 +257,69 @@
 
     <div class="photo-slider">
 
+
+      <!-- LEFT ARROW -->
+
       <button
+        type="button"
         class="gallery-arrow gallery-left"
+        (click)="previousGalleryPhoto()"
         aria-label="Previous photos"
       >
         ‹
       </button>
 
 
-      <div class="photo-track">
+      <!-- PHOTO TRACK -->
 
-                <div class="gallery-photo">
-            <img
-                src="assets/images/Scientist-Photo.jpg"
-                alt="Scientist"
-            />
-            </div>
+      <div
+        class="photo-track"
+        #photoTrack
+      >
 
-            <div class="gallery-photo">
-            <img
-                src="assets/images/Scientist-Photo1.jpg"
-                alt="Scientist"
-            />
-            </div>
+        <div class="gallery-photo">
 
-            <div class="gallery-photo">
-            <img
-                src="assets/images/Scientist-Photo2.jpg"
-                alt="Scientist"
-            />
-            </div>
+          <img
+            src="assets/images/Scientist-Photo.jpg"
+            alt="Scientist"
+          />
+
+        </div>
+
+
+        <div class="gallery-photo">
+
+          <img
+            src="assets/images/Scientist-Photo1.jpg"
+            alt="Scientist"
+          />
+
+        </div>
+
+
+        <div class="gallery-photo">
+
+          <img
+            src="assets/images/Scientist-Photo2.jpg"
+            alt="Scientist"
+          />
+
+        </div>
 
       </div>
 
 
+      <!-- RIGHT ARROW -->
+
       <button
+        type="button"
         class="gallery-arrow gallery-right"
+        (click)="nextGalleryPhoto()"
         aria-label="Next photos"
       >
         ›
       </button>
+
 
     </div>
 

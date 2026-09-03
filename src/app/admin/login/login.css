@@ -1,0 +1,174 @@
+.login-page {
+  min-height: calc(100vh - 150px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 50px 20px;
+
+  box-sizing: border-box;
+
+  background: #f8fafc;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.10);
+}
+
+.login-header {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+.login-logo {
+  width: 65px;
+  height: 65px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #0284c7;
+
+  color: #ffffff;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.login-header h1 {
+  margin: 0 0 10px;
+
+  color: #0f172a;
+
+  font-size: 30px;
+}
+
+.login-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #334155;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  color: #0f172a;
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #0284c7;
+
+  box-shadow:
+    0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+.error-message {
+  margin-bottom: 18px;
+
+  padding: 12px 14px;
+
+  border-radius: 7px;
+
+  background: #fef2f2;
+
+  color: #dc2626;
+
+  font-size: 14px;
+}
+
+.login-card button {
+  width: 100%;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #0284c7;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.login-card button:hover:not(:disabled) {
+  background: #0369a1;
+
+  transform: translateY(-1px);
+}
+
+.login-card button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+
+  .login-card {
+    padding: 30px 22px;
+  }
+
+}

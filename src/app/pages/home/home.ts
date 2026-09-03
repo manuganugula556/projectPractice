@@ -1,11 +1,14 @@
 import {
   ChangeDetectorRef,
   Component,
+  ElementRef,
   OnDestroy,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -16,33 +19,66 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
+
+  // =========================
+  // HERO CAROUSEL
+  // =========================
+
   currentSlide = 0;
 
-  private slideInterval: ReturnType<typeof setInterval> | null = null;
+
+  private slideInterval:
+    ReturnType<typeof setInterval> | null = null;
+
 
   slides = [
+
     {
       image: 'assets/images/Scientist-Photo.jpg',
+
       title: 'Science & Research',
-      description: 'Advancing knowledge through research and innovation.'
+
+      description:
+        'Advancing knowledge through research and innovation.'
     },
+
     {
       image: 'assets/images/Scientist-Photo1.jpg',
+
       title: 'Innovation & Discovery',
-      description: 'Exploring new ideas and meaningful scientific discoveries.'
+
+      description:
+        'Exploring new ideas and meaningful scientific discoveries.'
     },
+
     {
       image: 'assets/images/Scientist-Photo2.jpg',
+
       title: 'Professional Journey',
-      description: 'A journey dedicated to science, research and excellence.'
+
+      description:
+        'A journey dedicated to science, research and excellence.'
     }
+
   ];
+
+
+  // =========================
+  // GALLERY
+  // =========================
+
+  @ViewChild('photoTrack')
+  photoTrack!: ElementRef<HTMLDivElement>;
 
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
+
+  // =========================
+  // INIT
+  // =========================
 
   ngOnInit(): void {
 
@@ -51,6 +87,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 
+  // =========================
+  // DESTROY
+  // =========================
+
   ngOnDestroy(): void {
 
     this.stopAutoSlide();
@@ -58,14 +98,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 
+  // =========================
+  // HERO AUTO SLIDE
+  // =========================
+
   startAutoSlide(): void {
 
     this.stopAutoSlide();
 
+
     this.slideInterval = setInterval(() => {
 
       this.currentSlide =
-        (this.currentSlide + 1) % this.slides.length;
+        (this.currentSlide + 1) %
+        this.slides.length;
+
 
       this.changeDetectorRef.detectChanges();
 
@@ -73,6 +120,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
+
+  // =========================
+  // STOP AUTO SLIDE
+  // =========================
 
   stopAutoSlide(): void {
 
@@ -87,13 +138,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 
+  // =========================
+  // HERO NEXT
+  // =========================
+
   nextSlide(): void {
 
     this.currentSlide =
-      (this.currentSlide + 1) % this.slides.length;
+      (this.currentSlide + 1) %
+      this.slides.length;
 
   }
 
+
+  // =========================
+  // HERO PREVIOUS
+  // =========================
 
   previousSlide(): void {
 
@@ -104,9 +164,65 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 
+  // =========================
+  // HERO DOT
+  // =========================
+
   goToSlide(index: number): void {
 
     this.currentSlide = index;
+
+  }
+
+
+  // =========================
+  // GALLERY NEXT
+  // =========================
+
+  nextGalleryPhoto(): void {
+
+    if (!this.photoTrack) {
+      return;
+    }
+
+
+    const track =
+      this.photoTrack.nativeElement;
+
+
+    track.scrollBy({
+
+      left: 350,
+
+      behavior: 'smooth'
+
+    });
+
+  }
+
+
+  // =========================
+  // GALLERY PREVIOUS
+  // =========================
+
+  previousGalleryPhoto(): void {
+
+    if (!this.photoTrack) {
+      return;
+    }
+
+
+    const track =
+      this.photoTrack.nativeElement;
+
+
+    track.scrollBy({
+
+      left: -350,
+
+      behavior: 'smooth'
+
+    });
 
   }
 

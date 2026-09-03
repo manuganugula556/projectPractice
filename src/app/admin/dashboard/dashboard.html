@@ -1,1 +1,681 @@
-<p>dashboard works!</p>
+<!-- ==========================================
+     ADMIN DASHBOARD
+========================================== -->
+
+<div class="dashboard-page">
+
+  <!-- ==========================================
+       DASHBOARD HEADER
+  ========================================== -->
+
+  <header class="dashboard-header">
+
+    <div class="dashboard-header-inner">
+
+      <div class="dashboard-brand">
+
+        <div class="admin-logo">
+          G
+        </div>
+
+        <div>
+          <span class="dashboard-label">
+            GAPCO INDIA
+          </span>
+
+          <h1>
+            Admin Dashboard
+          </h1>
+        </div>
+
+      </div>
+
+
+      <div class="admin-info">
+
+        <div class="admin-details">
+
+          <span>
+            Welcome
+          </span>
+
+          <strong>
+            {{ adminName }}
+          </strong>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="logout-button"
+          (click)="logout()"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ==========================================
+       DASHBOARD CONTENT
+  ========================================== -->
+
+  <main class="dashboard-content">
+
+
+    <!-- ==========================================
+         WELCOME SECTION
+    ========================================== -->
+
+    <section class="dashboard-welcome">
+
+      <span class="welcome-label">
+        ADMINISTRATION
+      </span>
+
+      <h2>
+        Website Management
+      </h2>
+
+      <p>
+        Manage gallery photos and visitor
+        contact messages from one place.
+      </p>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         GALLERY MANAGEMENT
+    ========================================== -->
+
+    <section class="dashboard-section">
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            GALLERY
+          </span>
+
+          <h2>
+            Gallery Management
+          </h2>
+
+          <p>
+            Upload and manage photos displayed
+            on the website gallery.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ==========================================
+           UPLOAD AREA
+      ========================================== -->
+
+      <div class="upload-card">
+
+        <div class="upload-card-header">
+
+          <div>
+
+            <h3>
+              Upload New Photo
+            </h3>
+
+            <p>
+              JPG, PNG or WEBP · Maximum 10 MB
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- FILE INPUT -->
+
+        @if (!selectedFile) {
+
+          <label
+            class="file-upload-area"
+          >
+
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              (change)="onFileSelected($event)"
+            />
+
+            <div class="upload-icon">
+              ↑
+            </div>
+
+            <strong>
+              Choose an image
+            </strong>
+
+            <span>
+              Click here to select a photo
+            </span>
+
+          </label>
+
+        }
+
+
+        <!-- ==========================================
+             IMAGE PREVIEW
+        ========================================== -->
+
+        @if (previewUrl) {
+
+          <div class="selected-image">
+
+            <img
+              [src]="previewUrl"
+              alt="Selected image preview"
+            />
+
+
+            <div class="selected-image-info">
+
+              <div>
+
+                <strong>
+                  {{ selectedFile?.name }}
+                </strong>
+
+                <span>
+                  Ready to upload
+                </span>
+
+              </div>
+
+
+              <div class="selected-image-actions">
+
+                <button
+                  type="button"
+                  class="upload-button"
+                  (click)="uploadImage()"
+                  [disabled]="isUploading"
+                >
+
+                  @if (isUploading) {
+
+                    Uploading...
+
+                  } @else {
+
+                    Upload Photo
+
+                  }
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="cancel-button"
+                  (click)="removeSelectedFile()"
+                  [disabled]="isUploading"
+                >
+                  Remove
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        }
+
+
+        <!-- ==========================================
+             UPLOAD SUCCESS
+        ========================================== -->
+
+        @if (uploadMessage) {
+
+          <div class="success-message">
+
+            ✓ {{ uploadMessage }}
+
+          </div>
+
+        }
+
+
+        <!-- ==========================================
+             UPLOAD ERROR
+        ========================================== -->
+
+        @if (uploadError) {
+
+          <div class="error-message">
+
+            {{ uploadError }}
+
+          </div>
+
+        }
+
+      </div>
+
+
+
+      <!-- ==========================================
+           CURRENT GALLERY PHOTOS
+      ========================================== -->
+
+      <div class="gallery-management">
+
+        <div class="gallery-management-header">
+
+          <div>
+
+            <h3>
+              Uploaded Photos
+            </h3>
+
+            <p>
+              {{ galleryImages.length }}
+              photo(s) currently available
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="refresh-button"
+            (click)="loadGalleryImages()"
+          >
+            ↻ Refresh
+          </button>
+
+        </div>
+
+
+        <!-- LOADING -->
+
+        @if (isLoadingImages) {
+
+          <div class="gallery-loading">
+
+            Loading photos...
+
+          </div>
+
+        }
+
+
+        <!-- NO PHOTOS -->
+
+        @if (
+          !isLoadingImages &&
+          galleryImages.length === 0
+        ) {
+
+          <div class="empty-gallery">
+
+            <div class="empty-gallery-icon">
+              ▧
+            </div>
+
+            <h3>
+              No Photos Found
+            </h3>
+
+            <p>
+              Upload your first gallery photo above.
+            </p>
+
+          </div>
+
+        }
+
+
+        <!-- PHOTOS -->
+
+        @if (
+          !isLoadingImages &&
+          galleryImages.length > 0
+        ) {
+
+          <div class="gallery-grid">
+
+            @for (
+              image of galleryImages;
+              track image.id
+            ) {
+
+              <div class="gallery-card">
+
+                <div class="gallery-image-wrapper">
+
+                  <img
+                    [src]="getImageUrl(image.filePath)"
+                    [alt]="image.fileName"
+                  />
+
+                </div>
+
+
+                <div class="gallery-card-content">
+
+                  <h4>
+                    {{ image.fileName }}
+                  </h4>
+
+                  <span>
+                    {{ image.uploadedAt | date:'dd MMM yyyy, hh:mm a' }}
+                  </span>
+
+
+                  <button
+                    type="button"
+                    class="delete-button"
+                    (click)="deleteImage(image)"
+                  >
+                    Delete Photo
+                  </button>
+
+                </div>
+
+              </div>
+
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         CONTACT MESSAGES
+    ========================================== -->
+
+    <section class="dashboard-section contact-messages-section">
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            CONTACT
+          </span>
+
+          <h2>
+            Contact Messages
+          </h2>
+
+          <p>
+            Messages submitted by visitors
+            through the website contact form.
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="refresh-button"
+          (click)="loadContactMessages()"
+        >
+          ↻ Refresh
+        </button>
+
+      </div>
+
+
+
+      <!-- ==========================================
+           MESSAGE SUMMARY
+      ========================================== -->
+
+      <div class="message-summary">
+
+        <div class="summary-card">
+
+          <span>
+            Total Messages
+          </span>
+
+          <strong>
+            {{ contactMessages.length }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ==========================================
+           LOADING
+      ========================================== -->
+
+      @if (isLoadingMessages) {
+
+        <div class="messages-loading">
+
+          Loading messages...
+
+        </div>
+
+      }
+
+
+
+      <!-- ==========================================
+           ERROR
+      ========================================== -->
+
+      @if (messageError) {
+
+        <div class="message-error">
+
+          {{ messageError }}
+
+        </div>
+
+      }
+
+
+
+      <!-- ==========================================
+           NO MESSAGES
+      ========================================== -->
+
+      @if (
+        !isLoadingMessages &&
+        !messageError &&
+        contactMessages.length === 0
+      ) {
+
+        <div class="no-messages">
+
+          <div class="empty-icon">
+            ✉
+          </div>
+
+          <h3>
+            No Messages Yet
+          </h3>
+
+          <p>
+            Contact form submissions will appear here.
+          </p>
+
+        </div>
+
+      }
+
+
+
+      <!-- ==========================================
+           MESSAGES LIST
+      ========================================== -->
+
+      @if (
+        !isLoadingMessages &&
+        contactMessages.length > 0
+      ) {
+
+        <div class="messages-list">
+
+          @for (
+            item of contactMessages;
+            track item.id
+          ) {
+
+            <article class="message-card">
+
+
+              <!-- MESSAGE HEADER -->
+
+              <div class="message-card-header">
+
+                <div class="sender-info">
+
+                  <div class="sender-avatar">
+
+                    {{ item.name.charAt(0).toUpperCase() }}
+
+                  </div>
+
+
+                  <div class="sender-details">
+
+                    <h3>
+                      {{ item.name }}
+                    </h3>
+
+                    <a
+                      [href]="'mailto:' + item.email"
+                    >
+                      {{ item.email }}
+                    </a>
+
+                  </div>
+
+                </div>
+
+
+                <div class="message-date">
+
+                  {{ item.submittedAt | date:'dd MMM yyyy, hh:mm a' }}
+
+                </div>
+
+              </div>
+
+
+
+              <!-- MESSAGE CONTENT -->
+
+              <div class="message-content">
+
+                <div class="message-subject">
+
+                  <strong>
+                    Subject:
+                  </strong>
+
+                  {{ item.subject }}
+
+                </div>
+
+
+                <div class="message-body">
+
+                  {{ item.message }}
+
+                </div>
+
+              </div>
+
+
+
+              <!-- MESSAGE FOOTER -->
+
+              <div class="message-card-footer">
+
+
+                <!-- READ STATUS -->
+
+                @if (item.isRead) {
+
+                  <span class="read-status read">
+
+                    ✓ Read
+
+                  </span>
+
+                } @else {
+
+                  <span class="read-status unread">
+
+                    ● Unread
+
+                  </span>
+
+                }
+
+
+                <!-- DELETE -->
+
+                <button
+                  type="button"
+                  class="delete-message-button"
+                  (click)="deleteMessage(item)"
+                >
+                  Delete
+                </button>
+
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+      }
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ==========================================
+       FOOTER
+  ========================================== -->
+
+  <footer class="dashboard-footer">
+
+    <p>
+      © {{ adminName }} · GAPCO India
+    </p>
+
+  </footer>
+
+</div>
