@@ -1,0 +1,116 @@
+<!-- =========================
+     GALLERY HERO
+========================= -->
+
+<section class="gallery-hero">
+
+  <div class="gallery-hero-content">
+
+    <span>SCIENCE • RESEARCH • MEMORIES</span>
+
+    <h1>Photo Gallery</h1>
+
+    <p>
+      Explore moments from the scientific journey,
+      research, achievements and professional experiences.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO GALLERY
+========================= -->
+
+<section class="gallery-section">
+
+  <div class="gallery-container">
+
+    <div class="section-heading">
+
+      <span class="section-label">
+        PHOTO COLLECTION
+      </span>
+
+      <h2>Moments & Memories</h2>
+
+      <p>
+        Click on any photo to view it in full size.
+      </p>
+
+    </div>
+
+
+<div class="gallery-grid">
+
+  <div
+    class="gallery-card"
+    *ngFor="let photo of photos"
+    (click)="openPhoto(photo.image)"
+    tabindex="0"
+    role="button"
+    [attr.aria-label]="'Open ' + photo.title"
+  >
+
+    <img
+      [src]="photo.image"
+      [alt]="photo.title"
+      width="300"
+      height="200"
+      style="object-fit: cover; display: block;"
+      (load)="imageLoaded(photo.image)"
+      (error)="imageFailed(photo.image)"
+    />
+
+    <div class="gallery-card-overlay">
+      <span>View Photo</span>
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FULL IMAGE POPUP
+========================= -->
+
+@if (selectedPhoto) {
+
+  <div
+    class="photo-modal"
+    (click)="closePhoto()"
+  >
+
+    <button
+      class="close-button"
+      type="button"
+      (click)="closePhoto(); $event.stopPropagation()"
+      aria-label="Close photo"
+    >
+      ×
+    </button>
+
+
+    <div
+      class="modal-image-container"
+      (click)="$event.stopPropagation()"
+    >
+
+      <img
+        [src]="selectedPhoto"
+        alt="Full size gallery photo"
+        class="modal-image"
+      />
+
+    </div>
+
+  </div>
+
+}

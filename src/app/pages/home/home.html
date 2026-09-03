@@ -1,0 +1,284 @@
+<!-- =========================
+     LOGO SECTION
+========================= -->
+
+<section class="logo-section">
+
+  <div class="logo-container">
+
+    <img
+      src="assets/images/Gapcoindia-Logo.png"
+      alt="Gapco India Logo"
+      class="site-logo"
+    />
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     HERO CAROUSEL
+========================= -->
+
+<section class="hero-carousel">
+
+  <div class="carousel-slide">
+
+    <!-- Background layer -->
+    <img
+      [src]="slides[currentSlide].image"
+      class="carousel-background"
+      alt=""
+      aria-hidden="true"
+    />
+
+    <!-- Main complete image -->
+    <img
+      [src]="slides[currentSlide].image"
+      [alt]="slides[currentSlide].title"
+      class="carousel-image"
+    />
+
+    <!-- Dark overlay -->
+    <div class="carousel-overlay"></div>
+
+
+    <!-- Previous -->
+    <button
+      class="carousel-arrow left"
+      (click)="previousSlide()"
+      aria-label="Previous photo"
+    >
+      ‹
+    </button>
+
+
+    <!-- Content -->
+    <div class="carousel-content">
+
+      <span>
+        SCIENCE • RESEARCH • INNOVATION
+      </span>
+
+      <h1>
+        {{ slides[currentSlide].title }}
+      </h1>
+
+      <p>
+        {{ slides[currentSlide].description }}
+      </p>
+
+      <a
+        routerLink="/about"
+        class="carousel-button"
+      >
+        Explore Profile
+      </a>
+
+    </div>
+
+
+    <!-- Next -->
+    <button
+      class="carousel-arrow right"
+      (click)="nextSlide()"
+      aria-label="Next photo"
+    >
+      ›
+    </button>
+
+
+    <!-- Dots -->
+    <div class="carousel-dots">
+
+      @for (slide of slides; track $index) {
+
+        <button
+          [class.active]="currentSlide === $index"
+          (click)="goToSlide($index)"
+          [attr.aria-label]="'Go to slide ' + ($index + 1)"
+        ></button>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     INTRODUCTION
+========================= -->
+
+<section class="intro-section">
+
+  <div class="section-container">
+
+    <div class="section-heading">
+
+      <span class="section-label">
+        ABOUT THE SCIENTIST
+      </span>
+
+      <h2>
+        Dedicated to Science and Discovery
+      </h2>
+
+      <p>
+        Welcome to the official website of
+        <strong>Scientist Name</strong>.
+        Explore the professional journey, research,
+        achievements and memorable moments.
+      </p>
+
+    </div>
+
+
+    <div class="research-grid">
+
+      <div class="research-card">
+
+        <div class="card-icon">🔬</div>
+
+        <h3>Research</h3>
+
+        <p>
+          Exploring scientific research and new
+          possibilities through continuous discovery.
+        </p>
+
+      </div>
+
+
+      <div class="research-card">
+
+        <div class="card-icon">💡</div>
+
+        <h3>Innovation</h3>
+
+        <p>
+          Developing innovative ideas and approaches
+          that contribute to scientific advancement.
+        </p>
+
+      </div>
+
+
+      <div class="research-card">
+
+        <div class="card-icon">🏆</div>
+
+        <h3>Achievements</h3>
+
+        <p>
+          Recognitions and professional accomplishments
+          throughout the scientific journey.
+        </p>
+
+      </div>
+
+
+      <div class="research-card">
+
+        <div class="card-icon">🌍</div>
+
+        <h3>Impact</h3>
+
+        <p>
+          Creating meaningful impact through science,
+          research and knowledge.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO GALLERY PREVIEW
+========================= -->
+
+<section class="gallery-preview">
+
+  <div class="section-container">
+
+    <div class="gallery-header">
+
+      <div>
+
+        <span class="section-label">
+          PHOTO GALLERY
+        </span>
+
+        <h2>
+          Moments & Memories
+        </h2>
+
+      </div>
+
+      <a
+        routerLink="/gallery"
+        class="view-gallery"
+      >
+        View All Photos →
+      </a>
+
+    </div>
+
+
+    <!-- Gallery Slider -->
+
+    <div class="photo-slider">
+
+      <button
+        class="gallery-arrow gallery-left"
+        aria-label="Previous photos"
+      >
+        ‹
+      </button>
+
+
+      <div class="photo-track">
+
+                <div class="gallery-photo">
+            <img
+                src="assets/images/Scientist-Photo.jpg"
+                alt="Scientist"
+            />
+            </div>
+
+            <div class="gallery-photo">
+            <img
+                src="assets/images/Scientist-Photo1.jpg"
+                alt="Scientist"
+            />
+            </div>
+
+            <div class="gallery-photo">
+            <img
+                src="assets/images/Scientist-Photo2.jpg"
+                alt="Scientist"
+            />
+            </div>
+
+      </div>
+
+
+      <button
+        class="gallery-arrow gallery-right"
+        aria-label="Next photos"
+      >
+        ›
+      </button>
+
+    </div>
+
+  </div>
+
+</section>

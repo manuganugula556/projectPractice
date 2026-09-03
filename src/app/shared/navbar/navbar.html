@@ -1,0 +1,43 @@
+<nav class="navbar">
+
+  <div class="navbar-container">
+
+    <!-- Logo / Scientist Name -->
+    <a class="brand" routerLink="/">
+      <div class="brand-logo">GS</div>
+
+      <div class="brand-text">
+        <span class="brand-name">Scientist Name</span>
+        <span class="brand-title">Research & Innovation</span>
+      </div>
+    </a>
+
+    <!-- Navigation -->
+    <div class="nav-links">
+
+      <a routerLink="/" routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+
+      <a routerLink="/about" routerLinkActive="active">
+        About
+      </a>
+
+      <a routerLink="/gallery" routerLinkActive="active">
+        Gallery
+      </a>
+
+      <a routerLink="/contact" routerLinkActive="active">
+        Contact
+      </a>
+
+      <a routerLink="/admin/login" class="login-button">
+        Admin Login
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>

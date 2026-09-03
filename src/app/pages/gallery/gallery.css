@@ -1,0 +1,455 @@
+/* =========================
+   GALLERY HERO
+========================= */
+
+.gallery-hero {
+  width: 100%;
+  min-height: 320px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 60px 20px;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a,
+      #0f766e
+    );
+}
+
+.gallery-hero-content {
+  width: 100%;
+  max-width: 850px;
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.gallery-hero-content span {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #67e8f9;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.gallery-hero-content h1 {
+  margin: 0 0 15px;
+
+  color: #ffffff;
+
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.gallery-hero-content p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   GALLERY SECTION
+========================= */
+
+.gallery-section {
+  width: 100%;
+
+  padding: 80px 20px;
+
+  box-sizing: border-box;
+
+  background: #f8fafc;
+}
+
+.gallery-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================
+   SECTION HEADING
+========================= */
+
+.section-heading {
+  max-width: 800px;
+
+  margin: 0 auto 45px;
+
+  text-align: center;
+}
+
+.section-label {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: #0284c7;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.section-heading h2 {
+  margin: 0 0 15px;
+
+  color: #0f172a;
+
+  font-size: 38px;
+  line-height: 1.2;
+}
+
+.section-heading p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   GALLERY GRID
+========================= */
+
+.gallery-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+/* =========================
+   GALLERY CARD
+========================= */
+
+.gallery-card {
+  position: relative;
+
+  width: 100%;
+  height: 300px;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background: #e2e8f0;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 20px rgba(15, 23, 42, 0.08);
+
+  outline: none;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.15);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.06);
+}
+
+
+/* =========================
+   PHOTO OVERLAY
+========================= */
+
+.gallery-card-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.65),
+      transparent 55%
+    );
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-card-overlay {
+  opacity: 1;
+}
+
+.gallery-card-overlay span {
+  padding: 9px 18px;
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  color: #0284c7;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   PHOTO MODAL
+========================= */
+
+.photo-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.88);
+
+  animation: modalFadeIn 0.2s ease;
+}
+
+
+/* =========================
+   MODAL IMAGE
+========================= */
+
+.modal-image-container {
+  max-width: 95vw;
+  max-height: 90vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  display: block;
+
+  max-width: 95vw;
+  max-height: 90vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  border-radius: 6px;
+
+  box-shadow:
+    0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close-button {
+  position: fixed;
+
+  top: 25px;
+  right: 30px;
+
+  z-index: 10000;
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  color: #0f172a;
+
+  font-size: 34px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.close-button:hover {
+  background: #ffffff;
+
+  transform: scale(1.08);
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes modalFadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px) {
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .gallery-hero {
+    min-height: 280px;
+
+    padding: 50px 20px;
+  }
+
+  .gallery-hero-content h1 {
+    font-size: 38px;
+  }
+
+  .gallery-hero-content p {
+    font-size: 15px;
+  }
+
+  .gallery-section {
+    padding: 60px 15px;
+  }
+
+  .section-heading h2 {
+    font-size: 30px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .gallery-card {
+    height: 280px;
+  }
+
+  .photo-modal {
+    padding: 20px;
+  }
+
+  .close-button {
+    top: 15px;
+    right: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 30px;
+  }
+
+  .modal-image {
+    max-width: 92vw;
+    max-height: 85vh;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .gallery-hero-content h1 {
+    font-size: 32px;
+  }
+
+  .gallery-card {
+    height: 240px;
+  }
+
+}

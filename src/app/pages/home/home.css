@@ -1,0 +1,808 @@
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+
+/* =========================================================
+   LOGO SECTION
+========================================================= */
+
+.logo-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 12px 20px;
+  box-sizing: border-box;
+}
+
+.logo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-logo {
+  width: 220px;
+  max-width: 80%;
+  height: auto;
+
+  display: block;
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   HERO CAROUSEL
+========================================================= */
+
+.hero-carousel {
+  width: 100%;
+  height: 600px;
+
+  position: relative;
+  overflow: hidden;
+
+  background: #111827;
+}
+
+.carousel-slide {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   BLURRED BACKGROUND
+   Fills empty space without cropping the main photo
+========================================================= */
+
+.carousel-background {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter: blur(18px);
+
+  transform: scale(1.08);
+
+  opacity: 0.45;
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   MAIN CAROUSEL IMAGE
+========================================================= */
+
+.carousel-image {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.carousel-overlay {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 2;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.08),
+      rgba(0, 0, 0, 0.18),
+      rgba(0, 0, 0, 0.62)
+    );
+}
+
+
+/* =========================================================
+   CAROUSEL CONTENT
+========================================================= */
+
+.carousel-content {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 50%;
+  bottom: 80px;
+
+  transform: translateX(-50%);
+
+  width: min(850px, 90%);
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.carousel-content span {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #67e8f9;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.carousel-content h1 {
+  margin: 0 0 15px;
+
+  color: #ffffff;
+
+  font-size: 52px;
+  line-height: 1.15;
+
+  font-weight: 700;
+}
+
+.carousel-content p {
+  max-width: 700px;
+
+  margin: 0 auto 25px;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   CAROUSEL BUTTON
+========================================================= */
+
+.carousel-button {
+  display: inline-block;
+
+  padding: 12px 26px;
+
+  border-radius: 6px;
+
+  background: #0284c7;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: #0d9488;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CAROUSEL ARROWS
+========================================================= */
+
+.carousel-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 5;
+
+  width: 52px;
+  height: 52px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  color: #ffffff;
+
+  font-size: 38px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.65);
+
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-arrow.left {
+  left: 30px;
+}
+
+.carousel-arrow.right {
+  right: 30px;
+}
+
+
+/* =========================================================
+   CAROUSEL DOTS
+========================================================= */
+
+.carousel-dots {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 50%;
+  bottom: 25px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.carousel-dots button {
+  width: 9px;
+  height: 9px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.carousel-dots button.active {
+  width: 25px;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   INTRODUCTION SECTION
+========================================================= */
+
+.intro-section {
+  width: 100%;
+
+  padding: 80px 20px;
+
+  background: #f8fafc;
+
+  box-sizing: border-box;
+}
+
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+  max-width: 850px;
+
+  margin: 0 auto 50px;
+
+  text-align: center;
+}
+
+.section-label {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: #0284c7;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.section-heading h2 {
+  margin: 0 0 18px;
+
+  color: #0f172a;
+
+  font-size: 38px;
+  line-height: 1.2;
+
+  font-weight: 700;
+}
+
+.section-heading p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   RESEARCH CARDS
+========================================================= */
+
+.research-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 24px;
+}
+
+.research-card {
+  padding: 30px 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.research-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: #ecfeff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+}
+
+.research-card h3 {
+  margin: 0 0 12px;
+
+  color: #0f172a;
+
+  font-size: 21px;
+}
+
+.research-card p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   GALLERY PREVIEW
+========================================================= */
+
+.gallery-preview {
+  width: 100%;
+
+  padding: 80px 20px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   GALLERY HEADER
+========================================================= */
+
+.gallery-header {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 35px;
+}
+
+.gallery-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 38px;
+  line-height: 1.2;
+}
+
+.view-gallery {
+  display: inline-block;
+
+  color: #0284c7;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition: color 0.3s ease;
+}
+
+.view-gallery:hover {
+  color: #0d9488;
+}
+
+
+/* =========================================================
+   PHOTO SLIDER
+========================================================= */
+
+.photo-slider {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   PHOTO TRACK
+========================================================= */
+
+.photo-track {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   GALLERY PHOTO
+========================================================= */
+
+.gallery-photo {
+  width: 100%;
+  height: 260px;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background: #f1f5f9;
+}
+
+.gallery-photo img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+.gallery-photo:hover img {
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   GALLERY ARROWS
+========================================================= */
+
+.gallery-arrow {
+  flex-shrink: 0;
+
+  width: 46px;
+  height: 46px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #0284c7;
+
+  font-size: 32px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.gallery-arrow:hover {
+  background: #0284c7;
+
+  color: #ffffff;
+
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .hero-carousel {
+    height: 520px;
+  }
+
+  .carousel-content h1 {
+    font-size: 42px;
+  }
+
+  .research-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .photo-track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Logo */
+
+  .logo-section {
+    padding: 10px 15px;
+  }
+
+  .site-logo {
+    width: 190px;
+    max-width: 85%;
+  }
+
+
+  /* Carousel */
+
+  .hero-carousel {
+    height: 480px;
+  }
+
+  .carousel-content {
+    bottom: 65px;
+
+    width: 85%;
+  }
+
+  .carousel-content span {
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .carousel-content h1 {
+    font-size: 32px;
+  }
+
+  .carousel-content p {
+    font-size: 15px;
+
+    line-height: 1.5;
+  }
+
+  .carousel-arrow {
+    width: 42px;
+    height: 42px;
+
+    font-size: 30px;
+  }
+
+  .carousel-arrow.left {
+    left: 12px;
+  }
+
+  .carousel-arrow.right {
+    right: 12px;
+  }
+
+
+  /* Introduction */
+
+  .intro-section {
+    padding: 60px 15px;
+  }
+
+  .section-heading {
+    margin-bottom: 35px;
+  }
+
+  .section-heading h2 {
+    font-size: 30px;
+  }
+
+  .section-heading p {
+    font-size: 15px;
+  }
+
+  .research-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+
+  /* Gallery */
+
+  .gallery-preview {
+    padding: 60px 15px;
+  }
+
+  .gallery-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .gallery-header h2 {
+    font-size: 30px;
+  }
+
+  .photo-track {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-photo {
+    height: 240px;
+  }
+
+  .gallery-arrow {
+    width: 40px;
+    height: 40px;
+
+    font-size: 28px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .site-logo {
+    width: 170px;
+  }
+
+  .hero-carousel {
+    height: 440px;
+  }
+
+  .carousel-content h1 {
+    font-size: 28px;
+  }
+
+  .carousel-content p {
+    font-size: 14px;
+  }
+
+  .carousel-button {
+    padding: 10px 20px;
+
+    font-size: 14px;
+  }
+
+  .carousel-arrow {
+    width: 38px;
+    height: 38px;
+
+    font-size: 27px;
+  }
+
+}
