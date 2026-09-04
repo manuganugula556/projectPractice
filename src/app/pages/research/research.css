@@ -1,0 +1,1940 @@
+/* =========================================================
+   RESEARCH PAGE
+========================================================= */
+
+.research-page {
+  width: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #111111;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.research-hero {
+  position: relative;
+  min-height: 560px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 100px 30px;
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.68),
+      rgba(0, 0, 0, 0.72)
+    ),
+    url('/assets/images/research/research-hero.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.research-hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1100px;
+
+  text-align: center;
+  color: #ffffff;
+}
+
+
+.research-hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 25px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+
+.research-hero-label::before {
+  content: "";
+
+  width: 35px;
+  height: 2px;
+
+  background: #ffffff;
+}
+
+
+.research-hero h1 {
+  margin: 0 auto 25px;
+
+  max-width: 900px;
+
+  font-size: clamp(45px, 7vw, 82px);
+  line-height: 1.02;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+}
+
+
+.research-hero h1 span {
+  display: block;
+
+  font-style: italic;
+  font-weight: 400;
+}
+
+
+.research-hero p {
+  max-width: 680px;
+
+  margin: 0 auto 35px;
+
+  font-size: 18px;
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.research-hero-buttons {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+
+.research-hero-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 170px;
+
+  padding: 14px 25px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #ffffff;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.research-hero-button:hover {
+  background: #ffffff;
+  color: #111111;
+
+  transform: translateY(-2px);
+}
+
+
+.research-hero-button.primary {
+  background: #ffffff;
+  color: #111111;
+
+  border-color: #ffffff;
+}
+
+
+.research-hero-button.primary:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO SCROLL
+========================================================= */
+
+.research-scroll {
+  position: absolute;
+
+  bottom: 30px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+
+.research-scroll-line {
+  width: 1px;
+  height: 40px;
+
+  background: rgba(255, 255, 255, 0.6);
+}
+
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.research-section {
+  width: 100%;
+
+  padding: 100px 30px;
+
+  box-sizing: border-box;
+}
+
+
+.research-container {
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+  max-width: 750px;
+
+  margin: 0 auto 60px;
+
+  text-align: center;
+}
+
+
+.section-label {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+
+  color: #777777;
+}
+
+
+.section-label span {
+  color: #111111;
+}
+
+
+.section-heading h2 {
+  margin: 0 0 20px;
+
+  font-size: clamp(34px, 5vw, 55px);
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+}
+
+
+.section-heading h2 span {
+  font-style: italic;
+  font-weight: 400;
+}
+
+
+.section-heading p {
+  margin: 0;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  color: #666666;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.research-intro {
+  background: #ffffff;
+}
+
+
+.research-intro-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+
+.research-intro-image {
+  position: relative;
+
+  min-height: 430px;
+
+  background:
+    url('/assets/images/research/research-lab.jpg')
+    center / cover no-repeat;
+
+  border-radius: 6px;
+}
+
+
+.research-intro-image::after {
+  content: "";
+
+  position: absolute;
+
+  left: 25px;
+  bottom: -25px;
+
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 6px;
+
+  z-index: -1;
+}
+
+
+.research-intro-content .section-label {
+  justify-content: flex-start;
+}
+
+
+.research-intro-content h2 {
+  margin: 0 0 25px;
+
+  font-size: clamp(35px, 5vw, 55px);
+
+  line-height: 1.1;
+}
+
+
+.research-intro-content h2 span {
+  font-style: italic;
+  font-weight: 400;
+}
+
+
+.research-intro-content p {
+  margin: 0 0 20px;
+
+  font-size: 16px;
+
+  line-height: 1.9;
+
+  color: #5d5d5d;
+}
+
+
+/* =========================================================
+   RESEARCH AREAS
+========================================================= */
+
+.research-areas {
+  width: 100%;
+
+  padding: 110px 30px;
+
+  box-sizing: border-box;
+
+  background: #f7f7f5;
+}
+
+
+.research-card-grid {
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.research-card {
+  position: relative;
+
+  width: 100%;
+  height: 450px;
+
+  cursor: pointer;
+
+  perspective: 1200px;
+}
+
+
+.card-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+
+.research-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+
+/* =========================================================
+   CARD FACE
+========================================================= */
+
+.card-face {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+/* =========================================================
+   CARD FRONT
+========================================================= */
+
+.card-front {
+  background: #111111;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.card-image {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  transition: transform 0.5s ease;
+}
+
+
+.research-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   CARD OVERLAY
+========================================================= */
+
+.card-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.18) 35%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.card-content {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 28px;
+
+  box-sizing: border-box;
+}
+
+
+.card-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.card-number {
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  opacity: 0.8;
+}
+
+
+.card-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  border-radius: 50%;
+
+  font-size: 18px;
+
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+.card-bottom h3 {
+  margin: 0 0 12px;
+
+  font-size: 28px;
+
+  line-height: 1.15;
+}
+
+
+.card-bottom p {
+  margin: 0 0 18px;
+
+  max-width: 400px;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.78);
+}
+
+
+.flip-hint {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+.flip-hint strong {
+  font-size: 17px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   CARD BACK
+========================================================= */
+
+.card-back {
+  transform: rotateY(180deg);
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  background: #111111;
+
+  color: #ffffff;
+
+  border: 1px solid #252525;
+}
+
+
+.back-number {
+  position: absolute;
+
+  top: 20px;
+  right: 25px;
+
+  font-size: 70px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  color: rgba(255, 255, 255, 0.045);
+}
+
+
+.back-content {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.back-label {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #999999;
+}
+
+
+.back-content h3 {
+  margin: 0 0 18px;
+
+  font-size: 28px;
+
+  line-height: 1.15;
+}
+
+
+.back-content p {
+  margin: 0 0 25px;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  color: #bdbdbd;
+}
+
+
+/* =========================================================
+   EXPLORE FULL IMAGE BUTTON
+========================================================= */
+
+.explore-image-button {
+  position: relative;
+
+  z-index: 100;
+
+  width: 100%;
+
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 14px 18px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 4px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.7px;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.explore-image-button:hover {
+  background: transparent;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+
+.explore-image-button:active {
+  transform: translateY(0);
+}
+
+
+.button-image-icon {
+  font-size: 17px;
+}
+
+
+.button-arrow {
+  font-size: 17px;
+
+  transition: transform 0.3s ease;
+}
+
+
+.explore-image-button:hover .button-arrow {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   BACK CLOSE
+========================================================= */
+
+.close-card {
+  position: absolute;
+
+  right: 22px;
+  bottom: 20px;
+
+  font-size: 22px;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   FULL IMAGE MODAL
+========================================================= */
+
+.research-modal {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 999999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.92);
+
+  overflow-y: auto;
+
+  animation: researchModalFade 0.25s ease;
+}
+
+
+/* =========================================================
+   MODAL BOX
+========================================================= */
+
+.research-modal-box {
+  position: relative;
+
+  width: min(1000px, 95vw);
+
+  max-height: 92vh;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.6);
+
+  animation: researchModalSlide 0.3s ease;
+}
+
+
+/* =========================================================
+   MODAL CLOSE BUTTON
+========================================================= */
+
+.research-modal-close {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+
+  z-index: 20;
+
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  color: #ffffff;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 32px;
+
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.research-modal-close:hover {
+  background: #000000;
+
+  transform: rotate(90deg);
+}
+
+
+.research-modal-close:focus {
+  outline: 2px solid #ffffff;
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   MODAL IMAGE
+========================================================= */
+
+.research-modal-image {
+  width: 100%;
+
+  min-height: 300px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #111111;
+
+  overflow: hidden;
+}
+
+
+.research-modal-image img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: 100%;
+
+  max-height: 65vh;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   MODAL INFORMATION
+========================================================= */
+
+.research-modal-info {
+  padding: 35px 45px 40px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+}
+
+
+.research-modal-label {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #777777;
+}
+
+
+.research-modal-info h2 {
+  margin: 0;
+
+  font-size: 34px;
+
+  line-height: 1.2;
+
+  color: #111111;
+}
+
+
+.research-modal-line {
+  width: 60px;
+
+  height: 3px;
+
+  margin: 18px 0 20px;
+
+  background: #111111;
+}
+
+
+.research-modal-info p {
+  margin: 0;
+
+  font-size: 16px;
+
+  line-height: 1.85;
+
+  color: #555555;
+}
+
+
+/* =========================================================
+   MODAL SCROLLBAR
+========================================================= */
+
+.research-modal-box::-webkit-scrollbar {
+  width: 7px;
+}
+
+
+.research-modal-box::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+
+
+.research-modal-box::-webkit-scrollbar-thumb {
+  background: #999999;
+
+  border-radius: 10px;
+}
+
+
+.research-modal-box::-webkit-scrollbar-thumb:hover {
+  background: #777777;
+}
+
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+.research-philosophy {
+  background: #ffffff;
+}
+
+
+.philosophy-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 80px;
+
+  align-items: center;
+}
+
+
+.philosophy-image {
+  min-height: 500px;
+
+  background:
+    url('/assets/images/research/research-lab.jpg')
+    center / cover no-repeat;
+
+  border-radius: 6px;
+}
+
+
+.philosophy-content .section-label {
+  justify-content: flex-start;
+}
+
+
+.philosophy-content h2 {
+  margin: 0 0 25px;
+
+  font-size: clamp(35px, 5vw, 55px);
+
+  line-height: 1.1;
+}
+
+
+.philosophy-content h2 span {
+  font-style: italic;
+
+  font-weight: 400;
+}
+
+
+.philosophy-content p {
+  margin: 0 0 20px;
+
+  font-size: 16px;
+
+  line-height: 1.9;
+
+  color: #5d5d5d;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.research-process {
+  background: #f7f7f5;
+}
+
+
+.process-grid {
+  width: 100%;
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+
+.process-item {
+  position: relative;
+
+  padding: 35px 25px;
+
+  background: #ffffff;
+
+  border: 1px solid #e7e7e7;
+
+  border-radius: 6px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.process-item:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+.process-number {
+  display: block;
+
+  margin-bottom: 25px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #999999;
+}
+
+
+.process-item h3 {
+  margin: 0 0 12px;
+
+  font-size: 22px;
+}
+
+
+.process-item p {
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: #666666;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.research-cta {
+  padding: 110px 30px;
+
+  background: #111111;
+
+  color: #ffffff;
+
+  text-align: center;
+}
+
+
+.research-cta-container {
+  width: 100%;
+
+  max-width: 850px;
+
+  margin: 0 auto;
+}
+
+
+.research-cta-label {
+  display: block;
+
+  margin-bottom: 18px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #999999;
+}
+
+
+.research-cta h2 {
+  margin: 0 0 20px;
+
+  font-size: clamp(38px, 6vw, 65px);
+
+  line-height: 1.05;
+
+  letter-spacing: -1.5px;
+}
+
+
+.research-cta h2 span {
+  font-style: italic;
+
+  font-weight: 400;
+}
+
+
+.research-cta p {
+  max-width: 620px;
+
+  margin: 0 auto 30px;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  color: #bdbdbd;
+}
+
+
+.research-cta-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 15px 28px;
+
+  border: 1px solid #ffffff;
+
+  border-radius: 4px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.research-cta-button:hover {
+  background: transparent;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   MODAL ANIMATIONS
+========================================================= */
+
+@keyframes researchModalFade {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes researchModalSlide {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(30px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .research-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  .research-intro-grid {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+
+  .research-intro-image {
+    min-height: 400px;
+  }
+
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+
+  .philosophy-image {
+    min-height: 400px;
+  }
+
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .research-section {
+    padding: 75px 20px;
+  }
+
+
+  /* HERO */
+
+  .research-hero {
+    min-height: 500px;
+
+    padding: 80px 20px;
+  }
+
+
+  .research-hero h1 {
+    font-size: 43px;
+
+    letter-spacing: -1px;
+  }
+
+
+  .research-hero p {
+    font-size: 15px;
+  }
+
+
+  .research-hero-buttons {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+
+  .research-hero-button {
+    width: 100%;
+
+    max-width: 260px;
+  }
+
+
+  /* HEADING */
+
+  .section-heading {
+    margin-bottom: 40px;
+  }
+
+
+  .section-heading h2 {
+    font-size: 36px;
+  }
+
+
+  .section-heading p {
+    font-size: 15px;
+  }
+
+
+  /* INTRO */
+
+  .research-intro-grid {
+    gap: 45px;
+  }
+
+
+  .research-intro-image {
+    min-height: 300px;
+  }
+
+
+  .research-intro-image::after {
+    left: 12px;
+
+    bottom: -12px;
+  }
+
+
+  /* CARDS */
+
+  .research-areas {
+    padding: 75px 20px;
+  }
+
+
+  .research-card-grid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+
+  .research-card {
+    height: 430px;
+  }
+
+
+  .card-content {
+    padding: 24px;
+  }
+
+
+  .card-bottom h3 {
+    font-size: 25px;
+  }
+
+
+  .card-bottom p {
+    font-size: 13px;
+  }
+
+
+  /* BACK */
+
+  .card-back {
+    padding: 25px;
+  }
+
+
+  .back-content h3 {
+    font-size: 25px;
+  }
+
+
+  .back-content p {
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+
+  /* POPUP */
+
+  .research-modal {
+    padding: 12px;
+  }
+
+
+  .research-modal-box {
+    width: 100%;
+
+    max-height: 94vh;
+
+    border-radius: 12px;
+  }
+
+
+  .research-modal-image {
+    min-height: 220px;
+  }
+
+
+  .research-modal-image img {
+    width: 100%;
+
+    max-height: 50vh;
+
+    object-fit: contain;
+  }
+
+
+  .research-modal-close {
+    top: 10px;
+
+    right: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 28px;
+  }
+
+
+  .research-modal-info {
+    padding: 25px 22px 30px;
+  }
+
+
+  .research-modal-info h2 {
+    font-size: 27px;
+  }
+
+
+  .research-modal-info p {
+    font-size: 14px;
+
+    line-height: 1.75;
+  }
+
+
+  /* PHILOSOPHY */
+
+  .philosophy-grid {
+    gap: 40px;
+  }
+
+
+  .philosophy-image {
+    min-height: 300px;
+  }
+
+
+  /* PROCESS */
+
+  .process-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+
+  .process-item {
+    padding: 28px 22px;
+  }
+
+
+  /* CTA */
+
+  .research-cta {
+    padding: 80px 20px;
+  }
+
+
+  .research-cta h2 {
+    font-size: 40px;
+  }
+
+
+  .research-cta p {
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .research-hero h1 {
+    font-size: 36px;
+  }
+
+
+  .research-card {
+    height: 400px;
+  }
+
+
+  .card-bottom h3 {
+    font-size: 23px;
+  }
+
+
+  .card-back {
+    padding: 22px;
+  }
+
+
+  .back-content h3 {
+    font-size: 23px;
+  }
+
+
+  .research-modal-info h2 {
+    font-size: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .card-inner,
+  .card-image,
+  .explore-image-button,
+  .research-modal-close,
+  .research-modal-box,
+  .research-modal {
+    transition: none !important;
+
+    animation: none !important;
+  }
+
+}
+
+/* =========================================================
+   POPUP FORCE TEST
+========================================================= */
+
+.research-modal {
+  position: fixed !important;
+
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  z-index: 2147483647 !important;
+
+  background: rgba(0, 0, 0, 0.95) !important;
+
+  padding: 20px !important;
+
+  box-sizing: border-box !important;
+}
+
+
+.research-modal-box {
+  position: relative !important;
+
+  width: 90vw !important;
+  max-width: 1000px !important;
+
+  max-height: 90vh !important;
+
+  overflow-y: auto !important;
+
+  background: #ffffff !important;
+
+  border-radius: 15px !important;
+
+  z-index: 2147483647 !important;
+}
+
+
+.research-modal-image {
+  width: 100% !important;
+
+  min-height: 300px !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: #111111 !important;
+}
+
+
+.research-modal-image img {
+  display: block !important;
+
+  width: 100% !important;
+
+  max-width: 100% !important;
+
+  max-height: 65vh !important;
+
+  height: auto !important;
+
+  object-fit: contain !important;
+}
+
+
+.research-modal-close {
+  position: absolute !important;
+
+  top: 15px !important;
+  right: 15px !important;
+
+  width: 45px !important;
+  height: 45px !important;
+
+  z-index: 2147483647 !important;
+
+  border: none !important;
+
+  border-radius: 50% !important;
+
+  background: #000000 !important;
+
+  color: #ffffff !important;
+
+  font-size: 30px !important;
+
+  cursor: pointer !important;
+}
+
+
+.research-modal-info {
+  padding: 30px !important;
+
+  background: #ffffff !important;
+}
+
+
+.research-modal-info h2 {
+  color: #111111 !important;
+}
+
+
+.research-modal-info p {
+  color: #555555 !important;
+}
+
+/* =========================================================
+   CARD BUTTON FIX
+========================================================= */
+
+.flip-card-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  position: relative;
+  z-index: 20;
+}
+
+.flip-card-button strong {
+  font-size: 17px;
+  font-weight: 400;
+  transition: transform 0.25s ease;
+}
+
+.flip-card-button:hover strong {
+  transform: translate(4px, -4px);
+}
+
+
+/* =========================================================
+   BACK CARD BUTTON
+========================================================= */
+
+.back-card-button {
+  margin-top: 15px;
+
+  padding: 10px 0;
+
+  border: none;
+  background: transparent;
+
+  color: #999999;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  position: relative;
+  z-index: 30;
+}
+
+.back-card-button:hover {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   MAKE BACK CONTENT CLICKABLE
+========================================================= */
+
+.card-back {
+  pointer-events: auto;
+}
+
+.card-back .back-content {
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   EXPLORE BUTTON - FORCE CLICK
+========================================================= */
+
+.explore-image-button {
+  position: relative !important;
+  z-index: 999 !important;
+
+  pointer-events: auto !important;
+
+  cursor: pointer !important;
+}
+
+/* =========================================================
+   RESEARCH CARD CLICK FIX
+========================================================= */
+
+.card-inner {
+  position: relative;
+}
+
+.card-face {
+  pointer-events: none;
+}
+
+.card-front {
+  pointer-events: auto;
+}
+
+.research-card.flipped .card-front {
+  pointer-events: none;
+}
+
+.research-card.flipped .card-back {
+  pointer-events: auto;
+}
+
+.card-back .back-content,
+.card-back .explore-image-button,
+.card-back .back-card-button {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 9999;
+}
+
+.explore-image-button {
+  cursor: pointer !important;
+}

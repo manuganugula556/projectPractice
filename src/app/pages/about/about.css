@@ -85,26 +85,23 @@
 .scientist-photo {
   width: 350px;
   height: 420px;
-
   border-radius: 24px;
-
-  background: linear-gradient(
-    145deg,
-    #dbeafe,
-    #ccfbf1
-  );
-
+  background: linear-gradient(145deg, #dbeafe, #ccfbf1);
   border: 8px solid white;
-
-  box-shadow:
-    0 20px 45px rgba(14, 116, 144, 0.16);
+  box-shadow: 0 20px 45px rgba(14, 116, 144, 0.16);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  color: #0f766e;
-  font-weight: 600;
+  overflow: hidden; /* ensures image stays inside rounded card */
+}
+
+.scientist-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* fills card while preserving aspect ratio */
+  border-radius: 16px; /* optional: keeps rounded corners inside */
 }
 
 .profile-content h2 {

@@ -1,1 +1,84 @@
-<h1>Welcome</h1>
+<section class="login-page">
+
+  <div class="login-card">
+
+    <div class="login-header">
+
+      <div class="login-logo">
+        AM
+      </div>
+
+      <h1>Admin Login</h1>
+
+      <p>
+        Sign in to manage the GAPCO gallery.
+      </p>
+
+    </div>
+
+
+    <form (ngSubmit)="login()">
+
+      <div class="form-group">
+
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter admin email"
+          autocomplete="username"
+        />
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+        />
+
+      </div>
+
+
+      @if (errorMessage) {
+
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+
+      }
+
+
+      <button
+        type="submit"
+        [disabled]="isLoading"
+      >
+
+        @if (isLoading) {
+          Signing in...
+        } @else {
+          Sign In
+        }
+
+      </button>
+
+    </form>
+
+  </div>
+
+</section>

@@ -2,41 +2,103 @@
 
   <div class="navbar-container">
 
-    <!-- Logo / Scientist Name -->
-    <a class="brand" routerLink="/">
-      <div class="brand-logo">GS</div>
+<!-- =========================
+     BRAND
+========================== -->
+<a class="brand" routerLink="/" (click)="closeMenu()">
 
-      <div class="brand-text">
-        <span class="brand-name">Scientist Name</span>
-        <span class="brand-title">Research & Innovation</span>
-      </div>
-    </a>
+  <div class="brand-logo">
+    <span>G</span>
+    <span>A</span>
+    <span>P</span>
+    <span>C</span>
+    <span>O</span>
 
-    <!-- Navigation -->
-    <div class="nav-links">
 
-      <a routerLink="/" routerLinkActive="active"
-         [routerLinkActiveOptions]="{ exact: true }">
-        Home
-      </a>
 
-      <a routerLink="/about" routerLinkActive="active">
-        About
-      </a>
+  </div>
 
-      <a routerLink="/gallery" routerLinkActive="active">
-        Gallery
-      </a>
+  <div class="brand-text">
+    <span class="brand-name">Dr.Bhogipati Adi Murthy</span>
+    <span class="brand-title">
+      Research <span>•</span> Innovation
+    </span>
+  </div>
 
-      <a routerLink="/contact" routerLinkActive="active">
-        Contact
-      </a>
+</a>
 
-      <a routerLink="/admin/login" class="login-button">
-        Admin Login
-      </a>
 
-    </div>
+<!-- =========================
+     DESKTOP NAVIGATION
+========================== -->
+<div class="nav-links" [class.mobile-open]="menuOpen">
+
+  <a
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    (click)="closeMenu()">
+    <span>Home</span>
+  </a>
+
+  <a
+    routerLink="/about"
+    routerLinkActive="active"
+    (click)="closeMenu()">
+    <span>About</span>
+  </a>
+
+  <a
+  routerLink="/research"
+  routerLinkActive="active"
+  (click)="closeMenu()">
+  <span>Research</span>
+</a>
+
+  <a
+    routerLink="/gallery"
+    routerLinkActive="active"
+    (click)="closeMenu()">
+    <span>Gallery</span>
+  </a>
+
+  <a
+    routerLink="/contact"
+    routerLinkActive="active"
+    (click)="closeMenu()">
+    <span>Contact</span>
+  </a>
+
+  <!-- Admin -->
+  <a
+    routerLink="/admin/login"
+    class="login-button"
+    (click)="closeMenu()">
+
+    <span class="login-icon">↗</span>
+    <span>Admin Login</span>
+
+  </a>
+
+</div>
+
+
+<!-- =========================
+     MOBILE MENU BUTTON
+========================== -->
+<button
+  class="menu-toggle"
+  type="button"
+  aria-label="Toggle navigation"
+  [attr.aria-expanded]="menuOpen"
+  (click)="toggleMenu()">
+
+  <span class="menu-line line-one"></span>
+  <span class="menu-line line-two"></span>
+  <span class="menu-line line-three"></span>
+
+</button>
+
 
   </div>
 
