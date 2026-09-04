@@ -1,6 +1,6 @@
 import {
-  ChangeDetectorRef,
   Component,
+  ChangeDetectorRef,
   ElementRef,
   OnDestroy,
   OnInit,
@@ -12,50 +12,56 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
+
   standalone: true,
-  imports: [RouterLink],
+
+  imports: [
+    RouterLink
+  ],
+
   templateUrl: './home.html',
+
   styleUrl: './home.css'
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
 
-  // =========================
-  // HERO CAROUSEL
-  // =========================
+  /* =====================================================
+     CHANGE DETECTOR
+  ===================================================== */
+
+  constructor(
+    private cdr: ChangeDetectorRef
+  ) {}
+
+
+  /* =====================================================
+     HERO CAROUSEL
+  ===================================================== */
 
   currentSlide = 0;
 
-
-  private slideInterval:
-    ReturnType<typeof setInterval> | null = null;
-
+  private slideInterval?: ReturnType<typeof setInterval>;
 
   slides = [
 
     {
-      image: 'assets/images/Scientist-Photo.jpg',
-
+      image: 'assets/images/Gapcoindia-Logo.png',
       title: 'Science & Research',
-
       description:
         'Advancing knowledge through research and innovation.'
     },
 
     {
       image: 'assets/images/Scientist-Photo1.jpg',
-
       title: 'Innovation & Discovery',
-
       description:
         'Exploring new ideas and meaningful scientific discoveries.'
     },
 
     {
       image: 'assets/images/Scientist-Photo2.jpg',
-
       title: 'Professional Journey',
-
       description:
         'A journey dedicated to science, research and excellence.'
     }
@@ -63,49 +69,52 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
 
-  // =========================
-  // GALLERY
-  // =========================
+  /* =====================================================
+     FEATURE CARD FLIP
+  ===================================================== */
+
+  flippedCard: number | null = null;
+
+
+  toggleCard(index: number): void {
+
+    if (this.flippedCard === index) {
+
+      this.flippedCard = null;
+
+    } else {
+
+      this.flippedCard = index;
+
+    }
+
+  }
+
+
+  /* =====================================================
+     GALLERY
+  ===================================================== */
 
   @ViewChild('photoTrack')
   photoTrack!: ElementRef<HTMLDivElement>;
 
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
-
-
-  // =========================
-  // INIT
-  // =========================
+  /* =====================================================
+     INIT
+  ===================================================== */
 
   ngOnInit(): void {
 
-    this.startAutoSlide();
+    this.startCarousel();
 
   }
 
 
-  // =========================
-  // DESTROY
-  // =========================
+  /* =====================================================
+     START CAROUSEL
+  ===================================================== */
 
-  ngOnDestroy(): void {
-
-    this.stopAutoSlide();
-
-  }
-
-
-  // =========================
-  // HERO AUTO SLIDE
-  // =========================
-
-  startAutoSlide(): void {
-
-    this.stopAutoSlide();
-
+  private startCarousel(): void {
 
     this.slideInterval = setInterval(() => {
 
@@ -113,47 +122,56 @@ export class HomeComponent implements OnInit, OnDestroy {
         (this.currentSlide + 1) %
         this.slides.length;
 
-
-      this.changeDetectorRef.detectChanges();
+      this.cdr.detectChanges();
 
     }, 3000);
 
   }
 
 
-  // =========================
-  // STOP AUTO SLIDE
-  // =========================
+  /* =====================================================
+     RESTART CAROUSEL
+  ===================================================== */
 
-  stopAutoSlide(): void {
+  private restartCarousel(): void {
 
-    if (this.slideInterval !== null) {
+    if (this.slideInterval) {
 
       clearInterval(this.slideInterval);
 
-      this.slideInterval = null;
+    }
+
+    this.startCarousel();
+
+  }
+
+
+  /* =====================================================
+     NEXT SLIDE
+  ===================================================== */
+
+  nextSlide(
+    restartTimer: boolean = true
+  ): void {
+
+    this.currentSlide =
+      (this.currentSlide + 1) %
+      this.slides.length;
+
+    this.cdr.detectChanges();
+
+    if (restartTimer) {
+
+      this.restartCarousel();
 
     }
 
   }
 
 
-  // =========================
-  // HERO NEXT
-  // =========================
-
-  nextSlide(): void {
-
-    this.currentSlide =
-      (this.currentSlide + 1) %
-      this.slides.length;
-
-  }
-
-
-  // =========================
-  // HERO PREVIOUS
-  // =========================
+  /* =====================================================
+     PREVIOUS SLIDE
+  ===================================================== */
 
   previousSlide(): void {
 
@@ -161,36 +179,50 @@ export class HomeComponent implements OnInit, OnDestroy {
       (this.currentSlide - 1 + this.slides.length) %
       this.slides.length;
 
+    this.cdr.detectChanges();
+
+    this.restartCarousel();
+
   }
 
 
-  // =========================
-  // HERO DOT
-  // =========================
+  /* =====================================================
+     GO TO SLIDE
+  ===================================================== */
 
   goToSlide(index: number): void {
 
+    if (
+      index < 0 ||
+      index >= this.slides.length
+    ) {
+
+      return;
+
+    }
+
     this.currentSlide = index;
+
+    this.cdr.detectChanges();
+
+    this.restartCarousel();
 
   }
 
 
-  // =========================
-  // GALLERY NEXT
-  // =========================
+  /* =====================================================
+     GALLERY NEXT
+  ===================================================== */
 
   nextGalleryPhoto(): void {
 
     if (!this.photoTrack) {
+
       return;
+
     }
 
-
-    const track =
-      this.photoTrack.nativeElement;
-
-
-    track.scrollBy({
+    this.photoTrack.nativeElement.scrollBy({
 
       left: 350,
 
@@ -201,28 +233,40 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 
-  // =========================
-  // GALLERY PREVIOUS
-  // =========================
+  /* =====================================================
+     GALLERY PREVIOUS
+  ===================================================== */
 
   previousGalleryPhoto(): void {
 
     if (!this.photoTrack) {
+
       return;
+
     }
 
-
-    const track =
-      this.photoTrack.nativeElement;
-
-
-    track.scrollBy({
+    this.photoTrack.nativeElement.scrollBy({
 
       left: -350,
 
       behavior: 'smooth'
 
     });
+
+  }
+
+
+  /* =====================================================
+     DESTROY
+  ===================================================== */
+
+  ngOnDestroy(): void {
+
+    if (this.slideInterval) {
+
+      clearInterval(this.slideInterval);
+
+    }
 
   }
 

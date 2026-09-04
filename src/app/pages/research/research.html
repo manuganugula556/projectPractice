@@ -1,0 +1,471 @@
+<!-- =========================================================
+     RESEARCH PAGE
+========================================================= -->
+
+<main class="research-page">
+
+  <!-- =======================================================
+       HERO SECTION
+  ======================================================== -->
+
+  <section class="research-hero">
+
+    <div class="research-hero-content">
+
+      <div class="research-hero-label">
+        <span>RESEARCH &amp; DEVELOPMENT</span>
+      </div>
+
+      <h1>
+        Engineering Ideas
+        <span>Into Real Innovation</span>
+      </h1>
+
+      <p>
+        Exploring engineering, energy and technology through
+        research, experimentation and practical innovation.
+      </p>
+
+      <!-- <div class="research-hero-buttons">
+
+        <a
+          href="#research-areas"
+          class="research-hero-button primary">
+          Explore Research
+          <span>↗</span>
+        </a>
+
+        <a
+          href="#research-process"
+          class="research-hero-button">
+          Our Approach
+          <span>↗</span>
+        </a>
+
+      </div> -->
+
+    </div>
+
+    <div class="research-scroll">
+      <span>SCROLL TO EXPLORE</span>
+      <span class="research-scroll-line"></span>
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       INTRODUCTION
+  ======================================================== -->
+
+  <section class="research-section research-intro">
+
+    <div class="research-container">
+
+      <div class="research-intro-grid">
+
+        <!-- IMAGE -->
+
+        <div class="research-intro-image"></div>
+
+
+        <!-- CONTENT -->
+
+        <div class="research-intro-content">
+
+          <div class="section-label">
+            <span>01</span>
+            <span>RESEARCH MINDSET</span>
+          </div>
+
+          <h2>
+            Research That
+            <span>Creates Possibilities</span>
+          </h2>
+
+          <p>
+            Research is the foundation of meaningful engineering
+            innovation. Our focus is on understanding real-world
+            challenges and developing practical solutions that can
+            improve efficiency, sustainability and everyday life.
+          </p>
+
+          <p>
+            From energy conservation and electrical engineering to
+            mechanical innovation and industrial applications,
+            our research approach combines creativity, engineering
+            knowledge and practical experimentation.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       RESEARCH AREAS
+  ======================================================== -->
+
+  <section
+    class="research-areas"
+    id="research-areas">
+
+    <div class="research-container">
+
+      <!-- SECTION HEADING -->
+
+      <div class="section-heading">
+
+        <div class="section-label">
+          <span>02</span>
+          <span>AREAS OF RESEARCH</span>
+        </div>
+
+        <h2>
+          Exploring
+          <span>New Frontiers</span>
+        </h2>
+
+        <p>
+          Our research interests span multiple engineering
+          disciplines, with a focus on practical innovation,
+          efficiency and sustainable development.
+        </p>
+
+      </div>
+
+
+      <!-- ===================================================
+           RESEARCH CARD GRID
+      ==================================================== -->
+
+<div class="research-card-grid">
+
+  <article
+    class="research-card"
+    *ngFor="let area of researchAreas; let i = index"
+    [class.flipped]="activeCard === i">
+
+    <div class="card-inner">
+
+      <!-- FRONT -->
+      <div class="card-face card-front">
+
+        <div
+          class="card-image"
+          [style.background-image]="'url(' + area.image + ')'">
+        </div>
+
+        <div class="card-overlay"></div>
+
+        <div class="card-content">
+
+          <div class="card-top">
+            <span class="card-number">
+              {{ area.number }}
+            </span>
+
+            <span class="card-icon">
+              {{ area.icon }}
+            </span>
+          </div>
+
+          <div class="card-bottom">
+
+            <h3>{{ area.title }}</h3>
+
+            <p>{{ area.shortText }}</p>
+
+            <!-- FLIP BUTTON -->
+            <button
+              type="button"
+              class="flip-card-button"
+              (click)="toggleCard(i)">
+
+              <span>Click to explore</span>
+              <strong>↗</strong>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- BACK -->
+
+<div class="card-face card-back">
+
+  <span class="back-number">
+    {{ area.number }}
+  </span>
+
+  <div class="back-content">
+
+    <span class="back-label">
+      RESEARCH AREA
+    </span>
+
+    <h3>
+      {{ area.title }}
+    </h3>
+
+    <p>
+      {{ area.fullText }}
+    </p>
+
+    <!-- EXPLORE IMAGE BUTTON -->
+    <button
+      type="button"
+      class="explore-image-button"
+      (click)="openResearchImage(area, $event)">
+
+      <span class="button-image-icon">⛶</span>
+
+      <span>Explore Full Image</span>
+
+      <span class="button-arrow">↗</span>
+
+    </button>
+
+    <!-- BACK BUTTON -->
+    <button
+      type="button"
+      class="back-card-button"
+      (click)="toggleCard(i)">
+
+      ← Back
+
+    </button>
+
+  </div>
+
+</div>
+
+    </div>
+
+  </article>
+
+</div>
+
+
+<!-- =======================================================
+     IMAGE MODAL
+======================================================= -->
+
+<div
+  class="research-modal"
+  *ngIf="selectedResearch"
+  (click)="closeResearchImage()">
+
+  <div
+    class="research-modal-box"
+    (click)="$event.stopPropagation()">
+
+    <button
+      type="button"
+      class="research-modal-close"
+      (click)="closeResearchImage()">
+
+      ×
+
+    </button>
+
+    <div class="research-modal-image">
+
+      <img
+        [src]="selectedResearch.image"
+        [alt]="selectedResearch.title">
+
+    </div>
+
+    <div class="research-modal-info">
+
+      <span class="research-modal-label">
+        RESEARCH AREA
+      </span>
+
+      <h2>
+        {{ selectedResearch.title }}
+      </h2>
+
+      <div class="research-modal-line"></div>
+
+      <p>
+        {{ selectedResearch.fullText }}
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+      
+
+
+  <section class="research-section research-philosophy">
+
+    <div class="research-container">
+
+      <div class="philosophy-grid">
+
+
+        <!-- IMAGE -->
+
+        <div class="philosophy-image"></div>
+
+
+        <!-- CONTENT -->
+
+        <div class="philosophy-content">
+
+          <div class="section-label">
+
+            <span>03</span>
+
+            <span>OUR PHILOSOPHY</span>
+
+          </div>
+
+
+          <h2>
+            Think Different.
+            <span>Build Better.</span>
+          </h2>
+
+
+          <p>
+            Meaningful innovation begins with curiosity.
+            We believe that every engineering challenge presents
+            an opportunity to discover a better and more efficient
+            way of doing things.
+          </p>
+
+
+          <p>
+            Our approach combines engineering principles,
+            experimentation and creative problem solving to
+            transform ideas into practical solutions.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       RESEARCH PROCESS
+  ======================================================== -->
+
+  <section
+    class="research-section research-process"
+    id="research-process">
+
+    <div class="research-container">
+
+
+      <!-- SECTION HEADING -->
+
+      <div class="section-heading">
+
+        <div class="section-label">
+
+          <span>04</span>
+
+          <span>RESEARCH PROCESS</span>
+
+        </div>
+
+
+        <h2>
+          From Question
+          <span>To Solution</span>
+        </h2>
+
+
+        <p>
+          A structured approach helps transform an engineering
+          challenge into a practical and meaningful solution.
+        </p>
+
+      </div>
+
+
+      <!-- PROCESS GRID -->
+
+      <div class="process-grid">
+
+        <div
+          class="process-item"
+          *ngFor="let process of researchProcess">
+
+          <span class="process-number">
+            {{ process.step }}
+          </span>
+
+          <h3>
+            {{ process.title }}
+          </h3>
+
+          <p>
+            {{ process.description }}
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       CALL TO ACTION
+  ======================================================== -->
+
+  <section class="research-cta">
+
+    <div class="research-cta-container">
+
+      <span class="research-cta-label">
+        INNOVATION STARTS WITH AN IDEA
+      </span>
+
+
+      <h2>
+        Let's Build
+        <span>What's Next.</span>
+      </h2>
+
+
+      <p>
+        Explore our research areas and discover how engineering,
+        technology and innovation can create practical solutions
+        for the future.
+      </p>
+
+
+      <a
+        routerLink="/contact"
+        class="research-cta-button">
+
+        Get In Touch
+
+        <span>↗</span>
+
+      </a>
+
+    </div>
+
+  </section>

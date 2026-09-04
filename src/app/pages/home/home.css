@@ -1,35 +1,15 @@
 /* =========================================================
-   HOME PAGE
+   GAPCO HOME PAGE
+   COMPLETE RESPONSIVE CSS
 ========================================================= */
 
-
-/* =========================================================
-   LOGO SECTION
-========================================================= */
-
-.logo-section {
+.home-page {
   width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   background: #ffffff;
-  padding: 12px 20px;
-  box-sizing: border-box;
-}
-
-.logo-container {
-  max-width: 1200px;
-  margin: 0 auto;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.site-logo {
-  width: 220px;
-  max-width: 80%;
-  height: auto;
-
-  display: block;
-  object-fit: contain;
 }
 
 
@@ -42,6 +22,7 @@
   height: 600px;
 
   position: relative;
+
   overflow: hidden;
 
   background: #111827;
@@ -63,19 +44,18 @@
 
 /* =========================================================
    BLURRED BACKGROUND
-   Fills empty space without cropping the main photo
 ========================================================= */
 
 .carousel-background {
   position: absolute;
 
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
 
   object-fit: cover;
+  object-position: center;
 
   filter: blur(18px);
 
@@ -84,6 +64,8 @@
   opacity: 0.45;
 
   z-index: 0;
+
+  pointer-events: none;
 }
 
 
@@ -92,28 +74,51 @@
 ========================================================= */
 
 .carousel-image {
-  position: relative;
+  position: absolute;
 
-  z-index: 1;
+  inset: 0;
 
   width: 100%;
   height: 100%;
 
-  object-fit: contain;
-
   display: block;
+
+  object-fit: contain;
+  object-position: center center;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  animation: carouselFade 0.7s ease-in-out;
 }
 
 
 /* =========================================================
-   IMAGE OVERLAY
+   CAROUSEL FADE
+========================================================= */
+
+@keyframes carouselFade {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   OVERLAY
 ========================================================= */
 
 .carousel-overlay {
   position: absolute;
 
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
@@ -127,6 +132,8 @@
       rgba(0, 0, 0, 0.18),
       rgba(0, 0, 0, 0.62)
     );
+
+  pointer-events: none;
 }
 
 
@@ -230,7 +237,7 @@
 
   transform: translateY(-50%);
 
-  z-index: 5;
+  z-index: 10;
 
   width: 52px;
   height: 52px;
@@ -241,7 +248,7 @@
 
   border-radius: 50%;
 
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.35);
 
   color: #ffffff;
 
@@ -260,10 +267,23 @@
 }
 
 .carousel-arrow:hover {
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.75);
 
-  transform: translateY(-50%) scale(1.05);
+  transform:
+    translateY(-50%)
+    scale(1.05);
 }
+
+
+/* IMPORTANT:
+   HTML uses:
+   class="carousel-arrow left"
+   class="carousel-arrow right"
+
+   Therefore selectors MUST be:
+   .carousel-arrow.left
+   .carousel-arrow.right
+*/
 
 .carousel-arrow.left {
   left: 30px;
@@ -281,7 +301,7 @@
 .carousel-dots {
   position: absolute;
 
-  z-index: 5;
+  z-index: 10;
 
   left: 50%;
   bottom: 25px;
@@ -289,6 +309,7 @@
   transform: translateX(-50%);
 
   display: flex;
+
   align-items: center;
 
   gap: 8px;
@@ -301,13 +322,16 @@
   padding: 0;
 
   border: none;
+
   border-radius: 50%;
 
   background: rgba(255, 255, 255, 0.55);
 
   cursor: pointer;
 
-  transition: all 0.3s ease;
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
 }
 
 .carousel-dots button.active {
@@ -320,38 +344,52 @@
 
 
 /* =========================================================
-   INTRODUCTION SECTION
+   SLIDE COUNTER
 ========================================================= */
 
-.intro-section {
-  width: 100%;
+.slide-counter {
+  position: absolute;
 
-  padding: 80px 20px;
+  right: 30px;
+  bottom: 25px;
 
-  background: #f8fafc;
+  z-index: 10;
 
-  box-sizing: border-box;
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 4px;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 13px;
 }
+
+.slide-counter strong {
+  color: #ffffff;
+
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   COMMON CONTAINER
+========================================================= */
 
 .section-container {
   width: 100%;
   max-width: 1200px;
 
   margin: 0 auto;
+
+  box-sizing: border-box;
 }
 
 
 /* =========================================================
-   SECTION HEADING
+   SECTION LABEL
 ========================================================= */
-
-.section-heading {
-  max-width: 850px;
-
-  margin: 0 auto 50px;
-
-  text-align: center;
-}
 
 .section-label {
   display: inline-block;
@@ -366,19 +404,52 @@
   letter-spacing: 2px;
 }
 
-.section-heading h2 {
-  margin: 0 0 18px;
+
+/* =========================================================
+   INTRO SECTION
+========================================================= */
+
+.intro-section {
+  width: 100%;
+
+  padding: 80px 20px;
+
+  background: #f8fafc;
+
+  box-sizing: border-box;
+}
+
+.intro-layout {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+
+  margin-bottom: 60px;
+}
+
+.intro-heading h2 {
+  margin: 0;
 
   color: #0f172a;
 
-  font-size: 38px;
+  font-size: 42px;
   line-height: 1.2;
 
   font-weight: 700;
 }
 
-.section-heading p {
-  margin: 0;
+.intro-heading h2 span {
+  display: block;
+
+  color: #0284c7;
+}
+
+.intro-description p {
+  margin: 0 0 25px;
 
   color: #64748b;
 
@@ -386,80 +457,909 @@
   line-height: 1.7;
 }
 
+.text-link {
+  color: #0284c7;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.text-link span {
+  margin-left: 5px;
+
+  transition: margin-left 0.3s ease;
+}
+
+.text-link:hover span {
+  margin-left: 10px;
+}
+
 
 /* =========================================================
    RESEARCH CARDS
 ========================================================= */
 
+/* =========================================================
+   RESEARCH / FEATURE CARDS
+========================================================= */
+
 .research-grid {
   display: grid;
 
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
 
   gap: 24px;
+
+  perspective: 1200px;
 }
 
+
+/* =========================================================
+   CARD
+========================================================= */
+
 .research-card {
+  position: relative;
+
+  min-width: 0;
+
+  height: 340px;
+
+  cursor: pointer;
+
+  outline: none;
+
+  perspective: 1200px;
+}
+
+
+/* =========================================================
+   CARD INNER
+========================================================= */
+
+.card-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.7s cubic-bezier(
+      0.4,
+      0,
+      0.2,
+      1
+    );
+}
+
+
+/* =========================================================
+   FLIPPED STATE
+========================================================= */
+
+.research-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+
+/* =========================================================
+   FRONT + BACK
+========================================================= */
+
+.card-front,
+.card-back {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+
   padding: 30px 24px;
 
-  background: #ffffff;
+  border-radius: 14px;
 
   border: 1px solid #e2e8f0;
 
-  border-radius: 12px;
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 20px rgba(15, 23, 42, 0.06);
+
+  backface-visibility: hidden;
+
+  -webkit-backface-visibility: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
 
   text-align: center;
+}
 
-  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+
+/* =========================================================
+   FRONT
+========================================================= */
+
+.card-front {
+  justify-content: flex-start;
 
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.research-card:hover {
-  transform: translateY(-5px);
+.research-card:hover .card-front {
+  border-color: #7dd3fc;
 
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+  box-shadow:
+    0 15px 35px rgba(2, 132, 199, 0.12);
 }
+
+
+/* =========================================================
+   CARD NUMBER
+========================================================= */
+
+.card-number {
+  position: absolute;
+
+  top: 16px;
+  right: 18px;
+
+  color: #cbd5e1;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   CARD ICON
+========================================================= */
 
 .card-icon {
-  width: 60px;
-  height: 60px;
+  width: 66px;
+  height: 66px;
 
-  margin: 0 auto 18px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 
   border-radius: 50%;
 
   background: #ecfeff;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  font-size: 28px;
+  font-size: 31px;
+
+  box-shadow:
+    0 5px 15px rgba(6, 182, 212, 0.08);
 }
 
-.research-card h3 {
-  margin: 0 0 12px;
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.card-front h3 {
+  margin: 0 0 14px;
 
   color: #0f172a;
 
-  font-size: 21px;
+  font-size: 22px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
 }
 
-.research-card p {
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.card-front p {
   margin: 0;
 
   color: #64748b;
 
-  font-size: 15px;
+  font-size: 14px;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   FLIP HINT
+========================================================= */
+
+.card-flip-hint {
+  margin-top: auto;
+
+  margin-bottom: 8px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   CARD LINK
+========================================================= */
+
+.card-link {
+  position: relative;
+
+  z-index: 10;
+
+  display: inline-block;
+
+  color: #0284c7;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card-link:hover {
+  color: #0d9488;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   BACK SIDE
+========================================================= */
+
+.card-back {
+  transform: rotateY(180deg);
+
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f0fdfa,
+      #ecfeff
+    );
+
+  border-color: #bae6fd;
+}
+
+
+/* =========================================================
+   BACK ICON
+========================================================= */
+
+.back-icon {
+  width: 55px;
+  height: 55px;
+
+  margin-bottom: 14px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+
+  box-shadow:
+    0 5px 15px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   BACK TITLE
+========================================================= */
+
+.card-back h3 {
+  margin: 0 0 12px;
+
+  color: #0f172a;
+
+  font-size: 20px;
+
+  line-height: 1.25;
+}
+
+
+/* =========================================================
+   BACK DESCRIPTION
+========================================================= */
+
+.card-back p {
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  max-width: 280px;
+}
+
+
+/* =========================================================
+   FLIP BACK TEXT
+========================================================= */
+
+.flip-back {
+  margin-top: auto;
+
+  margin-bottom: 8px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   BACK LINK
+========================================================= */
+
+.back-link {
+  color: #0284c7;
+}
+
+
+/* =========================================================
+   KEYBOARD FOCUS
+========================================================= */
+
+.research-card:focus-visible {
+  outline: 3px solid rgba(2, 132, 199, 0.35);
+
+  outline-offset: 4px;
+
+  border-radius: 14px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .research-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+  .research-card {
+    height: 330px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .research-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    perspective: 1000px;
+  }
+
+  .research-card {
+    height: 330px;
+
+    width: 100%;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 28px 22px;
+  }
+
+  .card-icon {
+    width: 62px;
+    height: 62px;
+
+    font-size: 29px;
+  }
+
+  .card-front h3 {
+    font-size: 21px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .research-card {
+    height: 325px;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 26px 20px;
+  }
+
+  .card-front p,
+  .card-back p {
+    font-size: 13px;
+  }
+
+  .card-icon {
+    width: 60px;
+    height: 60px;
+
+    margin-bottom: 17px;
+
+    font-size: 28px;
+  }
+
+  .card-front h3 {
+    font-size: 20px;
+  }
+
+}
+
+/* =========================================================
+   STORIES
+========================================================= */
+
+.stories-section {
+  width: 100%;
+
+  padding: 80px 20px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+.section-heading-row {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-bottom: 40px;
+}
+
+.section-heading-row h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 38px;
+  line-height: 1.2;
+}
+
+.section-heading-row > p {
+  max-width: 420px;
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.stories-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.4fr 1fr 1fr;
+
+  gap: 24px;
+}
+
+.featured-story,
+.story-card {
+  min-width: 0;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background: #f8fafc;
+}
+
+.story-image {
+  position: relative;
+
+  height: 420px;
+
+  overflow: hidden;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.5s ease;
+}
+
+.featured-story:hover .story-image img {
+  transform: scale(1.05);
+}
+
+.story-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.05)
+    );
+}
+
+.story-content {
+  position: absolute;
+
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+
+  color: #ffffff;
+}
+
+.story-content span {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #67e8f9;
+}
+
+.story-content h3 {
+  margin: 10px 0 15px;
+
+  font-size: 28px;
+
+  line-height: 1.2;
+}
+
+.story-content a {
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.story-card img {
+  width: 100%;
+  height: 230px;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.5s ease;
+}
+
+.story-card:hover img {
+  transform: scale(1.05);
+}
+
+.story-card-content {
+  padding: 25px;
+}
+
+.story-card-content span {
+  color: #0284c7;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.story-card-content h3 {
+  margin: 10px 0 15px;
+
+  color: #0f172a;
+
+  font-size: 20px;
+
+  line-height: 1.35;
+}
+
+.story-card-content a {
+  color: #0284c7;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   SCIENTIST SECTION
+========================================================= */
+
+.scientist-section {
+  width: 100%;
+
+  padding: 100px 20px;
+
+  background: #f8fafc;
+
+  box-sizing: border-box;
+}
+
+.scientist-layout {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 80px;
+
+  align-items: center;
+}
+
+.scientist-image {
+  position: relative;
+
+  min-height: 500px;
+}
+
+.scientist-image img {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  height: 500px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+}
+
+.image-frame {
+  position: absolute;
+
+  left: 25px;
+  bottom: -25px;
+
+  width: 100%;
+  height: 100%;
+
+  border: 3px solid #0284c7;
+
+  border-radius: 12px;
+
+  z-index: 1;
+}
+
+.scientist-content h2 {
+  margin: 0 0 25px;
+
+  color: #0f172a;
+
+  font-size: 42px;
+
+  line-height: 1.2;
+}
+
+.scientist-content h2 span {
+  display: block;
+
+  color: #0284c7;
+}
+
+.scientist-content p {
+  margin: 0 0 18px;
+
+  color: #64748b;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+.dark-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 15px;
+
+  padding: 13px 24px;
+
+  border-radius: 6px;
+
+  background: #0f172a;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.dark-button:hover {
+  background: #0284c7;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESEARCH HIGHLIGHTS
+========================================================= */
+
+.research-highlight-section {
+  width: 100%;
+
+  padding: 90px 20px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+.section-heading.centered {
+  max-width: 800px;
+
+  margin: 0 auto 55px;
+
+  text-align: center;
+}
+
+.section-heading.centered h2 {
+  margin: 0 0 18px;
+
+  color: #0f172a;
+
+  font-size: 38px;
+}
+
+.section-heading.centered p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+.research-highlight-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.highlight-item {
+  padding: 30px 25px;
+
+  border-top: 3px solid #0284c7;
+
+  background: #f8fafc;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.highlight-item:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.highlight-number {
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: #0284c7;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.highlight-item h3 {
+  margin: 0 0 12px;
+
+  color: #0f172a;
+
+  font-size: 19px;
+}
+
+.highlight-item p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
   line-height: 1.6;
 }
 
 
 /* =========================================================
-   GALLERY PREVIEW
+   GALLERY
 ========================================================= */
 
 .gallery-preview {
@@ -472,15 +1372,11 @@
   box-sizing: border-box;
 }
 
-
-/* =========================================================
-   GALLERY HEADER
-========================================================= */
-
 .gallery-header {
   display: flex;
 
   align-items: flex-end;
+
   justify-content: space-between;
 
   gap: 30px;
@@ -494,6 +1390,7 @@
   color: #0f172a;
 
   font-size: 38px;
+
   line-height: 1.2;
 }
 
@@ -503,17 +1400,16 @@
   color: #0284c7;
 
   font-size: 15px;
+
   font-weight: 700;
 
   text-decoration: none;
 
   white-space: nowrap;
-
-  transition: color 0.3s ease;
 }
 
-.view-gallery:hover {
-  color: #0d9488;
+.view-gallery span {
+  margin-left: 5px;
 }
 
 
@@ -529,32 +1425,39 @@
   align-items: center;
 
   gap: 20px;
+
+  width: 100%;
 }
-
-
-/* =========================================================
-   PHOTO TRACK
-========================================================= */
 
 .photo-track {
   width: 100%;
 
-  display: grid;
+  min-width: 0;
 
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
 
   gap: 20px;
 
-  overflow: hidden;
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+
+  padding: 5px 0;
 }
 
-
-/* =========================================================
-   GALLERY PHOTO
-========================================================= */
+.photo-track::-webkit-scrollbar {
+  display: none;
+}
 
 .gallery-photo {
-  width: 100%;
+  flex: 0 0 calc(
+    (100% - 40px) / 3
+  );
+
   height: 260px;
 
   overflow: hidden;
@@ -572,23 +1475,21 @@
 
   object-fit: cover;
 
-  transition: transform 0.4s ease;
+  transition:
+    transform 0.4s ease;
 }
 
 .gallery-photo:hover img {
   transform: scale(1.05);
 }
 
-
-/* =========================================================
-   GALLERY ARROWS
-========================================================= */
-
 .gallery-arrow {
   flex-shrink: 0;
 
   width: 46px;
   height: 46px;
+
+  padding: 0;
 
   border: 1px solid #cbd5e1;
 
@@ -599,11 +1500,13 @@
   color: #0284c7;
 
   font-size: 32px;
+
   line-height: 1;
 
   cursor: pointer;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -623,7 +1526,149 @@
 
 
 /* =========================================================
+   CALL TO ACTION
+========================================================= */
+
+.home-cta {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 420px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 80px 20px;
+
+  box-sizing: border-box;
+
+  background:
+    url('/assets/images/Scientist-Photo2.jpg')
+    center / cover no-repeat;
+
+  overflow: hidden;
+}
+
+.cta-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    rgba(15, 23, 42, 0.82);
+}
+
+.cta-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 800px;
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.cta-content .section-label {
+  color: #67e8f9;
+}
+
+.cta-content h2 {
+  margin: 0 0 20px;
+
+  font-size: 42px;
+
+  line-height: 1.2;
+
+  color: #ffffff;
+}
+
+.cta-content h2 span {
+  display: block;
+
+  color: #67e8f9;
+}
+
+.cta-content p {
+  max-width: 650px;
+
+  margin: 0 auto 30px;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+.cta-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+
+  padding: 13px 25px;
+
+  border-radius: 6px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+}
+
+.cta-button.light {
+  background: #ffffff;
+
+  color: #0f172a;
+}
+
+.cta-button.light:hover {
+  background: #67e8f9;
+}
+
+.cta-button.outline {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  color: #ffffff;
+
+  background: transparent;
+}
+
+.cta-button.outline:hover {
+  background: #ffffff;
+
+  color: #0f172a;
+}
+
+
+/* =========================================================
    TABLET
+   769px - 1024px
 ========================================================= */
 
 @media (max-width: 1024px) {
@@ -636,12 +1681,54 @@
     font-size: 42px;
   }
 
-  .research-grid {
-    grid-template-columns: repeat(2, 1fr);
+
+  /* INTRO */
+
+  .intro-layout {
+    gap: 40px;
   }
 
-  .photo-track {
-    grid-template-columns: repeat(2, 1fr);
+
+  /* RESEARCH */
+
+  .research-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  /* STORIES */
+
+  .stories-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .featured-story {
+    grid-column: span 2;
+  }
+
+
+  /* SCIENTIST */
+
+  .scientist-layout {
+    gap: 40px;
+  }
+
+
+  /* HIGHLIGHTS */
+
+  .research-highlight-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  /* GALLERY */
+
+  .gallery-photo {
+    flex-basis:
+      calc((100% - 20px) / 2);
   }
 
 }
@@ -649,147 +1736,110 @@
 
 /* =========================================================
    MOBILE
+   <= 768px
 ========================================================= */
 
 @media (max-width: 768px) {
 
-  /* Logo */
+  /* -------------------------------------------------------
+     GENERAL
+  ------------------------------------------------------- */
 
-  .logo-section {
-    padding: 10px 15px;
+  .home-page {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: hidden;
   }
 
-  .site-logo {
-    width: 190px;
-    max-width: 85%;
+  .section-container {
+    width: 100%;
+
+    max-width: 100%;
+
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
 
-  /* Carousel */
+  /* -------------------------------------------------------
+     HERO
+  ------------------------------------------------------- */
 
   .hero-carousel {
+    width: 100%;
+
     height: 480px;
+
+    overflow: hidden;
   }
 
+  .carousel-slide {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+  }
+
+  .carousel-background {
+    width: 100%;
+    height: 100%;
+
+    filter: blur(14px);
+
+    transform: scale(1.08);
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position: center center;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO CONTENT
+  ------------------------------------------------------- */
+
   .carousel-content {
+    left: 50%;
+
     bottom: 65px;
 
-    width: 85%;
+    width: calc(100% - 90px);
+
+    max-width: none;
+
+    transform: translateX(-50%);
   }
 
   .carousel-content span {
-    font-size: 11px;
+    margin-bottom: 10px;
+
+    font-size: 10px;
+
+    line-height: 1.4;
 
     letter-spacing: 1.5px;
   }
 
   .carousel-content h1 {
-    font-size: 32px;
+    margin-bottom: 10px;
+
+    font-size: 30px;
+
+    line-height: 1.2;
   }
 
   .carousel-content p {
-    font-size: 15px;
+    margin-bottom: 18px;
+
+    font-size: 14px;
 
     line-height: 1.5;
-  }
-
-  .carousel-arrow {
-    width: 42px;
-    height: 42px;
-
-    font-size: 30px;
-  }
-
-  .carousel-arrow.left {
-    left: 12px;
-  }
-
-  .carousel-arrow.right {
-    right: 12px;
-  }
-
-
-  /* Introduction */
-
-  .intro-section {
-    padding: 60px 15px;
-  }
-
-  .section-heading {
-    margin-bottom: 35px;
-  }
-
-  .section-heading h2 {
-    font-size: 30px;
-  }
-
-  .section-heading p {
-    font-size: 15px;
-  }
-
-  .research-grid {
-    grid-template-columns: 1fr;
-
-    gap: 18px;
-  }
-
-
-  /* Gallery */
-
-  .gallery-preview {
-    padding: 60px 15px;
-  }
-
-  .gallery-header {
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 15px;
-  }
-
-  .gallery-header h2 {
-    font-size: 30px;
-  }
-
-  .photo-track {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-photo {
-    height: 240px;
-  }
-
-  .gallery-arrow {
-    width: 40px;
-    height: 40px;
-
-    font-size: 28px;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 480px) {
-
-  .site-logo {
-    width: 170px;
-  }
-
-  .hero-carousel {
-    height: 440px;
-  }
-
-  .carousel-content h1 {
-    font-size: 28px;
-  }
-
-  .carousel-content p {
-    font-size: 14px;
   }
 
   .carousel-button {
@@ -798,11 +1848,574 @@
     font-size: 14px;
   }
 
+
+  /* -------------------------------------------------------
+     HERO ARROWS
+  ------------------------------------------------------- */
+
   .carousel-arrow {
+    width: 42px;
+    height: 42px;
+
+    font-size: 30px;
+
+    z-index: 20;
+  }
+
+  .carousel-arrow.left {
+    left: 10px;
+  }
+
+  .carousel-arrow.right {
+    right: 10px;
+  }
+
+
+  /* -------------------------------------------------------
+     DOTS
+  ------------------------------------------------------- */
+
+  .carousel-dots {
+    left: 50%;
+
+    bottom: 17px;
+
+    gap: 7px;
+
+    z-index: 20;
+  }
+
+  .carousel-dots button {
+    width: 8px;
+    height: 8px;
+  }
+
+  .carousel-dots button.active {
+    width: 22px;
+  }
+
+
+  /* -------------------------------------------------------
+     COUNTER
+  ------------------------------------------------------- */
+
+  .slide-counter {
+    right: 15px;
+
+    bottom: 17px;
+
+    font-size: 11px;
+
+    z-index: 20;
+  }
+
+  .slide-counter strong {
+    font-size: 15px;
+  }
+
+
+  /* -------------------------------------------------------
+     INTRO
+  ------------------------------------------------------- */
+
+  .intro-section {
+    padding: 60px 0;
+  }
+
+  .intro-layout {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+
+    margin-bottom: 40px;
+  }
+
+  .intro-heading h2 {
+    font-size: 32px;
+  }
+
+  .intro-description p {
+    font-size: 15px;
+  }
+
+
+  /* -------------------------------------------------------
+     RESEARCH CARDS
+  ------------------------------------------------------- */
+
+  .research-grid {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .research-card {
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 28px 20px;
+  }
+
+
+  /* -------------------------------------------------------
+     STORIES
+  ------------------------------------------------------- */
+
+  .stories-section {
+    padding: 60px 0;
+  }
+
+  .section-heading-row {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+  }
+
+  .section-heading-row h2 {
+    font-size: 30px;
+  }
+
+  .section-heading-row > p {
+    max-width: 100%;
+
+    font-size: 15px;
+  }
+
+  .stories-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .featured-story {
+    grid-column: auto;
+  }
+
+  .story-image {
+    height: 350px;
+  }
+
+  .story-card img {
+    height: 220px;
+  }
+
+
+  /* -------------------------------------------------------
+     SCIENTIST
+  ------------------------------------------------------- */
+
+  .scientist-section {
+    padding: 70px 0;
+  }
+
+  .scientist-layout {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .scientist-image {
+    width: 100%;
+
+    min-height: 0;
+
+    padding-right: 12px;
+  }
+
+  .scientist-image img {
+    width: 100%;
+
+    height: 420px;
+  }
+
+  .image-frame {
+    left: 12px;
+
+    bottom: -18px;
+  }
+
+  .scientist-content h2 {
+    font-size: 32px;
+  }
+
+  .scientist-content p {
+    font-size: 15px;
+  }
+
+
+  /* -------------------------------------------------------
+     RESEARCH HIGHLIGHTS
+  ------------------------------------------------------- */
+
+  .research-highlight-section {
+    padding: 65px 0;
+  }
+
+  .section-heading.centered {
+    margin-bottom: 35px;
+  }
+
+  .section-heading.centered h2 {
+    font-size: 30px;
+  }
+
+  .section-heading.centered p {
+    font-size: 15px;
+  }
+
+  .research-highlight-grid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .highlight-item {
+    padding: 25px 20px;
+  }
+
+
+  /* -------------------------------------------------------
+     GALLERY
+  ------------------------------------------------------- */
+
+  .gallery-preview {
+    padding: 65px 0;
+  }
+
+  .gallery-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+  }
+
+  .gallery-header h2 {
+    font-size: 30px;
+  }
+
+  .photo-slider {
+    gap: 8px;
+  }
+
+  .photo-track {
+    gap: 12px;
+  }
+
+  .gallery-photo {
+    flex: 0 0 82%;
+
+    height: 240px;
+  }
+
+  .gallery-arrow {
     width: 38px;
     height: 38px;
 
     font-size: 27px;
+  }
+
+
+  /* -------------------------------------------------------
+     CTA
+  ------------------------------------------------------- */
+
+  .home-cta {
+    min-height: 400px;
+
+    padding: 70px 20px;
+  }
+
+  .cta-content h2 {
+    font-size: 30px;
+  }
+
+  .cta-content p {
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   <= 480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  /* -------------------------------------------------------
+     HERO
+  ------------------------------------------------------- */
+
+  .hero-carousel {
+    height: 440px;
+  }
+
+  .carousel-background {
+    filter: blur(12px);
+
+    transform: scale(1.08);
+  }
+
+  .carousel-image {
+    object-fit: contain;
+
+    object-position: center center;
+  }
+
+  .carousel-content {
+    bottom: 58px;
+
+    width: calc(100% - 75px);
+  }
+
+  .carousel-content span {
+    font-size: 9px;
+
+    letter-spacing: 1px;
+  }
+
+  .carousel-content h1 {
+    font-size: 25px;
+
+    line-height: 1.2;
+  }
+
+  .carousel-content p {
+    font-size: 13px;
+
+    line-height: 1.45;
+  }
+
+  .carousel-button {
+    padding: 9px 18px;
+
+    font-size: 13px;
+  }
+
+
+  /* -------------------------------------------------------
+     ARROWS
+  ------------------------------------------------------- */
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+
+    font-size: 26px;
+  }
+
+  .carousel-arrow.left {
+    left: 7px;
+  }
+
+  .carousel-arrow.right {
+    right: 7px;
+  }
+
+
+  /* -------------------------------------------------------
+     DOTS
+  ------------------------------------------------------- */
+
+  .carousel-dots {
+    bottom: 14px;
+  }
+
+
+  /* -------------------------------------------------------
+     COUNTER
+  ------------------------------------------------------- */
+
+  .slide-counter {
+    display: none;
+  }
+
+
+  /* -------------------------------------------------------
+     INTRO
+  ------------------------------------------------------- */
+
+  .intro-section {
+    padding: 50px 0;
+  }
+
+  .intro-heading h2 {
+    font-size: 28px;
+  }
+
+
+  /* -------------------------------------------------------
+     STORIES
+  ------------------------------------------------------- */
+
+  .story-image {
+    height: 300px;
+  }
+
+  .story-content {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .story-content h3 {
+    font-size: 24px;
+  }
+
+
+  /* -------------------------------------------------------
+     SCIENTIST
+  ------------------------------------------------------- */
+
+  .scientist-section {
+    padding: 55px 0;
+  }
+
+  .scientist-image {
+    padding-right: 8px;
+  }
+
+  .scientist-image img {
+    height: 330px;
+  }
+
+  .image-frame {
+    left: 8px;
+
+    bottom: -12px;
+  }
+
+  .scientist-content h2 {
+    font-size: 28px;
+  }
+
+
+  /* -------------------------------------------------------
+     HIGHLIGHTS
+  ------------------------------------------------------- */
+
+  .research-highlight-section {
+    padding: 55px 0;
+  }
+
+
+  /* -------------------------------------------------------
+     GALLERY
+  ------------------------------------------------------- */
+
+  .gallery-preview {
+    padding: 55px 0;
+  }
+
+  .gallery-header h2 {
+    font-size: 28px;
+  }
+
+  .gallery-photo {
+    flex: 0 0 85%;
+
+    height: 220px;
+  }
+
+
+  /* -------------------------------------------------------
+     CTA
+  ------------------------------------------------------- */
+
+  .home-cta {
+    min-height: 380px;
+
+    padding: 60px 16px;
+  }
+
+  .cta-content h2 {
+    font-size: 27px;
+  }
+
+  .cta-content p {
+    font-size: 14px;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+
+    max-width: 260px;
+
+    text-align: center;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   <= 360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .hero-carousel {
+    height: 410px;
+  }
+
+  .carousel-content {
+    width: calc(100% - 70px);
+
+    bottom: 55px;
+  }
+
+  .carousel-content h1 {
+    font-size: 22px;
+  }
+
+  .carousel-content p {
+    font-size: 12px;
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+
+    font-size: 23px;
+  }
+
+  .carousel-arrow.left {
+    left: 5px;
+  }
+
+  .carousel-arrow.right {
+    right: 5px;
+  }
+
+  .carousel-button {
+    padding: 8px 15px;
+
+    font-size: 12px;
+  }
+
+  .research-card {
+    padding: 24px 16px;
+  }
+
+  .gallery-photo {
+    flex-basis: 90%;
   }
 
 }

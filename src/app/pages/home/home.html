@@ -1,148 +1,207 @@
-<!-- =========================
-     LOGO SECTION
-========================= -->
+<!-- =====================================================
+     HOME PAGE
+===================================================== -->
 
-<section class="logo-section">
-
-  <div class="logo-container">
-
-    <img
-      src="assets/images/Gapcoindia-Logo.png"
-      alt="Gapco India Logo"
-      class="site-logo"
-    />
-
-  </div>
-
-</section>
+<main class="home-page">
 
 
-<!-- =========================
-     HERO CAROUSEL
-========================= -->
+  <!-- ===================================================
+       HERO CAROUSEL
+  =================================================== -->
 
-<section class="hero-carousel">
+  <section class="hero-carousel">
 
-  <div class="carousel-slide">
+    <div class="carousel-slide">
 
-    <!-- Background layer -->
-    <img
-      [src]="slides[currentSlide].image"
-      class="carousel-background"
-      alt=""
-      aria-hidden="true"
-    />
+      <!-- BLURRED BACKGROUND -->
+      <img
+        [src]="slides[currentSlide].image"
+        class="carousel-background"
+        alt=""
+        aria-hidden="true"
+      />
 
-    <!-- Main image -->
-    <img
-      [src]="slides[currentSlide].image"
-      [alt]="slides[currentSlide].title"
-      class="carousel-image"
-    />
+      <!-- MAIN IMAGE -->
+      <img
+        [src]="slides[currentSlide].image"
+        [alt]="slides[currentSlide].title"
+        class="carousel-image"
+      />
 
-    <!-- Dark overlay -->
-    <div class="carousel-overlay"></div>
-
-
-    <!-- Previous -->
-    <button
-      type="button"
-      class="carousel-arrow left"
-      (click)="previousSlide()"
-      aria-label="Previous photo"
-    >
-      ‹
-    </button>
+      <!-- OVERLAY -->
+      <div class="carousel-overlay"></div>
 
 
-    <!-- Content -->
-    <div class="carousel-content">
-
-      <span>
-        SCIENCE • RESEARCH • INNOVATION
-      </span>
-
-      <h1>
-        {{ slides[currentSlide].title }}
-      </h1>
-
-      <p>
-        {{ slides[currentSlide].description }}
-      </p>
-
-      <a
-        routerLink="/about"
-        class="carousel-button"
+      <!-- LEFT ARROW -->
+      <button
+        type="button"
+        class="carousel-arrow left"
+        (click)="previousSlide()"
+        aria-label="Previous slide"
       >
-        Explore Profile
-      </a>
-
-    </div>
+        ‹
+      </button>
 
 
-    <!-- Next -->
-    <button
-      type="button"
-      class="carousel-arrow right"
-      (click)="nextSlide()"
-      aria-label="Next photo"
-    >
-      ›
-    </button>
+      <!-- CAROUSEL CONTENT -->
+      @if (currentSlide !== 0) {
 
+        <div class="carousel-content">
 
-    <!-- Dots -->
-    <div class="carousel-dots">
+          <span>
+            SCIENCE • RESEARCH • INNOVATION
+          </span>
 
-      @for (slide of slides; track $index) {
+          <h1>
+            {{ slides[currentSlide].title }}
+          </h1>
 
-        <button
-          type="button"
-          [class.active]="currentSlide === $index"
-          (click)="goToSlide($index)"
-          [attr.aria-label]="'Go to slide ' + ($index + 1)"
-        ></button>
+          <p>
+            {{ slides[currentSlide].description }}
+          </p>
+
+          <a
+            routerLink="/about"
+            class="carousel-button"
+          >
+            Explore Profile
+          </a>
+
+        </div>
 
       }
 
+
+      <!-- RIGHT ARROW -->
+      <button
+        type="button"
+        class="carousel-arrow right"
+        (click)="nextSlide()"
+        aria-label="Next slide"
+      >
+        ›
+      </button>
+
+
+      <!-- DOTS -->
+      <div class="carousel-dots">
+
+        @for (slide of slides; track $index) {
+
+          <button
+            type="button"
+            [class.active]="currentSlide === $index"
+            (click)="goToSlide($index)"
+            [attr.aria-label]="'Go to slide ' + ($index + 1)"
+          >
+          </button>
+
+        }
+
+      </div>
+
+
+      <!-- COUNTER -->
+      <div class="slide-counter">
+
+        <strong>
+          {{ (currentSlide + 1).toString().padStart(2, '0') }}
+        </strong>
+
+        <span>
+          / {{ slides.length.toString().padStart(2, '0') }}
+        </span>
+
+      </div>
+
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- =========================
-     INTRODUCTION
-========================= -->
 
-<section class="intro-section">
+  <!-- ===================================================
+       INTRO / WELCOME
+  =================================================== -->
 
-  <div class="section-container">
+  <section class="intro-section">
 
-    <div class="section-heading">
+    <div class="section-container">
 
-      <span class="section-label">
-        ABOUT THE SCIENTIST
-      </span>
-
-      <h2>
-        Dedicated to Science and Discovery
-      </h2>
-
-      <p>
-        Welcome to the official website of
-        <strong>Scientist Name</strong>.
-        Explore the professional journey, research,
-        achievements and memorable moments.
-      </p>
-
-    </div>
+      <div class="intro-layout">
 
 
-    <div class="research-grid">
+        <!-- LEFT -->
 
-      <div class="research-card">
+        <div class="intro-heading">
+
+          <span class="section-label">
+            WELCOME TO GAPCO INDIA
+          </span>
+
+          <h2>
+            Advancing Science,
+            <span>Research & Innovation</span>
+          </h2>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="intro-description">
+
+          <p>
+            Welcome to the official platform dedicated to
+            science, research, innovation and the professional
+            journey of our scientific community.
+          </p>
+
+          <a
+            routerLink="/about"
+            class="text-link"
+          >
+            Discover More
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- FEATURE CARDS -->
+
+     <!-- ===================================================
+     FEATURE CARDS
+=================================================== -->
+
+<div class="research-grid">
+
+
+  <!-- =================================================
+       CARD 01 - RESEARCH
+  ================================================== -->
+
+  <article
+    class="research-card"
+    [class.flipped]="flippedCard === 0"
+    (click)="toggleCard(0)"
+    tabindex="0"
+    role="button"
+    aria-label="Research information"
+  >
+
+    <div class="card-inner">
+
+
+      <!-- ================= FRONT ================= -->
+
+      <div class="card-front">
+
+        <div class="card-number">
+          01
+        </div>
 
         <div class="card-icon">
           🔬
@@ -153,14 +212,91 @@
         </h3>
 
         <p>
-          Exploring scientific research and new
-          possibilities through continuous discovery.
+          Exploring scientific questions through
+          research, experimentation and discovery.
         </p>
+
+        <span class="card-flip-hint">
+          Click to explore
+        </span>
+
+        <a
+          routerLink="/research"
+          class="card-link"
+          (click)="$event.stopPropagation()"
+        >
+          Explore Research →
+        </a>
 
       </div>
 
 
-      <div class="research-card">
+      <!-- ================= BACK ================= -->
+
+      <div class="card-back">
+
+        <div class="card-number">
+          01
+        </div>
+
+        <div class="back-icon">
+          🔬
+        </div>
+
+        <h3>
+          Scientific Research
+        </h3>
+
+        <p>
+          Discover research activities, scientific
+          studies, experimentation and knowledge
+          developed through continuous exploration
+          and discovery.
+        </p>
+
+        <span class="flip-back">
+          Click to flip back
+        </span>
+
+        <a
+          routerLink="/research"
+          class="card-link back-link"
+          (click)="$event.stopPropagation()"
+        >
+          Explore Research →
+        </a>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+
+  <!-- =================================================
+       CARD 02 - INNOVATION
+  ================================================== -->
+
+  <article
+    class="research-card"
+    [class.flipped]="flippedCard === 1"
+    (click)="toggleCard(1)"
+    tabindex="0"
+    role="button"
+    aria-label="Innovation information"
+  >
+
+    <div class="card-inner">
+
+
+      <!-- ================= FRONT ================= -->
+
+      <div class="card-front">
+
+        <div class="card-number">
+          02
+        </div>
 
         <div class="card-icon">
           💡
@@ -171,14 +307,91 @@
         </h3>
 
         <p>
-          Developing innovative ideas and approaches
-          that contribute to scientific advancement.
+          Turning new ideas into meaningful
+          scientific possibilities.
         </p>
+
+        <span class="card-flip-hint">
+          Click to explore
+        </span>
+
+        <a
+          routerLink="/research"
+          class="card-link"
+          (click)="$event.stopPropagation()"
+        >
+          Discover Innovation →
+        </a>
 
       </div>
 
 
-      <div class="research-card">
+      <!-- ================= BACK ================= -->
+
+      <div class="card-back">
+
+        <div class="card-number">
+          02
+        </div>
+
+        <div class="back-icon">
+          💡
+        </div>
+
+        <h3>
+          Innovation & Ideas
+        </h3>
+
+        <p>
+          Explore innovative approaches, emerging
+          ideas and creative thinking that help
+          transform scientific possibilities
+          into meaningful outcomes.
+        </p>
+
+        <span class="flip-back">
+          Click to flip back
+        </span>
+
+        <a
+          routerLink="/research"
+          class="card-link back-link"
+          (click)="$event.stopPropagation()"
+        >
+          Discover Innovation →
+        </a>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+
+  <!-- =================================================
+       CARD 03 - ACHIEVEMENTS
+  ================================================== -->
+
+  <article
+    class="research-card"
+    [class.flipped]="flippedCard === 2"
+    (click)="toggleCard(2)"
+    tabindex="0"
+    role="button"
+    aria-label="Achievements information"
+  >
+
+    <div class="card-inner">
+
+
+      <!-- ================= FRONT ================= -->
+
+      <div class="card-front">
+
+        <div class="card-number">
+          03
+        </div>
 
         <div class="card-icon">
           🏆
@@ -189,14 +402,91 @@
         </h3>
 
         <p>
-          Recognitions and professional accomplishments
-          throughout the scientific journey.
+          Recognitions, milestones and contributions
+          to scientific excellence.
         </p>
+
+        <span class="card-flip-hint">
+          Click to explore
+        </span>
+
+        <a
+          routerLink="/about"
+          class="card-link"
+          (click)="$event.stopPropagation()"
+        >
+          View Achievements →
+        </a>
 
       </div>
 
 
-      <div class="research-card">
+      <!-- ================= BACK ================= -->
+
+      <div class="card-back">
+
+        <div class="card-number">
+          03
+        </div>
+
+        <div class="back-icon">
+          🏆
+        </div>
+
+        <h3>
+          Achievements
+        </h3>
+
+        <p>
+          Discover professional milestones,
+          recognitions, accomplishments and
+          contributions that reflect a continued
+          commitment to scientific excellence.
+        </p>
+
+        <span class="flip-back">
+          Click to flip back
+        </span>
+
+        <a
+          routerLink="/about"
+          class="card-link back-link"
+          (click)="$event.stopPropagation()"
+        >
+          View Achievements →
+        </a>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+
+  <!-- =================================================
+       CARD 04 - IMPACT
+  ================================================== -->
+
+  <article
+    class="research-card"
+    [class.flipped]="flippedCard === 3"
+    (click)="toggleCard(3)"
+    tabindex="0"
+    role="button"
+    aria-label="Impact information"
+  >
+
+    <div class="card-inner">
+
+
+      <!-- ================= FRONT ================= -->
+
+      <div class="card-front">
+
+        <div class="card-number">
+          04
+        </div>
 
         <div class="card-icon">
           🌍
@@ -208,121 +498,558 @@
 
         <p>
           Creating meaningful impact through science,
-          research and knowledge.
+          knowledge and collaboration.
+        </p>
+
+        <span class="card-flip-hint">
+          Click to explore
+        </span>
+
+        <a
+          routerLink="/about"
+          class="card-link"
+          (click)="$event.stopPropagation()"
+        >
+          Learn More →
+        </a>
+
+      </div>
+
+
+      <!-- ================= BACK ================= -->
+
+      <div class="card-back">
+
+        <div class="card-number">
+          04
+        </div>
+
+        <div class="back-icon">
+          🌍
+        </div>
+
+        <h3>
+          Scientific Impact
+        </h3>
+
+        <p>
+          Learn how scientific knowledge, collaboration
+          and innovation can create meaningful impact
+          and contribute to a stronger scientific
+          community.
+        </p>
+
+        <span class="flip-back">
+          Click to flip back
+        </span>
+
+        <a
+          routerLink="/about"
+          class="card-link back-link"
+          (click)="$event.stopPropagation()"
+        >
+          Learn More →
+        </a>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+</div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       FEATURED STORIES
+  =================================================== -->
+
+  <section class="stories-section">
+
+    <div class="section-container">
+
+
+      <div class="section-heading-row">
+
+        <div>
+
+          <span class="section-label">
+            FEATURED
+          </span>
+
+          <h2>
+            Stories of Science & Discovery
+          </h2>
+
+        </div>
+
+        <p>
+          Explore research, innovation and milestones
+          shaping the GAPCO journey.
         </p>
 
       </div>
 
-    </div>
 
-  </div>
-
-</section>
+      <div class="stories-grid">
 
 
-<!-- =========================
-     PHOTO GALLERY PREVIEW
-========================= -->
+        <!-- FEATURED STORY -->
 
-<section class="gallery-preview">
+        <article class="featured-story">
 
-  <div class="section-container">
+          <div class="story-image">
 
-    <div class="gallery-header">
+            <img
+              src="assets/images/Scientist-Photo.jpg"
+              alt="Scientific research"
+            />
 
-      <div>
+            <div class="story-overlay"></div>
 
-        <span class="section-label">
-          PHOTO GALLERY
-        </span>
+            <div class="story-content">
 
-        <h2>
-          Moments & Memories
-        </h2>
+              <span>
+                RESEARCH
+              </span>
+
+              <h3>
+                Exploring New Frontiers
+                Through Science
+              </h3>
+
+              <a
+                routerLink="/research"
+              >
+                Read More →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- STORY 2 -->
+
+        <article class="story-card">
+
+          <img
+            src="assets/images/Scientist-Photo1.jpg"
+            alt="Innovation and discovery"
+          />
+
+          <div class="story-card-content">
+
+            <span>
+              INNOVATION
+            </span>
+
+            <h3>
+              Ideas That Inspire
+              Scientific Discovery
+            </h3>
+
+            <a
+              routerLink="/research"
+            >
+              Explore →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- STORY 3 -->
+
+        <article class="story-card">
+
+          <img
+            src="assets/images/Scientist-Photo2.jpg"
+            alt="Professional journey"
+          />
+
+          <div class="story-card-content">
+
+            <span>
+              JOURNEY
+            </span>
+
+            <h3>
+              A Journey Dedicated
+              to Scientific Excellence
+            </h3>
+
+            <a
+              routerLink="/about"
+            >
+              Discover →
+            </a>
+
+          </div>
+
+        </article>
+
 
       </div>
 
-
-      <a
-        routerLink="/gallery"
-        class="view-gallery"
-      >
-        View All Photos →
-      </a>
-
     </div>
 
-
-    <!-- Gallery Slider -->
-
-    <div class="photo-slider">
+  </section>
 
 
-      <!-- LEFT ARROW -->
 
-      <button
-        type="button"
-        class="gallery-arrow gallery-left"
-        (click)="previousGalleryPhoto()"
-        aria-label="Previous photos"
-      >
-        ‹
-      </button>
+  <!-- ===================================================
+       SCIENTIST SECTION
+  =================================================== -->
+
+  <section class="scientist-section">
+
+    <div class="section-container">
+
+      <div class="scientist-layout">
 
 
-      <!-- PHOTO TRACK -->
+        <!-- IMAGE -->
 
-      <div
-        class="photo-track"
-        #photoTrack
-      >
-
-        <div class="gallery-photo">
+        <div class="scientist-image">
 
           <img
             src="assets/images/Scientist-Photo.jpg"
             alt="Scientist"
           />
 
-        </div>
-
-
-        <div class="gallery-photo">
-
-          <img
-            src="assets/images/Scientist-Photo1.jpg"
-            alt="Scientist"
-          />
+          <div class="image-frame"></div>
 
         </div>
 
 
-        <div class="gallery-photo">
+        <!-- CONTENT -->
 
-          <img
-            src="assets/images/Scientist-Photo2.jpg"
-            alt="Scientist"
-          />
+        <div class="scientist-content">
+
+          <span class="section-label">
+            THE SCIENTIST
+          </span>
+
+          <h2>
+            Dedicated to
+            <span>Science & Discovery</span>
+          </h2>
+
+          <p>
+            Discover the professional journey, scientific
+            research, innovations and achievements that
+            define a commitment to knowledge and discovery.
+          </p>
+
+          <p>
+            Explore the work, ideas and contributions that
+            continue to create meaningful impact through
+            science and research.
+          </p>
+
+          <a
+            routerLink="/about"
+            class="dark-button"
+          >
+            View Full Profile
+            <span>→</span>
+          </a>
 
         </div>
 
       </div>
 
+    </div>
 
-      <!-- RIGHT ARROW -->
+  </section>
 
-      <button
-        type="button"
-        class="gallery-arrow gallery-right"
-        (click)="nextGalleryPhoto()"
-        aria-label="Next photos"
-      >
-        ›
-      </button>
 
+
+  <!-- ===================================================
+       RESEARCH HIGHLIGHTS
+  =================================================== -->
+
+  <section class="research-highlight-section">
+
+    <div class="section-container">
+
+
+      <div class="section-heading centered">
+
+        <span class="section-label">
+          RESEARCH & INNOVATION
+        </span>
+
+        <h2>
+          Exploring Possibilities
+        </h2>
+
+        <p>
+          Discover the areas of research and innovation
+          driving scientific progress.
+        </p>
+
+      </div>
+
+
+      <div class="research-highlight-grid">
+
+
+        <div class="highlight-item">
+
+          <span class="highlight-number">
+            01
+          </span>
+
+          <h3>
+            Scientific Research
+          </h3>
+
+          <p>
+            Research focused on expanding knowledge
+            and understanding.
+          </p>
+
+        </div>
+
+
+        <div class="highlight-item">
+
+          <span class="highlight-number">
+            02
+          </span>
+
+          <h3>
+            Innovation
+          </h3>
+
+          <p>
+            Transforming ideas into innovative
+            scientific possibilities.
+          </p>
+
+        </div>
+
+
+        <div class="highlight-item">
+
+          <span class="highlight-number">
+            03
+          </span>
+
+          <h3>
+            Publications
+          </h3>
+
+          <p>
+            Sharing scientific knowledge through
+            research publications.
+          </p>
+
+        </div>
+
+
+        <div class="highlight-item">
+
+          <span class="highlight-number">
+            04
+          </span>
+
+          <h3>
+            Collaboration
+          </h3>
+
+          <p>
+            Connecting people and ideas to create
+            meaningful scientific impact.
+          </p>
+
+        </div>
+
+
+      </div>
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+
+
+  <!-- ===================================================
+       PHOTO GALLERY
+  =================================================== -->
+
+  <section class="gallery-preview">
+
+    <div class="section-container">
+
+
+      <div class="gallery-header">
+
+        <div>
+
+          <span class="section-label">
+            PHOTO GALLERY
+          </span>
+
+          <h2>
+            Moments & Memories
+          </h2>
+
+        </div>
+
+
+        <a
+          routerLink="/gallery"
+          class="view-gallery"
+        >
+          View All Photos
+          <span>→</span>
+        </a>
+
+      </div>
+
+
+      <div class="photo-slider">
+
+
+        <!-- LEFT -->
+
+        <button
+          type="button"
+          class="gallery-arrow gallery-left"
+          (click)="previousGalleryPhoto()"
+          aria-label="Previous photos"
+        >
+          ‹
+        </button>
+
+
+        <!-- TRACK -->
+
+        <div
+          class="photo-track"
+          #photoTrack
+        >
+
+          <div class="gallery-photo">
+
+            <img
+              src="assets/images/Scientist-Photo.jpg"
+              alt="Scientist"
+            />
+
+          </div>
+
+
+          <div class="gallery-photo">
+
+            <img
+              src="assets/images/Scientist-Photo1.jpg"
+              alt="Scientist"
+            />
+
+          </div>
+
+
+          <div class="gallery-photo">
+
+            <img
+              src="assets/images/Scientist-Photo2.jpg"
+              alt="Scientist"
+            />
+
+          </div>
+
+
+          <div class="gallery-photo">
+
+            <img
+              src="assets/images/Scientist-Photo.jpg"
+              alt="Research"
+            />
+
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <button
+          type="button"
+          class="gallery-arrow gallery-right"
+          (click)="nextGalleryPhoto()"
+          aria-label="Next photos"
+        >
+          ›
+        </button>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       CALL TO ACTION
+  =================================================== -->
+
+  <section class="home-cta">
+
+    <div class="cta-overlay"></div>
+
+    <div class="cta-content">
+
+      <span class="section-label">
+        DISCOVER • LEARN • CONNECT
+      </span>
+
+      <h2>
+        Explore the World of
+        <span>Science & Innovation</span>
+      </h2>
+
+      <p>
+        Discover research, innovations, achievements
+        and the journey behind GAPCO.
+      </p>
+
+
+      <div class="cta-actions">
+
+        <a
+          routerLink="/research"
+          class="cta-button light"
+        >
+          Explore Research
+        </a>
+
+        <a
+          routerLink="/contact"
+          class="cta-button outline"
+        >
+          Contact GAPCO
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
