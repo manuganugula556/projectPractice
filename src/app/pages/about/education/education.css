@@ -1,0 +1,1383 @@
+/* =====================================================
+   EDUCATION PAGE
+===================================================== */
+
+.education-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #111111;
+  overflow-x: hidden;
+}
+
+
+/* =====================================================
+   COMMON CONTAINER
+===================================================== */
+
+.education-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   COMMON SECTION LABEL
+===================================================== */
+
+.section-label {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  color: #777777;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.education-hero {
+  width: 100%;
+
+  padding: 90px 0 85px;
+
+  background: #111111;
+  color: #ffffff;
+}
+
+
+.education-hero .education-container {
+  position: relative;
+}
+
+
+.education-hero .section-label {
+  color: #aaaaaa;
+}
+
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 55px;
+
+  color: #cccccc;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.back-link:hover {
+  color: #ffffff;
+  transform: translateX(-4px);
+}
+
+
+.education-hero h1 {
+  max-width: 900px;
+
+  margin: 0 0 22px;
+
+  color: #ffffff;
+
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.05;
+  font-weight: 700;
+
+  letter-spacing: -2px;
+}
+
+
+.education-hero h1 span {
+  color: #999999;
+}
+
+
+.education-hero p {
+  max-width: 700px;
+
+  margin: 0;
+
+  color: #bdbdbd;
+
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+
+/* =====================================================
+   FEATURE SECTION
+===================================================== */
+
+.education-feature {
+  width: 100%;
+
+  padding: 100px 0;
+}
+
+
+.feature-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+
+/* =====================================================
+   FEATURE IMAGE
+===================================================== */
+
+.feature-image {
+  position: relative;
+
+  width: 100%;
+  height: 560px;
+
+  overflow: hidden;
+
+  background: #eeeeee;
+}
+
+
+.feature-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.6s ease;
+}
+
+
+.feature-image:hover img {
+  transform: scale(1.04);
+}
+
+
+.image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0)
+  );
+
+  pointer-events: none;
+}
+
+
+.image-caption {
+  position: absolute;
+
+  left: 30px;
+  right: 30px;
+  bottom: 28px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  color: #ffffff;
+}
+
+
+.image-caption span {
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+.image-caption strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   FEATURE CONTENT
+===================================================== */
+
+.feature-content {
+  min-width: 0;
+}
+
+
+.feature-content .section-label {
+  color: #888888;
+}
+
+
+.feature-content h2 {
+  max-width: 650px;
+
+  margin: 0 0 28px;
+
+  color: #111111;
+
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.12;
+  font-weight: 700;
+
+  letter-spacing: -1.2px;
+}
+
+
+.feature-content h2 span {
+  color: #888888;
+}
+
+
+.feature-content p {
+  max-width: 650px;
+
+  margin: 0 0 18px;
+
+  color: #666666;
+
+  font-size: 15px;
+  line-height: 1.85;
+  font-weight: 400;
+}
+
+
+.feature-line {
+  width: 100%;
+  height: 1px;
+
+  margin: 38px 0 28px;
+
+  background: #dddddd;
+}
+
+
+/* =====================================================
+   FEATURE STATS
+===================================================== */
+
+.feature-stats {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+.feature-stats div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.feature-stats strong {
+  color: #111111;
+
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+
+.feature-stats span {
+  color: #888888;
+
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   ACADEMIC TIMELINE SECTION
+===================================================== */
+
+.timeline-section {
+  width: 100%;
+
+  padding: 100px 0;
+
+  background: #f7f7f7;
+}
+
+
+.section-heading {
+  max-width: 800px;
+
+  margin: 0 auto 70px;
+
+  text-align: center;
+}
+
+
+.section-heading .section-label {
+  color: #888888;
+}
+
+
+.section-heading h2 {
+  margin: 0 0 18px;
+
+  color: #111111;
+
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+  font-weight: 700;
+
+  letter-spacing: -1px;
+}
+
+
+.section-heading p {
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  color: #777777;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+
+.timeline {
+  width: 100%;
+  max-width: 1050px;
+
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   TIMELINE ITEM
+===================================================== */
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+
+  width: 100%;
+
+  margin: 0 0 55px;
+
+  position: relative;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   TIMELINE NUMBER
+===================================================== */
+
+.timeline-number {
+  flex: 0 0 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 55px;
+  height: 55px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =====================================================
+   TIMELINE LINE
+===================================================== */
+
+.timeline-line {
+  flex: 0 0 2px;
+
+  width: 2px;
+
+  min-height: 100%;
+
+  margin-left: 25px;
+  margin-right: 25px;
+
+  background: #d8d8d8;
+}
+
+
+/* =====================================================
+   TIMELINE CONTENT
+===================================================== */
+
+.timeline-content {
+  flex: 1 1 auto;
+
+  width: auto;
+  min-width: 0;
+  max-width: none;
+
+  margin: 0;
+  padding: 0 0 5px;
+
+  box-sizing: border-box;
+
+  text-align: left;
+
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+}
+
+
+/* =====================================================
+   TIMELINE YEAR
+===================================================== */
+
+.timeline-year {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 10px;
+  padding: 0;
+
+  color: #888888;
+
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  writing-mode: horizontal-tb !important;
+}
+
+
+/* =====================================================
+   TIMELINE TITLE
+===================================================== */
+
+.timeline-content h3 {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 8px;
+  padding: 0;
+
+  color: #111111;
+
+  font-size: 25px;
+  line-height: 1.25;
+  font-weight: 700;
+
+  writing-mode: horizontal-tb !important;
+}
+
+
+/* =====================================================
+   TIMELINE INSTITUTION
+===================================================== */
+
+.timeline-content h4 {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 8px;
+  padding: 0;
+
+  color: #555555;
+
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 600;
+
+  writing-mode: horizontal-tb !important;
+}
+
+
+/* =====================================================
+   TIMELINE SPECIALIZATION
+===================================================== */
+
+.timeline-specialization {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 10px;
+  padding: 0;
+
+  color: #888888;
+
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+
+  writing-mode: horizontal-tb !important;
+}
+
+
+/* =====================================================
+   TIMELINE DESCRIPTION
+===================================================== */
+
+.timeline-content p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 700px !important;
+
+  margin: 12px 0 0 !important;
+  padding: 0 !important;
+
+  color: #777777;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  line-height: 1.75;
+  font-weight: 400;
+
+  text-align: left;
+
+  box-sizing: border-box;
+
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+
+  white-space: normal !important;
+
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  word-wrap: normal !important;
+
+  hyphens: none !important;
+}
+
+
+/* =====================================================
+   LAST TIMELINE ITEM
+===================================================== */
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+
+/* =====================================================
+   EDUCATION HIGHLIGHTS
+===================================================== */
+
+.highlights-section {
+  width: 100%;
+
+  padding: 100px 0;
+
+  background: #ffffff;
+}
+
+
+.highlights-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+.highlight-card {
+  position: relative;
+
+  min-height: 260px;
+
+  padding: 30px;
+
+  border: 1px solid #dddddd;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.highlight-card:hover {
+  transform: translateY(-6px);
+
+  border-color: #bbbbbb;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+.highlight-number {
+  position: absolute;
+
+  top: 20px;
+  right: 22px;
+
+  color: #cccccc;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+.highlight-icon {
+  margin-bottom: 25px;
+
+  font-size: 28px;
+}
+
+
+.highlight-card h3 {
+  margin: 0 0 15px;
+
+  color: #111111;
+
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+
+.highlight-card p {
+  margin: 0;
+
+  color: #777777;
+
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+
+/* =====================================================
+   EDUCATION / ACHIEVEMENTS GALLERY
+===================================================== */
+
+.education-gallery {
+  width: 100%;
+
+  padding: 100px 0;
+
+  background: #f7f7f7;
+}
+
+
+/* =====================================================
+   GALLERY GRID
+===================================================== */
+
+.gallery-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  align-items: start;
+
+  gap: 25px;
+
+  width: 100%;
+}
+
+
+/* =====================================================
+   GALLERY ITEM
+===================================================== */
+
+.gallery-item {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e3e3e3;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =====================================================
+   LARGE GALLERY ITEM
+===================================================== */
+
+.gallery-item.large {
+  grid-column: span 1;
+}
+
+
+/* =====================================================
+   GALLERY IMAGE
+===================================================== */
+
+.gallery-item img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: 100%;
+
+  object-fit: contain;
+
+  background: #ffffff;
+
+  transition: transform 0.5s ease;
+}
+
+
+/* =====================================================
+   GALLERY HOVER
+===================================================== */
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+
+/* =====================================================
+   FOOTER CTA
+===================================================== */
+
+.education-footer {
+  width: 100%;
+
+  padding: 100px 0;
+
+  background: #111111;
+
+  text-align: center;
+}
+
+
+.education-footer .section-label {
+  color: #999999;
+}
+
+
+.education-footer h2 {
+  max-width: 800px;
+
+  margin: 0 auto 35px;
+
+  color: #ffffff;
+
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.1;
+  font-weight: 700;
+
+  letter-spacing: -1px;
+}
+
+
+.education-footer h2 span {
+  color: #888888;
+}
+
+
+/* =====================================================
+   ABOUT BUTTON
+===================================================== */
+
+.about-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0 25px;
+
+  border: 1px solid #ffffff;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.about-button:hover {
+  background: transparent;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .education-container {
+    padding: 0 25px;
+  }
+
+
+  .education-hero {
+    padding: 75px 0;
+  }
+
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+
+  .feature-image {
+    height: 500px;
+  }
+
+
+  .feature-content {
+    max-width: 800px;
+  }
+
+
+  .highlights-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  /* Gallery becomes 2 columns */
+  .gallery-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+
+  .gallery-item.large {
+    grid-column: span 1;
+  }
+
+
+  .timeline {
+    max-width: 900px;
+  }
+
+
+  .timeline-line {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+
+  .timeline-content p {
+    max-width: 700px !important;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .education-container {
+    padding: 0 18px;
+  }
+
+
+  .education-hero {
+    padding: 60px 0;
+  }
+
+
+  .back-link {
+    margin-bottom: 40px;
+  }
+
+
+  .education-hero h1 {
+    font-size: 42px;
+
+    letter-spacing: -1px;
+  }
+
+
+  .education-hero p {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+
+  .education-feature,
+  .timeline-section,
+  .highlights-section,
+  .education-gallery,
+  .education-footer {
+    padding: 70px 0;
+  }
+
+
+  .feature-image {
+    height: 420px;
+  }
+
+
+  .feature-content h2 {
+    font-size: 34px;
+  }
+
+
+  .feature-content p {
+    font-size: 14px;
+
+    line-height: 1.75;
+  }
+
+
+  .feature-stats {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+
+  .section-heading {
+    margin-bottom: 50px;
+  }
+
+
+  .section-heading h2 {
+    font-size: 34px;
+  }
+
+
+  .section-heading p {
+    font-size: 14px;
+  }
+
+
+  /* =================================================
+     MOBILE TIMELINE
+  ================================================= */
+
+  .timeline {
+    width: 100%;
+
+    max-width: 100%;
+  }
+
+
+  .timeline-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin-bottom: 45px;
+  }
+
+
+  .timeline-number {
+    flex: 0 0 45px;
+
+    width: 45px;
+    height: 45px;
+
+    font-size: 11px;
+  }
+
+
+  .timeline-line {
+    flex: 0 0 2px;
+
+    width: 2px;
+
+    min-height: 100%;
+
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+
+  .timeline-content {
+    flex: 1 1 auto;
+
+    width: auto;
+
+    min-width: 0;
+
+    max-width: none;
+
+    writing-mode: horizontal-tb !important;
+  }
+
+
+  .timeline-content h3 {
+    width: 100%;
+
+    font-size: 20px;
+
+    writing-mode: horizontal-tb !important;
+  }
+
+
+  .timeline-content h4 {
+    width: 100%;
+
+    font-size: 14px;
+
+    writing-mode: horizontal-tb !important;
+  }
+
+
+  .timeline-specialization {
+    width: 100%;
+
+    font-size: 11px;
+
+    writing-mode: horizontal-tb !important;
+  }
+
+
+  .timeline-content p {
+    display: block !important;
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 12px 0 0 !important;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
+
+    writing-mode: horizontal-tb !important;
+
+    text-orientation: mixed !important;
+
+    white-space: normal !important;
+
+    word-break: normal !important;
+
+    overflow-wrap: break-word !important;
+
+    word-wrap: normal !important;
+
+    hyphens: none !important;
+  }
+
+
+  /* =================================================
+     MOBILE HIGHLIGHTS
+  ================================================= */
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+
+  .highlight-card {
+    min-height: auto;
+
+    padding: 25px;
+  }
+
+
+  /* =================================================
+     MOBILE GALLERY
+  ================================================= */
+
+  .gallery-grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    width: 100%;
+  }
+
+
+  .gallery-item {
+    width: 100%;
+
+    height: auto;
+
+    min-height: 0;
+  }
+
+
+  .gallery-item.large {
+    grid-column: auto;
+  }
+
+
+  .gallery-item img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+  }
+
+
+  .education-footer h2 {
+    font-size: 36px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 450px) {
+
+  .education-container {
+    padding: 0 15px;
+  }
+
+
+  .education-hero h1 {
+    font-size: 36px;
+  }
+
+
+  .education-hero p {
+    font-size: 13px;
+  }
+
+
+  .feature-image {
+    height: 330px;
+  }
+
+
+  .feature-content h2 {
+    font-size: 30px;
+  }
+
+
+  .feature-stats strong {
+    font-size: 21px;
+  }
+
+
+  .section-heading h2 {
+    font-size: 30px;
+  }
+
+
+  /* =================================================
+     SMALL MOBILE TIMELINE
+  ================================================= */
+
+  .timeline-item {
+    display: flex;
+  }
+
+
+  .timeline-number {
+    flex: 0 0 40px;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 10px;
+  }
+
+
+  .timeline-line {
+    flex: 0 0 2px;
+
+    width: 2px;
+
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+
+  .timeline-content {
+    flex: 1 1 auto;
+
+    width: auto;
+
+    min-width: 0;
+  }
+
+
+  .timeline-content h3 {
+    font-size: 18px;
+  }
+
+
+  .timeline-content h4 {
+    font-size: 13px;
+  }
+
+
+  .timeline-specialization {
+    font-size: 10px;
+
+    letter-spacing: 0.4px;
+  }
+
+
+  .timeline-content p {
+    display: block !important;
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+
+    writing-mode: horizontal-tb !important;
+
+    white-space: normal !important;
+
+    word-break: normal !important;
+
+    overflow-wrap: break-word !important;
+  }
+
+
+  /* =================================================
+     SMALL MOBILE GALLERY
+  ================================================= */
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+
+  .gallery-item {
+    width: 100%;
+
+    height: auto;
+  }
+
+
+  .gallery-item img {
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+  }
+
+
+  .education-footer h2 {
+    font-size: 30px;
+  }
+
+
+  .about-button {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,473 @@
+/* =====================================================
+   AWARDS & RECOGNITION PAGE
+===================================================== */
+
+.awards-page {
+  width: 100%;
+  background: #ffffff;
+  color: #111111;
+}
+
+.awards-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.awards-hero {
+  padding: 90px 0 100px;
+  background: #111111;
+  color: #ffffff;
+}
+
+.back-link {
+  display: inline-flex;
+  margin-bottom: 55px;
+  color: #bbbbbb;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.back-link:hover {
+  color: #ffffff;
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 18px;
+  color: #777777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.awards-hero .section-label {
+  color: #999999;
+}
+
+.awards-hero h1 {
+  max-width: 900px;
+  margin: 0 0 25px;
+  font-size: clamp(45px, 7vw, 82px);
+  line-height: 0.98;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+
+.awards-hero h1 span {
+  color: #aaaaaa;
+}
+
+.awards-hero p {
+  max-width: 650px;
+  margin: 0;
+  color: #bbbbbb;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.awards-intro {
+  padding: 110px 0;
+  background: #ffffff;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.intro-heading h2 {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.08;
+  letter-spacing: -1.8px;
+}
+
+.intro-heading h2 span {
+  display: block;
+  color: #777777;
+}
+
+.intro-content p {
+  max-width: 650px;
+  margin: 0 0 22px;
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+  max-width: 700px;
+  margin-bottom: 55px;
+}
+
+.section-heading h2 {
+  margin: 0 0 18px;
+  font-size: 45px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #777777;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   AWARDS LIST
+===================================================== */
+
+.awards-list-section {
+  padding: 110px 0;
+  background: #f5f5f3;
+}
+
+.awards-list {
+  border-top: 1px solid #d8d8d8;
+}
+
+.award-item {
+  display: grid;
+  grid-template-columns: 70px 100px 1fr 60px;
+  gap: 30px;
+  align-items: center;
+  padding: 40px 15px;
+  border-bottom: 1px solid #d8d8d8;
+  transition:
+    background 0.3s ease,
+    padding 0.3s ease;
+}
+
+.award-item:hover {
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #ffffff;
+}
+
+.award-number {
+  color: #999999;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.award-year {
+  color: #777777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.award-content h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.award-content > span {
+  display: block;
+  margin-bottom: 12px;
+  color: #555555;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.award-content p {
+  max-width: 700px;
+  margin: 0;
+  color: #777777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.award-symbol {
+  font-size: 30px;
+  text-align: center;
+}
+
+
+/* =====================================================
+   RECOGNITION
+===================================================== */
+
+.recognition-section {
+  padding: 110px 0;
+  background: #ffffff;
+}
+
+.recognition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.recognition-card {
+  position: relative;
+  min-height: 280px;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.recognition-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+.recognition-number {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: #cccccc;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.recognition-icon {
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.recognition-card h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+}
+
+.recognition-card p {
+  margin: 0;
+  color: #777777;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   STATEMENT
+===================================================== */
+
+.achievement-statement {
+  padding: 120px 0;
+  background: #111111;
+  color: #ffffff;
+  text-align: center;
+}
+
+.achievement-statement .section-label {
+  color: #888888;
+}
+
+.achievement-statement h2 {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  font-size: 52px;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.achievement-statement h2 span {
+  display: block;
+  color: #888888;
+}
+
+.achievement-statement p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #aaaaaa;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.awards-footer {
+  padding: 110px 0;
+  background: #f5f5f3;
+  text-align: center;
+}
+
+.awards-footer h2 {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.awards-footer h2 span {
+  display: block;
+  color: #777777;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.about-button,
+.research-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.about-button {
+  border: 1px solid #111111;
+  background: #111111;
+  color: #ffffff;
+}
+
+.about-button:hover {
+  background: #ffffff;
+  color: #111111;
+  transform: translateY(-2px);
+}
+
+.research-button {
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  color: #111111;
+}
+
+.research-button:hover {
+  border-color: #111111;
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .recognition-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .award-item {
+    grid-template-columns: 55px 80px 1fr 45px;
+    gap: 20px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .awards-container {
+    padding: 0 20px;
+  }
+
+  .awards-hero {
+    padding: 60px 0 70px;
+  }
+
+  .back-link {
+    margin-bottom: 40px;
+  }
+
+  .awards-hero h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .awards-hero p {
+    font-size: 14px;
+  }
+
+  .awards-intro,
+  .awards-list-section,
+  .recognition-section,
+  .achievement-statement,
+  .awards-footer {
+    padding: 75px 0;
+  }
+
+  .intro-heading h2 {
+    font-size: 35px;
+  }
+
+  .section-heading h2 {
+    font-size: 35px;
+  }
+
+  .award-item {
+    grid-template-columns: 35px 1fr 35px;
+    gap: 15px;
+    padding: 28px 5px;
+  }
+
+  .award-year {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .award-content {
+    grid-column: 2 / 4;
+  }
+
+  .award-symbol {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .recognition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-statement h2 {
+    font-size: 38px;
+  }
+
+  .awards-footer h2 {
+    font-size: 35px;
+  }
+
+}

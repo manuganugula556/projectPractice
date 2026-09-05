@@ -1,0 +1,483 @@
+/* =====================================================
+   PUBLICATIONS PAGE
+===================================================== */
+
+.publications-page {
+  width: 100%;
+  background: #ffffff;
+  color: #111111;
+}
+
+.publications-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.publications-hero {
+  padding: 90px 0 100px;
+  background: #111111;
+  color: #ffffff;
+}
+
+.back-link {
+  display: inline-flex;
+  margin-bottom: 55px;
+  color: #bbbbbb;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.back-link:hover {
+  color: #ffffff;
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 18px;
+  color: #777777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.publications-hero .section-label {
+  color: #999999;
+}
+
+.publications-hero h1 {
+  max-width: 900px;
+  margin: 0 0 25px;
+  font-size: clamp(45px, 7vw, 82px);
+  line-height: 0.98;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+
+.publications-hero h1 span {
+  color: #aaaaaa;
+}
+
+.publications-hero p {
+  max-width: 650px;
+  margin: 0;
+  color: #bbbbbb;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.publications-intro {
+  padding: 110px 0;
+  background: #ffffff;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 100px;
+}
+
+.intro-heading h2 {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.08;
+  letter-spacing: -1.8px;
+}
+
+.intro-heading h2 span {
+  display: block;
+  color: #777777;
+}
+
+.intro-content p {
+  max-width: 650px;
+  margin: 0 0 22px;
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+  max-width: 700px;
+  margin-bottom: 55px;
+}
+
+.section-heading h2 {
+  margin: 0 0 18px;
+  font-size: 45px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #777777;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   PUBLICATION LIST
+===================================================== */
+
+.publication-list-section {
+  padding: 110px 0;
+  background: #f5f5f3;
+}
+
+.publication-list {
+  border-top: 1px solid #d8d8d8;
+}
+
+.publication-item {
+  display: grid;
+  grid-template-columns: 70px 90px 1fr 50px;
+  gap: 30px;
+  align-items: start;
+  padding: 40px 15px;
+  border-bottom: 1px solid #d8d8d8;
+  transition:
+    background 0.3s ease,
+    padding 0.3s ease;
+}
+
+.publication-item:hover {
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #ffffff;
+}
+
+.publication-number {
+  color: #999999;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.publication-year {
+  color: #777777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.publication-category {
+  color: #888888;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.publication-content h3 {
+  margin: 8px 0;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.publication-content h4 {
+  margin: 0 0 14px;
+  color: #555555;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.publication-content p {
+  max-width: 700px;
+  margin: 0;
+  color: #777777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.publication-arrow {
+  padding-top: 10px;
+  font-size: 23px;
+  transition: transform 0.25s ease;
+}
+
+.publication-item:hover .publication-arrow {
+  transform: translateX(6px);
+}
+
+
+/* =====================================================
+   PUBLICATION TYPES
+===================================================== */
+
+.publication-types {
+  padding: 110px 0;
+  background: #ffffff;
+}
+
+.types-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.type-card {
+  position: relative;
+  min-height: 280px;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.type-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+.type-number {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: #cccccc;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.type-icon {
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.type-card h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+}
+
+.type-card p {
+  margin: 0;
+  color: #777777;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   STATEMENT
+===================================================== */
+
+.publication-statement {
+  padding: 120px 0;
+  background: #111111;
+  color: #ffffff;
+  text-align: center;
+}
+
+.publication-statement .section-label {
+  color: #888888;
+}
+
+.publication-statement h2 {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  font-size: 52px;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.publication-statement h2 span {
+  display: block;
+  color: #888888;
+}
+
+.publication-statement p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #aaaaaa;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.publications-footer {
+  padding: 110px 0;
+  background: #f5f5f3;
+  text-align: center;
+}
+
+.publications-footer h2 {
+  max-width: 750px;
+  margin: 0 auto 40px;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.publications-footer h2 span {
+  display: block;
+  color: #777777;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.about-button,
+.research-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.about-button {
+  border: 1px solid #111111;
+  background: #111111;
+  color: #ffffff;
+}
+
+.about-button:hover {
+  background: #ffffff;
+  color: #111111;
+  transform: translateY(-2px);
+}
+
+.research-button {
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  color: #111111;
+}
+
+.research-button:hover {
+  border-color: #111111;
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .types-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .publication-item {
+    grid-template-columns: 55px 75px 1fr 40px;
+    gap: 20px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .publications-container {
+    padding: 0 20px;
+  }
+
+  .publications-hero {
+    padding: 60px 0 70px;
+  }
+
+  .back-link {
+    margin-bottom: 40px;
+  }
+
+  .publications-hero h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .publications-hero p {
+    font-size: 14px;
+  }
+
+  .publications-intro,
+  .publication-list-section,
+  .publication-types,
+  .publication-statement,
+  .publications-footer {
+    padding: 75px 0;
+  }
+
+  .intro-heading h2 {
+    font-size: 35px;
+  }
+
+  .section-heading h2 {
+    font-size: 35px;
+  }
+
+  .publication-item {
+    grid-template-columns: 35px 1fr 30px;
+    gap: 15px;
+    padding: 28px 5px;
+  }
+
+  .publication-year {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .publication-content {
+    grid-column: 2 / 4;
+  }
+
+  .publication-arrow {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .types-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publication-statement h2 {
+    font-size: 38px;
+  }
+
+  .publications-footer h2 {
+    font-size: 35px;
+  }
+
+}

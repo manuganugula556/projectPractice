@@ -1,0 +1,286 @@
+<!-- =====================================================
+     PUBLICATIONS PAGE
+===================================================== -->
+
+<main class="publications-page">
+
+
+  <!-- =================================================
+       HERO
+  ================================================= -->
+
+  <section class="publications-hero">
+
+    <div class="publications-container">
+
+      <a
+        routerLink="/about"
+        class="back-link"
+      >
+        ← Back to About
+      </a>
+
+      <span class="section-label">
+        SCIENTIFIC CONTRIBUTIONS
+      </span>
+
+      <h1>
+        Research <span>Publications</span>
+      </h1>
+
+      <p>
+        Explore scientific publications, research papers and
+        knowledge contributions developed through research,
+        innovation and professional experience.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       INTRO
+  ================================================= -->
+
+  <section class="publications-intro">
+
+    <div class="publications-container">
+
+      <div class="intro-grid">
+
+        <div class="intro-heading">
+
+          <span class="section-label">
+            KNOWLEDGE & RESEARCH
+          </span>
+
+          <h2>
+            Sharing Research Through
+            <span>Scientific Publications</span>
+          </h2>
+
+        </div>
+
+        <div class="intro-content">
+
+          <p>
+            Scientific publications provide a platform for
+            documenting research, sharing discoveries and
+            contributing knowledge to the wider scientific
+            community.
+          </p>
+
+          <p>
+            Research papers and technical contributions help
+            communicate ideas, methodologies, findings and
+            innovations developed throughout the research journey.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       PUBLICATION LIST
+  ================================================= -->
+
+  <section class="publication-list-section">
+
+    <div class="publications-container">
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          SELECTED WORK
+        </span>
+
+        <h2>
+          Publications & Research Papers
+        </h2>
+
+        <p>
+          Selected scientific and technical publications
+          contributing to research and knowledge.
+        </p>
+
+      </div>
+
+
+      <div class="publication-list">
+
+        @for (publication of publications; track publication.number) {
+
+          <article class="publication-item">
+
+            <div class="publication-number">
+              {{ publication.number }}
+            </div>
+
+            <div class="publication-year">
+              {{ publication.year }}
+            </div>
+
+            <div class="publication-content">
+
+              <span class="publication-category">
+                {{ publication.category }}
+              </span>
+
+              <h3>
+                {{ publication.title }}
+              </h3>
+
+              <h4>
+                {{ publication.journal }}
+              </h4>
+
+              <p>
+                {{ publication.description }}
+              </p>
+
+            </div>
+
+            <div class="publication-arrow">
+              →
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       PUBLICATION TYPES
+  ================================================= -->
+
+  <section class="publication-types">
+
+    <div class="publications-container">
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          AREAS OF CONTRIBUTION
+        </span>
+
+        <h2>
+          Research & Knowledge
+        </h2>
+
+      </div>
+
+
+      <div class="types-grid">
+
+        @for (type of publicationTypes; track type.number) {
+
+          <article class="type-card">
+
+            <span class="type-number">
+              {{ type.number }}
+            </span>
+
+            <div class="type-icon">
+              {{ type.icon }}
+            </div>
+
+            <h3>
+              {{ type.title }}
+            </h3>
+
+            <p>
+              {{ type.description }}
+            </p>
+
+          </article>
+
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       PUBLICATION STATEMENT
+  ================================================= -->
+
+  <section class="publication-statement">
+
+    <div class="publications-container">
+
+      <span class="section-label">
+        SCIENTIFIC IMPACT
+      </span>
+
+      <h2>
+        Research becomes meaningful
+        <span>when knowledge is shared.</span>
+      </h2>
+
+      <p>
+        Publications help transform research findings into
+        accessible knowledge and create opportunities for
+        further scientific exploration and innovation.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       FOOTER CTA
+  ================================================= -->
+
+  <section class="publications-footer">
+
+    <div class="publications-container">
+
+      <span class="section-label">
+        EXPLORE MORE
+      </span>
+
+      <h2>
+        Continue Exploring the
+        <span>Scientific Journey</span>
+      </h2>
+
+      <div class="footer-buttons">
+
+        <a
+          routerLink="/about"
+          class="about-button"
+        >
+          ← Return to About
+        </a>
+
+        <a
+          routerLink="/research"
+          class="research-button"
+        >
+          Explore Research →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>

@@ -40,6 +40,8 @@ export class LoginComponent {
 
   isLoading = false;
 
+  showPassword = false;
+
 
   private apiUrl =
     'https://localhost:44331/api/Auth/login';
@@ -164,5 +166,9 @@ export class LoginComponent {
     });
 
   }
+
+  togglePassword(): void {
+this.showPassword = !this.showPassword;
+}
 
 }

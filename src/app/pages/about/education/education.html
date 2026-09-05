@@ -1,0 +1,627 @@
+<!-- =====================================================
+     EDUCATION PAGE
+===================================================== -->
+
+<main class="education-page">
+
+
+  <!-- =================================================
+       HERO
+  ================================================= -->
+
+  <section class="education-hero">
+
+    <div class="education-container">
+
+      <a
+        routerLink="/about"
+        class="back-link"
+      >
+        ← Back to About
+      </a>
+
+      <span class="section-label">
+        ACADEMIC JOURNEY
+      </span>
+
+      <h1>
+        Education & <span>Academic Background</span>
+      </h1>
+
+      <p>
+        Explore the academic journey, educational qualifications
+        and specialized knowledge that shaped the scientific
+        and professional career.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       FEATURE SECTION
+  ================================================= -->
+
+  <section class="education-feature">
+
+    <div class="education-container">
+
+      <div class="feature-grid">
+
+
+        <!-- =================================================
+             FEATURE IMAGE
+        ================================================= -->
+
+        <div class="feature-image">
+
+          <img
+            src="assets/images/Scientist-Photo2.jpg"
+            alt="Academic and educational background"
+          />
+
+          <div class="image-overlay"></div>
+
+          <div class="image-caption">
+
+            <span>
+              01
+            </span>
+
+            <strong>
+              Academic Foundation
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FEATURE CONTENT
+        ================================================= -->
+
+        <div class="feature-content">
+
+          <span class="section-label">
+            EDUCATIONAL BACKGROUND
+          </span>
+
+          <h2>
+            Building Knowledge Through
+            <span>Continuous Learning</span>
+          </h2>
+
+          <p>
+            Education forms the foundation of scientific thinking,
+            experimentation and innovation. The academic journey
+            provides the knowledge and technical understanding
+            required to explore complex scientific problems.
+          </p>
+
+          <p>
+            Through specialized education and continuous learning,
+            the focus has remained on developing strong analytical
+            skills and applying scientific knowledge to meaningful
+            research and innovation.
+          </p>
+
+          <div class="feature-line"></div>
+
+
+          <!-- FEATURE STATS -->
+
+          <div class="feature-stats">
+
+            <div>
+              <strong>
+                01
+              </strong>
+
+              <span>
+                Academic Journey
+              </span>
+            </div>
+
+            <div>
+              <strong>
+                02
+              </strong>
+
+              <span>
+                Specialized Knowledge
+              </span>
+            </div>
+
+            <div>
+              <strong>
+                03
+              </strong>
+
+              <span>
+                Continuous Learning
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       ACADEMIC TIMELINE
+  ================================================= -->
+
+  <section class="timeline-section">
+
+    <div class="education-container">
+
+
+      <!-- SECTION HEADING -->
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          QUALIFICATIONS
+        </span>
+
+        <h2>
+          Academic Journey
+        </h2>
+
+        <p>
+          A structured overview of the educational and
+          research-oriented academic journey.
+        </p>
+
+      </div>
+
+
+      <!-- TIMELINE -->
+
+      <div class="timeline">
+
+        @for (item of educationItems; track $index; let i = $index) {
+
+          <article class="timeline-item">
+
+
+            <!-- NUMBER -->
+
+            <div class="timeline-number">
+
+              {{ (i + 1).toString().padStart(2, '0') }}
+
+            </div>
+
+
+            <!-- TIMELINE LINE -->
+
+            <div class="timeline-line"></div>
+
+
+            <!-- CONTENT -->
+
+            <div class="timeline-content">
+
+              <span class="timeline-year">
+                {{ item.year }}
+              </span>
+
+              <h3>
+                {{ item.qualification }}
+              </h3>
+
+              <h4>
+                {{ item.institution }}
+              </h4>
+
+              <span class="timeline-specialization">
+                {{ item.specialization }}
+              </span>
+
+              <p>
+                {{ item.description }}
+              </p>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       EDUCATION HIGHLIGHTS
+  ================================================= -->
+
+  <section class="highlights-section">
+
+    <div class="education-container">
+
+
+      <!-- SECTION HEADING -->
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          ACADEMIC FOCUS
+        </span>
+
+        <h2>
+          Education Highlights
+        </h2>
+
+      </div>
+
+
+      <!-- HIGHLIGHTS GRID -->
+
+      <div class="highlights-grid">
+
+
+        <!-- CARD 01 -->
+
+        <article class="highlight-card">
+
+          <span class="highlight-number">
+            01
+          </span>
+
+          <div class="highlight-icon">
+            🎓
+          </div>
+
+          <h3>
+            Scientific Knowledge
+          </h3>
+
+          <p>
+            Strong academic foundations supporting scientific
+            investigation, analysis and innovation.
+          </p>
+
+        </article>
+
+
+        <!-- CARD 02 -->
+
+        <article class="highlight-card">
+
+          <span class="highlight-number">
+            02
+          </span>
+
+          <div class="highlight-icon">
+            🔬
+          </div>
+
+          <h3>
+            Research Orientation
+          </h3>
+
+          <p>
+            Academic learning connected with scientific
+            research, experimentation and problem solving.
+          </p>
+
+        </article>
+
+
+        <!-- CARD 03 -->
+
+        <article class="highlight-card">
+
+          <span class="highlight-number">
+            03
+          </span>
+
+          <div class="highlight-icon">
+            💡
+          </div>
+
+          <h3>
+            Innovation
+          </h3>
+
+          <p>
+            Applying education and technical knowledge toward
+            practical ideas, innovation and development.
+          </p>
+
+        </article>
+
+
+        <!-- CARD 04 -->
+
+        <article class="highlight-card">
+
+          <span class="highlight-number">
+            04
+          </span>
+
+          <div class="highlight-icon">
+            📖
+          </div>
+
+          <h3>
+            Continuous Learning
+          </h3>
+
+          <p>
+            Continued learning and exploration of emerging
+            scientific and technological developments.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       EDUCATION GALLERY
+  ================================================= -->
+
+  <section class="education-gallery">
+
+    <div class="education-container">
+
+
+      <!-- SECTION HEADING -->
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          ACADEMIC MOMENTS
+        </span>
+
+        <h2>
+          Achievements Gallery
+        </h2>
+
+        <p>
+          Photographs and memories related to the academic
+          and educational journey.
+        </p>
+
+      </div>
+
+
+      <!-- GALLERY -->
+
+      <div class="gallery-grid">
+
+
+        <!-- LARGE IMAGE -->
+
+        <div class="gallery-item large">
+
+          <img
+            src="assets/images/about/Education/Certification.jpg"
+            alt="Education photograph"
+          />
+
+        </div>
+
+
+        <!-- IMAGE 02 -->
+
+        <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification3.jpg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+
+        <!-- IMAGE 03 -->
+
+        <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification4.jpeg"
+            alt="Academic journey photograph"
+          />
+
+        </div>
+
+         <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification6.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+        <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification8.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+         <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification11.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+
+         <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification5.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+         
+          <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification7.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+          
+
+          <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification9.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+          <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification10.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+         
+
+          <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification12.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+         <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification13.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+        <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification19.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+        <!-- <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification14.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div> -->
+
+        <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification15.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+        <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification16.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+        <!-- <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification17.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div> -->
+
+        
+
+        <div class="gallery-item">
+
+          <img
+            src="assets/images/about/Education/Certification20.jpeg"
+            alt="Academic photograph"
+          />
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       FINAL CTA
+  ================================================= -->
+
+  <section class="education-footer">
+
+    <div class="education-container">
+
+      <span class="section-label">
+        EXPLORE MORE
+      </span>
+
+      <h2>
+        Discover the Complete
+        <span>Professional Journey</span>
+      </h2>
+
+      <a
+        routerLink="/about"
+        class="about-button"
+      >
+        ← Return to About
+      </a>
+
+    </div>
+
+  </section>
+
+
+</main>
