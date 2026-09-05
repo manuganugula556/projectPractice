@@ -1,0 +1,663 @@
+/* =====================================================
+PUBLICATIONS PAGE
+===================================================== */
+
+.publications-page {
+width: 100%;
+background: #ffffff;
+color: #111111;
+}
+
+.publications-container {
+width: min(1200px, calc(100% - 40px));
+margin: 0 auto;
+}
+
+/* =====================================================
+HERO
+===================================================== */
+
+.publications-hero {
+padding: 100px 0;
+background: #f5f5f3;
+}
+
+.publications-hero h1 {
+margin: 18px 0;
+font-size: clamp(40px, 5vw, 68px);
+line-height: 1.05;
+font-weight: 700;
+letter-spacing: -2px;
+}
+
+.publications-hero h1 span,
+.publications-footer h2 span,
+.introduction-content h2 span {
+font-weight: 400;
+}
+
+.publications-hero p {
+max-width: 700px;
+margin: 0;
+color: #666666;
+font-size: 16px;
+line-height: 1.8;
+}
+
+/* =====================================================
+COMMON
+===================================================== */
+
+.section-label {
+display: inline-block;
+color: #777777;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 2px;
+}
+
+.back-link {
+display: inline-block;
+margin-bottom: 35px;
+color: #111111;
+text-decoration: none;
+font-size: 13px;
+font-weight: 600;
+}
+
+.back-link:hover {
+text-decoration: underline;
+}
+
+/* =====================================================
+INTRODUCTION
+===================================================== */
+
+.publications-introduction {
+padding: 110px 0;
+background: #ffffff;
+}
+
+.introduction-grid {
+display: grid;
+grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+gap: 70px;
+align-items: stretch;
+}
+
+.introduction-content h2 {
+max-width: 750px;
+margin: 18px 0 25px;
+font-size: clamp(32px, 4vw, 52px);
+line-height: 1.12;
+letter-spacing: -1.5px;
+}
+
+.introduction-content p {
+max-width: 720px;
+margin: 0 0 18px;
+color: #666666;
+font-size: 15px;
+line-height: 1.8;
+}
+
+.introduction-line {
+width: 80px;
+height: 2px;
+margin: 35px 0;
+background: #111111;
+}
+
+.introduction-stats {
+display: flex;
+gap: 55px;
+}
+
+.introduction-stats div {
+display: flex;
+flex-direction: column;
+gap: 5px;
+}
+
+.introduction-stats strong {
+font-size: 28px;
+font-weight: 700;
+}
+
+.introduction-stats span {
+color: #777777;
+font-size: 11px;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+
+.introduction-side {
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 45px;
+background: #111111;
+color: #ffffff;
+}
+
+.side-number {
+margin-bottom: auto;
+color: #999999;
+font-size: 13px;
+letter-spacing: 2px;
+}
+
+.introduction-side h3 {
+margin: 50px 0 20px;
+font-size: 30px;
+line-height: 1.15;
+font-weight: 500;
+}
+
+.introduction-side p {
+margin: 0;
+color: #bbbbbb;
+font-size: 14px;
+line-height: 1.7;
+}
+
+/* =====================================================
+PUBLICATIONS LIST
+===================================================== */
+
+.publications-list-section {
+padding: 110px 0;
+background: #f5f5f3;
+}
+
+.section-heading {
+margin-bottom: 60px;
+}
+
+.section-heading h2 {
+margin: 15px 0;
+font-size: clamp(32px, 4vw, 48px);
+line-height: 1.15;
+letter-spacing: -1px;
+}
+
+.section-heading p {
+max-width: 700px;
+margin: 0;
+color: #777777;
+font-size: 14px;
+line-height: 1.8;
+}
+
+.publications-list {
+width: 100%;
+}
+
+.publication-item {
+display: flex;
+align-items: flex-start;
+width: 100%;
+margin-bottom: 55px;
+position: relative;
+box-sizing: border-box;
+}
+
+.publication-number {
+flex: 0 0 55px;
+font-size: 15px;
+font-weight: 700;
+}
+
+.publication-line {
+flex: 0 0 1px;
+min-height: 145px;
+margin-right: 35px;
+background: #cccccc;
+}
+
+.publication-content {
+flex: 1 1 auto;
+min-width: 0;
+}
+
+.publication-year {
+color: #888888;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 1.5px;
+}
+
+.publication-content h3 {
+margin: 10px 0 7px;
+font-size: 24px;
+font-weight: 600;
+}
+
+.publication-content h4 {
+margin: 0 0 12px;
+color: #555555;
+font-size: 14px;
+font-weight: 600;
+}
+
+.publication-content p {
+max-width: 700px;
+margin: 0;
+color: #777777;
+font-size: 14px;
+line-height: 1.75;
+}
+
+/* =====================================================
+PUBLICATION AREAS
+===================================================== */
+
+.publication-areas-section {
+padding: 110px 0;
+background: #ffffff;
+}
+
+.publication-areas-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 20px;
+}
+
+.publication-area-card {
+position: relative;
+min-height: 260px;
+padding: 30px;
+box-sizing: border-box;
+border: 1px solid #dddddd;
+background: #ffffff;
+transition:
+transform 0.3s ease,
+box-shadow 0.3s ease;
+}
+
+.publication-area-card:hover {
+transform: translateY(-6px);
+box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.area-number {
+color: #999999;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 1px;
+}
+
+.area-icon {
+margin: 35px 0 20px;
+font-size: 26px;
+}
+
+.publication-area-card h3 {
+margin: 0 0 12px;
+font-size: 19px;
+font-weight: 600;
+}
+
+.publication-area-card p {
+margin: 0;
+color: #777777;
+font-size: 13px;
+line-height: 1.7;
+}
+
+/* =====================================================
+PUBLICATIONS GALLERY
+===================================================== */
+
+.publications-gallery-section {
+padding: 110px 0;
+background: #f5f5f3;
+}
+
+.publications-gallery-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 25px;
+align-items: start;
+}
+
+/* =====================================================
+PUBLICATION IMAGE CARD
+===================================================== */
+
+.publication-image-card {
+position: relative;
+width: 100%;
+overflow: hidden;
+border: 1px solid #dddddd;
+background: #ffffff;
+cursor: pointer;
+outline: none;
+transition:
+transform 0.3s ease,
+box-shadow 0.3s ease;
+}
+
+.publication-image-card:hover {
+transform: translateY(-6px);
+box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* =====================================================
+IMAGE WRAPPER
+IMPORTANT:
+No fixed height / min-height
+===================================================== */
+
+.publication-image-wrapper {
+width: 100%;
+height: auto;
+display: block;
+overflow: hidden;
+background: #ffffff;
+line-height: 0;
+}
+
+.publication-image-wrapper img {
+display: block;
+width: 100%;
+height: auto;
+max-width: 100%;
+object-fit: contain;
+object-position: center top;
+vertical-align: top;
+transition: transform 0.5s ease;
+}
+
+.publication-image-card:hover .publication-image-wrapper img {
+transform: scale(1.03);
+}
+
+/* =====================================================
+IMAGE OVERLAY
+===================================================== */
+
+.publication-image-overlay {
+position: absolute;
+inset: 0;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+padding: 25px;
+box-sizing: border-box;
+background:
+linear-gradient(
+to top,
+rgba(0, 0, 0, 0.65),
+transparent 55%
+);
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.publication-image-card:hover .publication-image-overlay {
+opacity: 1;
+}
+
+.publication-image-overlay span {
+padding: 9px 18px;
+border-radius: 6px;
+background: rgba(255, 255, 255, 0.95);
+color: #111111;
+font-size: 13px;
+font-weight: 700;
+}
+
+/* =====================================================
+PUBLICATION IMAGE MODAL
+===================================================== */
+
+.publication-image-modal {
+position: fixed;
+inset: 0;
+z-index: 9999;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 40px;
+box-sizing: border-box;
+background: rgba(0, 0, 0, 0.88);
+animation: publicationModalFadeIn 0.2s ease;
+}
+
+.publication-modal-image-container {
+max-width: 95vw;
+max-height: 90vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.publication-modal-image {
+display: block;
+max-width: 95vw;
+max-height: 90vh;
+width: auto;
+height: auto;
+object-fit: contain;
+border-radius: 6px;
+box-shadow:
+0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+.publication-close-button {
+position: fixed;
+top: 25px;
+right: 30px;
+z-index: 10000;
+width: 48px;
+height: 48px;
+border: none;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.95);
+color: #111111;
+font-size: 34px;
+font-weight: 400;
+line-height: 1;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition:
+background 0.2s ease,
+transform 0.2s ease;
+}
+
+.publication-close-button:hover {
+background: #ffffff;
+transform: scale(1.08);
+}
+
+@keyframes publicationModalFadeIn {
+from {
+opacity: 0;
+}
+
+to {
+opacity: 1;
+}
+}
+
+/* =====================================================
+FOOTER
+===================================================== */
+
+.publications-footer {
+padding: 110px 0;
+text-align: center;
+background: #111111;
+color: #ffffff;
+}
+
+.publications-footer .section-label {
+color: #999999;
+}
+
+.publications-footer h2 {
+max-width: 750px;
+margin: 20px auto 35px;
+font-size: clamp(32px, 4vw, 52px);
+line-height: 1.15;
+letter-spacing: -1px;
+}
+
+.about-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 13px 25px;
+border: 1px solid #ffffff;
+color: #ffffff;
+text-decoration: none;
+font-size: 13px;
+font-weight: 600;
+transition:
+background 0.3s ease,
+color 0.3s ease;
+}
+
+.about-button:hover {
+background: #ffffff;
+color: #111111;
+}
+
+/* =====================================================
+TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+.introduction-grid {
+grid-template-columns: 1fr;
+gap: 45px;
+}
+
+.introduction-side {
+min-height: 300px;
+}
+
+.publication-areas-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.publications-gallery-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 20px;
+}
+
+}
+
+/* =====================================================
+MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+.publications-container {
+width: min(100% - 30px, 1200px);
+}
+
+.publications-hero {
+padding: 75px 0;
+}
+
+.publications-introduction,
+.publications-list-section,
+.publication-areas-section,
+.publications-gallery-section,
+.publications-footer {
+padding: 75px 0;
+}
+
+.introduction-stats {
+gap: 25px;
+flex-wrap: wrap;
+}
+
+.introduction-side {
+padding: 30px;
+}
+
+.introduction-side h3 {
+margin-top: 45px;
+font-size: 26px;
+}
+
+.publication-item {
+margin-bottom: 40px;
+}
+
+.publication-number {
+flex: 0 0 40px;
+}
+
+.publication-line {
+margin-right: 20px;
+}
+
+.publication-content h3 {
+font-size: 20px;
+}
+
+.publication-areas-grid {
+grid-template-columns: 1fr;
+gap: 18px;
+}
+
+.publication-area-card {
+min-height: auto;
+}
+
+.publications-gallery-grid {
+grid-template-columns: 1fr;
+gap: 18px;
+}
+
+/* No artificial height on mobile */
+.publication-image-wrapper {
+width: 100%;
+height: auto;
+min-height: 0;
+}
+
+.publication-image-wrapper img {
+display: block;
+width: 100%;
+height: auto;
+max-width: 100%;
+object-fit: contain;
+object-position: center top;
+}
+
+.publication-image-overlay {
+opacity: 1;
+}
+
+.publication-image-overlay span {
+padding: 8px 15px;
+font-size: 12px;
+}
+
+.publication-image-modal {
+padding: 20px;
+}
+
+.publication-modal-image {
+max-width: 92vw;
+max-height: 85vh;
+}
+
+.publication-close-button {
+top: 15px;
+right: 15px;
+width: 42px;
+height: 42px;
+font-size: 30px;
+}
+
+}

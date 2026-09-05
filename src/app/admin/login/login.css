@@ -1,174 +1,414 @@
+/* =========================================================
+ADMIN LOGIN PAGE
+========================================================= */
+
 .login-page {
-  min-height: calc(100vh - 150px);
+min-height: 100vh;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+display: flex;
+align-items: center;
+justify-content: center;
 
-  padding: 50px 20px;
+padding: 40px 20px;
+box-sizing: border-box;
 
-  box-sizing: border-box;
+background: #f5f5f3;
+}
 
-  background: #f8fafc;
+/* =========================================================
+LOGIN CARD
+========================================================= */
+
+.login-card {
+width: 100%;
+max-width: 430px;
+
+padding: 45px 40px;
+
+box-sizing: border-box;
+
+background: #ffffff;
+
+border: 1px solid #e7e7e7;
+border-radius: 10px;
+
+box-shadow:
+0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================
+LOGIN HEADER
+========================================================= */
+
+.login-header {
+text-align: center;
+margin-bottom: 35px;
+}
+
+/* LOGO */
+
+.login-logo {
+width: 58px;
+height: 58px;
+
+margin: 0 auto 20px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 50%;
+
+background: #0284c7;
+color: #ffffff;
+
+font-size: 17px;
+font-weight: 700;
+letter-spacing: 1px;
+}
+
+/* TITLE */
+
+.login-header h1 {
+margin: 0 0 10px;
+
+color: #111111;
+
+font-size: 30px;
+font-weight: 700;
+line-height: 1.2;
+}
+
+/* DESCRIPTION */
+
+.login-header p {
+margin: 0;
+
+color: #64748b;
+
+font-size: 14px;
+line-height: 1.6;
+}
+
+/* =========================================================
+FORM
+========================================================= */
+
+.login-card form {
+width: 100%;
+}
+
+/* =========================================================
+FORM GROUP
+========================================================= */
+
+.form-group {
+width: 100%;
+margin-bottom: 22px;
+}
+
+/* LABEL */
+
+.form-group label {
+display: block;
+
+margin-bottom: 8px;
+
+color: #334155;
+
+font-size: 13px;
+font-weight: 600;
+}
+
+/* =========================================================
+NORMAL INPUT
+========================================================= */
+
+.form-group > input {
+display: block;
+
+width: 100%;
+height: 48px;
+
+padding: 0 15px;
+
+box-sizing: border-box;
+
+border: 1px solid #d8d8d8;
+border-radius: 5px;
+
+outline: none;
+
+background: #ffffff;
+color: #111111;
+
+font-family: inherit;
+font-size: 14px;
+
+transition:
+border-color 0.2s ease,
+box-shadow 0.2s ease;
+}
+
+/* EMAIL INPUT FOCUS */
+
+.form-group > input:focus {
+border-color: #111111;
+
+box-shadow:
+0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================================
+PASSWORD WRAPPER
+========================================================= */
+
+.login-card .password-wrapper {
+position: relative;
+
+width: 100%;
+
+box-sizing: border-box;
+}
+
+/* =========================================================
+PASSWORD INPUT
+========================================================= */
+
+.login-card .password-wrapper input {
+display: block;
+
+width: 100%;
+height: 48px;
+
+box-sizing: border-box;
+
+/*
+Leave enough space on the right
+for the eye button.
+*/
+
+padding: 0 52px 0 15px;
+
+border: 1px solid #d8d8d8;
+border-radius: 5px;
+
+outline: none;
+
+background: #ffffff;
+color: #0f172a;
+
+font-family: inherit;
+font-size: 14px;
+
+transition:
+border-color 0.2s ease,
+box-shadow 0.2s ease;
+}
+
+/* PASSWORD INPUT FOCUS */
+
+.login-card .password-wrapper input:focus {
+border-color: #0284c7;
+
+box-shadow:
+0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* PLACEHOLDER */
+
+.login-card .password-wrapper input::placeholder,
+.form-group > input::placeholder {
+color: #999999;
+}
+
+/* =========================================================
+PASSWORD EYE BUTTON
+========================================================= */
+
+.login-card .password-wrapper .password-eye {
+position: absolute;
+
+top: 50%;
+right: 8px;
+
+transform: translateY(-50%);
+
+width: 36px;
+height: 36px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+padding: 0;
+margin: 0;
+
+border: none;
+border-radius: 4px;
+
+background: transparent;
+
+color: #666666;
+
+font-family: Arial, sans-serif;
+font-size: 18px;
+line-height: 1;
+
+cursor: pointer;
+
+z-index: 2;
+
+transition:
+color 0.2s ease,
+background 0.2s ease;
+}
+
+/* EYE HOVER */
+
+.login-card .password-wrapper .password-eye:hover {
+color: #111111;
+background: #f2f2f2;
+}
+
+/* EYE FOCUS */
+
+.login-card .password-wrapper .password-eye:focus {
+outline: 2px solid #111111;
+outline-offset: 1px;
+}
+
+/* =========================================================
+ERROR MESSAGE
+========================================================= */
+
+.error-message {
+width: 100%;
+
+margin-bottom: 18px;
+padding: 12px 14px;
+
+box-sizing: border-box;
+
+border: 1px solid #f0caca;
+border-radius: 5px;
+
+background: #fff5f5;
+color: #c62828;
+
+font-size: 13px;
+line-height: 1.5;
+}
+
+/* =========================================================
+LOGIN BUTTON
+========================================================= */
+
+.login-card form > button {
+width: 100%;
+height: 48px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+padding: 0 20px;
+
+border: 1px solid #111111;
+border-radius: 5px;
+
+background: #0284c7;
+color: #ffffff;
+
+font-family: inherit;
+font-size: 14px;
+font-weight: 600;
+
+cursor: pointer;
+
+transition:
+background 0.25s ease,
+color 0.25s ease,
+transform 0.25s ease;
+}
+
+/* LOGIN BUTTON HOVER */
+
+.login-card form > button:hover:not(:disabled) {
+background: #0284c7;
+color: #fff5f5;
+
+transform: translateY(-1px);
+}
+
+/* LOGIN BUTTON DISABLED */
+
+.login-card form > button:disabled {
+opacity: 0.6;
+
+cursor: not-allowed;
+
+transform: none;
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+.login-page {
+padding: 25px 15px;
 }
 
 .login-card {
-  width: 100%;
-  max-width: 430px;
+max-width: 100%;
 
-  padding: 40px;
+padding: 35px 25px;
 
-  box-sizing: border-box;
+border-radius: 8px;
 
-  background: #ffffff;
 
-  border: 1px solid #e2e8f0;
-
-  border-radius: 16px;
-
-  box-shadow:
-    0 15px 40px rgba(15, 23, 42, 0.10);
 }
 
 .login-header {
-  text-align: center;
-
-  margin-bottom: 30px;
+margin-bottom: 30px;
 }
 
 .login-logo {
-  width: 65px;
-  height: 65px;
+width: 52px;
+height: 52px;
+margin-bottom: 17px;
+font-size: 16px;
 
-  margin: 0 auto 18px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: #0284c7;
-
-  color: #ffffff;
-
-  font-size: 22px;
-  font-weight: 700;
 }
 
 .login-header h1 {
-  margin: 0 0 10px;
-
-  color: #0f172a;
-
-  font-size: 30px;
+font-size: 27px;
 }
 
 .login-header p {
-  margin: 0;
-
-  color: #64748b;
-
-  font-size: 15px;
+font-size: 13px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
-.form-group label {
-  display: block;
-
-  margin-bottom: 8px;
-
-  color: #334155;
-
-  font-size: 14px;
-  font-weight: 600;
 }
 
-.form-group input {
-  width: 100%;
+/* =========================================================
+SMALL MOBILE
+========================================================= */
 
-  padding: 13px 14px;
+@media (max-width: 400px) {
 
-  box-sizing: border-box;
-
-  border: 1px solid #cbd5e1;
-
-  border-radius: 7px;
-
-  outline: none;
-
-  color: #0f172a;
-
-  font-size: 15px;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+.login-card {
+padding: 30px 20px;
 }
 
-.form-group input:focus {
-  border-color: #0284c7;
-
-  box-shadow:
-    0 0 0 3px rgba(2, 132, 199, 0.12);
+.login-header h1 {
+font-size: 25px;
 }
-
-.error-message {
-  margin-bottom: 18px;
-
-  padding: 12px 14px;
-
-  border-radius: 7px;
-
-  background: #fef2f2;
-
-  color: #dc2626;
-
-  font-size: 14px;
-}
-
-.login-card button {
-  width: 100%;
-
-  padding: 13px;
-
-  border: none;
-
-  border-radius: 7px;
-
-  background: #0284c7;
-
-  color: #ffffff;
-
-  font-size: 15px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.login-card button:hover:not(:disabled) {
-  background: #0369a1;
-
-  transform: translateY(-1px);
-}
-
-.login-card button:disabled {
-  opacity: 0.65;
-
-  cursor: not-allowed;
-}
-
-@media (max-width: 480px) {
-
-  .login-card {
-    padding: 30px 22px;
-  }
 
 }

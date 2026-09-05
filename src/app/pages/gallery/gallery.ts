@@ -37,15 +37,15 @@ constructor(
 
     const manualPhotos: GalleryPhoto[] = [
       {
-        image: 'assets/images/Scientist-Photo.jpg',
+        image: 'assets/images/Speech.jpg',
         title: 'Scientist'
       },
       {
-        image: 'assets/images/Scientist-Photo1.jpg',
+        image: 'assets/images/Media.jpg',
         title: 'Scientist'
       },
       {
-        image: 'assets/images/Scientist-Photo2.jpg',
+        image: 'assets/images/Bookofrecords.jpg',
         title: 'Scientist'
       }
     ];

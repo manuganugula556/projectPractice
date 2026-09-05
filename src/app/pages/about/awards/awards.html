@@ -1,0 +1,391 @@
+<!-- =====================================================
+     AWARDS & RECOGNITION PAGE
+===================================================== -->
+
+<main class="awards-page">
+
+
+  <!-- =================================================
+       HERO
+  ================================================= -->
+
+  <section class="awards-hero">
+
+    <div class="awards-container">
+
+      <a
+        routerLink="/about"
+        class="back-link"
+      >
+        ← Back to About
+      </a>
+
+      <span class="section-label">
+        PROFESSIONAL ACHIEVEMENTS
+      </span>
+
+      <h1>
+        Awards & <span>Recognition</span>
+      </h1>
+
+      <p>
+        A collection of awards, recognitions and professional
+        achievements received throughout the scientific and
+        research journey.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       INTRODUCTION
+  ================================================= -->
+
+  <section class="awards-intro">
+
+    <div class="awards-container">
+
+      <div class="intro-grid">
+
+        <div class="intro-heading">
+
+          <span class="section-label">
+            ACHIEVEMENT
+          </span>
+
+          <h2>
+            Recognizing a Journey of
+            <span>Research & Excellence</span>
+          </h2>
+
+        </div>
+
+        <div class="intro-content">
+
+          <p>
+            Awards and recognition represent milestones in a
+            professional journey and reflect contributions made
+            through scientific research, innovation and dedicated
+            work.
+          </p>
+
+          <p>
+            Each achievement represents an opportunity to contribute
+            to scientific knowledge, encourage innovation and create
+            meaningful impact through research.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       AWARDS TIMELINE
+  ================================================= -->
+
+  <section class="awards-list-section">
+
+    <div class="awards-container">
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          RECOGNITION
+        </span>
+
+        <h2>
+          Awards & Achievements
+        </h2>
+
+        <p>
+          Selected awards and recognitions from the professional
+          and scientific journey.
+        </p>
+
+      </div>
+
+
+      <div class="awards-list">
+
+        @for (award of awards; track award.number) {
+
+          <article class="award-item">
+
+            <div class="award-number">
+              {{ award.number }}
+            </div>
+
+            <div class="award-year">
+              {{ award.year }}
+            </div>
+
+            <div class="award-content">
+
+              <h3>
+                {{ award.title }}
+              </h3>
+
+              <span>
+                {{ award.organization }}
+              </span>
+
+              <p>
+                {{ award.description }}
+              </p>
+
+            </div>
+
+            <div class="award-symbol">
+              🏆
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+     AWARDS GALLERY
+================================================= -->
+
+<section class="awards-gallery-section">
+
+  <div class="awards-container">
+
+<div class="section-heading">
+
+  <span class="section-label">
+    AWARDS GALLERY
+  </span>
+
+  <h2>
+    Awards & Recognition
+  </h2>
+
+  <p>
+    A visual collection of awards, certificates and
+    recognitions received throughout the professional journey.
+  </p>
+
+</div>
+
+
+<div class="awards-gallery-grid">
+
+  @for (image of awardImages; track $index) {
+
+    <article
+      class="award-image-card"
+      (click)="openAwardImage(image.path)"
+      tabindex="0"
+      role="button"
+      [attr.aria-label]="'View ' + image.title"
+    >
+
+      <div class="award-image-wrapper">
+
+        <img
+          [src]="image.path"
+          [alt]="image.title"
+        />
+
+      </div>
+
+      <div class="award-image-overlay">
+
+        <span>
+          View Award
+        </span>
+
+      </div>
+
+    </article>
+
+  }
+
+</div>
+
+  </div>
+
+</section>
+
+<!-- =================================================
+     AWARD IMAGE MODAL
+================================================= -->
+
+@if (selectedAwardImage) {
+
+  <div
+    class="award-image-modal"
+    (click)="closeAwardImage()"
+  >
+
+<button
+  type="button"
+  class="award-close-button"
+  (click)="closeAwardImage(); $event.stopPropagation()"
+  aria-label="Close award image"
+>
+  ×
+</button>
+
+
+<div
+  class="award-modal-image-container"
+  (click)="$event.stopPropagation()"
+>
+
+  <img
+    [src]="selectedAwardImage"
+    alt="Full size award image"
+    class="award-modal-image"
+  />
+
+</div>
+
+  </div>
+
+}
+
+
+
+  <!-- =================================================
+       RECOGNITION AREAS
+  ================================================= -->
+
+  <section class="recognition-section">
+
+    <div class="awards-container">
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          AREAS OF RECOGNITION
+        </span>
+
+        <h2>
+          Excellence Across Multiple Areas
+        </h2>
+
+      </div>
+
+
+      <div class="recognition-grid">
+
+        @for (item of recognitionAreas; track item.number) {
+
+          <article class="recognition-card">
+
+            <span class="recognition-number">
+              {{ item.number }}
+            </span>
+
+            <div class="recognition-icon">
+
+              {{ item.number === '01' ? '🔬' :
+                 item.number === '02' ? '💡' :
+                 item.number === '03' ? '⭐' : '📚' }}
+
+            </div>
+
+            <h3>
+              {{ item.title }}
+            </h3>
+
+            <p>
+              {{ item.description }}
+            </p>
+
+          </article>
+
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       QUOTE / STATEMENT
+  ================================================= -->
+
+  <section class="achievement-statement">
+
+    <div class="awards-container">
+
+      <span class="section-label">
+        BEYOND THE AWARD
+      </span>
+
+      <h2>
+        Recognition is a milestone.
+        <span>Research is the journey.</span>
+      </h2>
+
+      <p>
+        Every achievement serves as motivation to continue
+        exploring new ideas, advancing research and contributing
+        to scientific knowledge.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       FOOTER CTA
+  ================================================= -->
+
+  <section class="awards-footer">
+
+    <div class="awards-container">
+
+      <span class="section-label">
+        EXPLORE MORE
+      </span>
+
+      <h2>
+        Continue Exploring the
+        <span>Professional Journey</span>
+      </h2>
+
+      <div class="footer-buttons">
+
+        <a
+          routerLink="/about"
+          class="about-button"
+        >
+          ← Return to About
+        </a>
+
+        <a
+          routerLink="/research"
+          class="research-button"
+        >
+          Explore Research →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>

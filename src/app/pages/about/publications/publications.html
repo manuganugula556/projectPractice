@@ -1,0 +1,379 @@
+<!-- =====================================================
+     PUBLICATIONS PAGE
+===================================================== -->
+
+<main class="publications-page">
+
+  <!-- =================================================
+       HERO
+  ================================================== -->
+
+  <section class="publications-hero">
+
+<div class="publications-container">
+
+  <a
+    routerLink="/about"
+    class="back-link"
+  >
+    ← Back to About
+  </a>
+
+  <span class="section-label">
+    SCIENCE • RESEARCH • KNOWLEDGE
+  </span>
+
+  <h1>
+    Publications & <span>Research Work</span>
+  </h1>
+
+  <p>
+    Explore research publications, scientific studies,
+    technical contributions and knowledge developed
+    throughout the professional journey.
+  </p>
+
+</div>
+
+  </section>
+
+  <!-- =================================================
+       INTRODUCTION
+  ================================================== -->
+
+  <section class="publications-introduction">
+
+
+<div class="publications-container">
+
+  <div class="introduction-grid">
+
+    <div class="introduction-content">
+
+      <span class="section-label">
+        RESEARCH CONTRIBUTION
+      </span>
+
+      <h2>
+        Sharing Knowledge Through
+        <span>Research & Publications</span>
+      </h2>
+
+      <p>
+        Scientific research becomes more meaningful when
+        knowledge, findings and ideas are documented and
+        shared with others.
+      </p>
+
+      <p>
+        Publications provide a platform to communicate
+        research findings, innovative concepts and
+        technical knowledge while contributing to the
+        broader scientific and professional community.
+      </p>
+
+      <div class="introduction-line"></div>
+
+      <div class="introduction-stats">
+
+        <div>
+          <strong>01</strong>
+          <span>Research</span>
+        </div>
+
+        <div>
+          <strong>02</strong>
+          <span>Innovation</span>
+        </div>
+
+        <div>
+          <strong>03</strong>
+          <span>Knowledge</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="introduction-side">
+
+      <span class="side-number">
+        01
+      </span>
+
+      <h3>
+        Research<br />
+        & Documentation
+      </h3>
+
+      <p>
+        Documenting scientific ideas, discoveries and
+        technical knowledge for future generations.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+  </section>
+
+  <!-- =================================================
+       PUBLICATIONS LIST
+  ================================================== -->
+
+  <section class="publications-list-section">
+
+<div class="publications-container">
+
+  <div class="section-heading">
+
+    <span class="section-label">
+      RESEARCH PUBLICATIONS
+    </span>
+
+    <h2>
+      Publications & Studies
+    </h2>
+
+    <p>
+      A structured overview of research publications,
+      scientific studies and technical contributions.
+    </p>
+
+  </div>
+
+
+  <div class="publications-list">
+
+    @for (publication of publications; track $index) {
+
+      <article class="publication-item">
+
+        <div class="publication-number">
+          {{ publication.number }}
+        </div>
+
+        <div class="publication-line"></div>
+
+        <div class="publication-content">
+
+          <span class="publication-year">
+            {{ publication.year }}
+          </span>
+
+          <h3>
+            {{ publication.title }}
+          </h3>
+
+          <h4>
+            {{ publication.journal }}
+          </h4>
+
+          <p>
+            {{ publication.description }}
+          </p>
+
+        </div>
+
+      </article>
+
+    }
+
+  </div>
+
+</div>
+
+
+  </section>
+
+  <!-- =================================================
+       PUBLICATION AREAS
+  ================================================== -->
+
+  <section class="publication-areas-section">
+
+<div class="publications-container">
+
+  <div class="section-heading">
+
+    <span class="section-label">
+      RESEARCH AREAS
+    </span>
+
+    <h2>
+      Areas of Publication
+    </h2>
+
+  </div>
+
+
+  <div class="publication-areas-grid">
+
+    @for (area of publicationAreas; track $index) {
+
+      <article class="publication-area-card">
+
+        <span class="area-number">
+          {{ area.number }}
+        </span>
+
+        <div class="area-icon">
+          ✦
+        </div>
+
+        <h3>
+          {{ area.title }}
+        </h3>
+
+        <p>
+          {{ area.description }}
+        </p>
+
+      </article>
+
+    }
+
+  </div>
+
+</div>
+
+  </section>
+
+  <!-- =================================================
+       PUBLICATIONS GALLERY
+  ================================================== -->
+
+  <section class="publications-gallery-section">
+
+
+<div class="publications-container">
+
+  <div class="section-heading">
+
+    <span class="section-label">
+      PUBLICATION GALLERY
+    </span>
+
+    <h2>
+      Research & Publication Records
+    </h2>
+
+    <p>
+      A visual collection of publications, research
+      documents, certificates and related achievements.
+    </p>
+
+  </div>
+
+
+  <div class="publications-gallery-grid">
+
+    @for (image of publicationImages; track $index) {
+
+      <article
+        class="publication-image-card"
+        (click)="openPublicationImage(image.path)"
+        tabindex="0"
+        role="button"
+        [attr.aria-label]="'View ' + image.title"
+      >
+
+        <div class="publication-image-wrapper">
+
+          <img
+            [src]="image.path"
+            [alt]="image.title"
+          />
+
+        </div>
+
+        <div class="publication-image-overlay">
+
+          <span>
+            View Publication
+          </span>
+
+        </div>
+
+      </article>
+
+    }
+
+  </div>
+
+</div>
+
+  </section>
+
+  <!-- =================================================
+       PUBLICATION IMAGE MODAL
+  ================================================== -->
+
+@if (selectedPublicationImage) {
+
+
+<div
+  class="publication-image-modal"
+  (click)="closePublicationImage()"
+>
+
+  <button
+    type="button"
+    class="publication-close-button"
+    (click)="closePublicationImage(); $event.stopPropagation()"
+    aria-label="Close publication image"
+  >
+    ×
+  </button>
+
+
+  <div
+    class="publication-modal-image-container"
+    (click)="$event.stopPropagation()"
+  >
+
+    <img
+      [src]="selectedPublicationImage"
+      alt="Full size publication image"
+      class="publication-modal-image"
+    />
+
+  </div>
+
+</div>
+
+
+}
+
+  <!-- =================================================
+       FINAL CTA
+  ================================================== -->
+
+  <section class="publications-footer">
+
+<div class="publications-container">
+
+  <span class="section-label">
+    EXPLORE MORE
+  </span>
+
+  <h2>
+    Discover More About the
+    <span>Research Journey</span>
+  </h2>
+
+  <a
+    routerLink="/about"
+    class="about-button"
+  >
+    ← Return to About
+  </a>
+
+</div>
+
+  </section>
+
+</main>

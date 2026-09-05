@@ -2,82 +2,99 @@
 
   <div class="login-card">
 
-    <div class="login-header">
 
-      <div class="login-logo">
-        AM
-      </div>
+<div class="login-header">
 
-      <h1>Admin Login</h1>
+  <div class="login-logo">
+    AM
+  </div>
 
-      <p>
-        Sign in to manage the GAPCO gallery.
-      </p>
+  <h1>Admin Login</h1>
 
+  <p>
+    Sign in to manage the GAPCO gallery.
+  </p>
+
+</div>
+
+
+<form (ngSubmit)="login()">
+
+  <div class="form-group">
+
+    <label for="email">
+      Email Address
+    </label>
+
+    <input
+      id="email"
+      type="email"
+      name="email"
+      [(ngModel)]="email"
+      placeholder="Enter admin email"
+      autocomplete="username"
+    />
+
+  </div>
+
+<div class="form-group">
+
+  <label for="password">
+    Password
+  </label>
+
+  <div class="password-wrapper">
+
+
+<input
+  id="password"
+  [type]="showPassword ? 'text' : 'password'"
+  name="password"
+  [(ngModel)]="password"
+  placeholder="Enter password"
+  autocomplete="current-password"
+/>
+
+<button
+  type="button"
+  class="password-eye"
+  (click)="togglePassword()"
+  tabindex="-1"
+  aria-label="Show or hide password"
+>
+  {{ showPassword ? '&#128065;' : '&#121366;' }}
+</button>
+
+
+  </div>
+
+</div>
+
+
+
+  @if (errorMessage) {
+
+    <div class="error-message">
+      {{ errorMessage }}
     </div>
 
-
-    <form (ngSubmit)="login()">
-
-      <div class="form-group">
-
-        <label for="email">
-          Email Address
-        </label>
-
-        <input
-          id="email"
-          type="email"
-          name="email"
-          [(ngModel)]="email"
-          placeholder="Enter admin email"
-          autocomplete="username"
-        />
-
-      </div>
+  }
 
 
-      <div class="form-group">
+  <button
+    type="submit"
+    [disabled]="isLoading"
+  >
 
-        <label for="password">
-          Password
-        </label>
+    @if (isLoading) {
+      Signing in...
+    } @else {
+      Sign In
+    }
 
-        <input
-          id="password"
-          type="password"
-          name="password"
-          [(ngModel)]="password"
-          placeholder="Enter password"
-          autocomplete="current-password"
-        />
+  </button>
 
-      </div>
-
-
-      @if (errorMessage) {
-
-        <div class="error-message">
-          {{ errorMessage }}
-        </div>
-
-      }
-
-
-      <button
-        type="submit"
-        [disabled]="isLoading"
-      >
-
-        @if (isLoading) {
-          Signing in...
-        } @else {
-          Sign In
-        }
-
-      </button>
-
-    </form>
+</form>
 
   </div>
 

@@ -1,273 +1,288 @@
 import {
-  Component,
-  ChangeDetectorRef,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild
+Component,
+ChangeDetectorRef,
+ElementRef,
+OnDestroy,
+AfterViewInit,
+ViewChild
 } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 
-
 @Component({
-  selector: 'app-home',
+selector: 'app-home',
 
-  standalone: true,
+standalone: true,
 
-  imports: [
-    RouterLink
-  ],
+imports: [
+RouterLink
+],
 
-  templateUrl: './home.html',
+templateUrl: './home.html',
 
-  styleUrl: './home.css'
+styleUrl: './home.css'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements AfterViewInit, OnDestroy {
 
+/* =====================================================
+CHANGE DETECTOR
+===================================================== */
 
-  /* =====================================================
-     CHANGE DETECTOR
-  ===================================================== */
+constructor(
+private cdr: ChangeDetectorRef
+) {}
 
-  constructor(
-    private cdr: ChangeDetectorRef
-  ) {}
+/* =====================================================
+HERO CAROUSEL
+===================================================== */
 
+currentSlide = 0;
 
-  /* =====================================================
-     HERO CAROUSEL
-  ===================================================== */
+private slideInterval?: ReturnType<typeof setInterval>;
 
-  currentSlide = 0;
+slides = [
 
-  private slideInterval?: ReturnType<typeof setInterval>;
+{
+  image: 'assets/images/Gapcoindia-Logo.png',
+  title: 'Science & Research',
+  description:
+    'Advancing knowledge through research and innovation.'
+},
 
-  slides = [
+{
+  image: 'assets/images/Scientist-Photo1.jpg',
+  title: 'Innovation & Discovery',
+  description:
+    'Exploring new ideas and meaningful scientific discoveries.'
+},
 
-    {
-      image: 'assets/images/Gapcoindia-Logo.png',
-      title: 'Science & Research',
-      description:
-        'Advancing knowledge through research and innovation.'
-    },
+{
+  image: 'assets/images/Scientist-Photo2.jpg',
+  title: 'Professional Journey',
+  description:
+    'A journey dedicated to science, research and excellence.'
+}
 
-    {
-      image: 'assets/images/Scientist-Photo1.jpg',
-      title: 'Innovation & Discovery',
-      description:
-        'Exploring new ideas and meaningful scientific discoveries.'
-    },
+];
 
-    {
-      image: 'assets/images/Scientist-Photo2.jpg',
-      title: 'Professional Journey',
-      description:
-        'A journey dedicated to science, research and excellence.'
-    }
+/* =====================================================
+FEATURE CARD FLIP
+===================================================== */
 
-  ];
+flippedCard: number | null = null;
 
+toggleCard(index: number): void {
 
-  /* =====================================================
-     FEATURE CARD FLIP
-  ===================================================== */
+if (this.flippedCard === index) {
 
-  flippedCard: number | null = null;
+  this.flippedCard = null;
 
+} else {
 
-  toggleCard(index: number): void {
+  this.flippedCard = index;
 
-    if (this.flippedCard === index) {
+}
 
-      this.flippedCard = null;
 
-    } else {
+}
 
-      this.flippedCard = index;
+/* =====================================================
+GALLERY
+===================================================== */
 
-    }
+@ViewChild('photoTrack')
+photoTrack!: ElementRef<HTMLDivElement>;
 
-  }
+/* =====================================================
+VIEW INITIALIZED
+===================================================== */
 
+ngAfterViewInit(): void {
 
-  /* =====================================================
-     GALLERY
-  ===================================================== */
 
-  @ViewChild('photoTrack')
-  photoTrack!: ElementRef<HTMLDivElement>;
+/*
+ * Start the carousel only after Angular has
+ * completely initialized the Home page view.
+ */
+setTimeout(() => {
 
+  this.startCarousel();
 
-  /* =====================================================
-     INIT
-  ===================================================== */
+  this.cdr.detectChanges();
 
-  ngOnInit(): void {
+}, 100);
 
-    this.startCarousel();
 
-  }
+}
 
+/* =====================================================
+START CAROUSEL
+===================================================== */
 
-  /* =====================================================
-     START CAROUSEL
-  ===================================================== */
+private startCarousel(): void {
 
-  private startCarousel(): void {
+/*
+ * Prevent multiple timers from being created.
+ */
+if (this.slideInterval) {
 
-    this.slideInterval = setInterval(() => {
+  clearInterval(this.slideInterval);
 
-      this.currentSlide =
-        (this.currentSlide + 1) %
-        this.slides.length;
+}
 
-      this.cdr.detectChanges();
+this.slideInterval = setInterval(() => {
 
-    }, 3000);
+  this.currentSlide =
+    (this.currentSlide + 1) %
+    this.slides.length;
 
-  }
+  this.cdr.detectChanges();
 
+}, 3000);
 
-  /* =====================================================
-     RESTART CAROUSEL
-  ===================================================== */
 
-  private restartCarousel(): void {
+}
 
-    if (this.slideInterval) {
+/* =====================================================
+RESTART CAROUSEL
+===================================================== */
 
-      clearInterval(this.slideInterval);
+private restartCarousel(): void {
 
-    }
+if (this.slideInterval) {
 
-    this.startCarousel();
+  clearInterval(this.slideInterval);
 
-  }
+  this.slideInterval = undefined;
 
+}
 
-  /* =====================================================
-     NEXT SLIDE
-  ===================================================== */
+this.startCarousel();
 
-  nextSlide(
-    restartTimer: boolean = true
-  ): void {
+}
 
-    this.currentSlide =
-      (this.currentSlide + 1) %
-      this.slides.length;
+/* =====================================================
+NEXT SLIDE
+===================================================== */
 
-    this.cdr.detectChanges();
+nextSlide(
+restartTimer: boolean = true
+): void {
 
-    if (restartTimer) {
+this.currentSlide =
+  (this.currentSlide + 1) %
+  this.slides.length;
 
-      this.restartCarousel();
+this.cdr.detectChanges();
 
-    }
+if (restartTimer) {
 
-  }
+  this.restartCarousel();
 
+}
 
-  /* =====================================================
-     PREVIOUS SLIDE
-  ===================================================== */
 
-  previousSlide(): void {
+}
 
-    this.currentSlide =
-      (this.currentSlide - 1 + this.slides.length) %
-      this.slides.length;
+/* =====================================================
+PREVIOUS SLIDE
+===================================================== */
 
-    this.cdr.detectChanges();
+previousSlide(): void {
 
-    this.restartCarousel();
 
-  }
+this.currentSlide =
+  (this.currentSlide - 1 + this.slides.length) %
+  this.slides.length;
 
+this.cdr.detectChanges();
 
-  /* =====================================================
-     GO TO SLIDE
-  ===================================================== */
+this.restartCarousel();
 
-  goToSlide(index: number): void {
+}
 
-    if (
-      index < 0 ||
-      index >= this.slides.length
-    ) {
+/* =====================================================
+GO TO SLIDE
+===================================================== */
 
-      return;
+goToSlide(index: number): void {
 
-    }
 
-    this.currentSlide = index;
+if (
+  index < 0 ||
+  index >= this.slides.length
+) {
 
-    this.cdr.detectChanges();
+  return;
 
-    this.restartCarousel();
+}
 
-  }
+this.currentSlide = index;
 
+this.cdr.detectChanges();
 
-  /* =====================================================
-     GALLERY NEXT
-  ===================================================== */
+this.restartCarousel();
 
-  nextGalleryPhoto(): void {
+}
 
-    if (!this.photoTrack) {
+/* =====================================================
+GALLERY NEXT
+===================================================== */
 
-      return;
+nextGalleryPhoto(): void {
 
-    }
+if (!this.photoTrack) {
 
-    this.photoTrack.nativeElement.scrollBy({
+  return;
 
-      left: 350,
+}
 
-      behavior: 'smooth'
+this.photoTrack.nativeElement.scrollBy({
 
-    });
+  left: 350,
 
-  }
+  behavior: 'smooth'
 
+});
 
-  /* =====================================================
-     GALLERY PREVIOUS
-  ===================================================== */
+}
 
-  previousGalleryPhoto(): void {
+/* =====================================================
+GALLERY PREVIOUS
+===================================================== */
 
-    if (!this.photoTrack) {
+previousGalleryPhoto(): void {
 
-      return;
+if (!this.photoTrack) {
 
-    }
+  return;
 
-    this.photoTrack.nativeElement.scrollBy({
+}
 
-      left: -350,
+this.photoTrack.nativeElement.scrollBy({
 
-      behavior: 'smooth'
+  left: -350,
 
-    });
+  behavior: 'smooth'
 
-  }
+});
 
+}
 
-  /* =====================================================
-     DESTROY
-  ===================================================== */
+/* =====================================================
+DESTROY
+===================================================== */
 
-  ngOnDestroy(): void {
+ngOnDestroy(): void {
 
-    if (this.slideInterval) {
+if (this.slideInterval) {
 
-      clearInterval(this.slideInterval);
+  clearInterval(this.slideInterval);
 
-    }
+  this.slideInterval = undefined;
 
-  }
+}
+
+}
 
 }

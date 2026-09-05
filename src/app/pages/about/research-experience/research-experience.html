@@ -1,0 +1,384 @@
+<!-- =====================================================
+     RESEARCH EXPERIENCE PAGE
+===================================================== -->
+
+<main class="research-experience-page">
+
+
+  <!-- =================================================
+       HERO
+  ================================================= -->
+
+  <section class="research-hero">
+
+    <div class="research-container">
+
+      <a
+        routerLink="/about"
+        class="back-link"
+      >
+        ← Back to About
+      </a>
+
+      <span class="section-label">
+        PROFESSIONAL JOURNEY
+      </span>
+
+      <h1>
+        Research <span>Experience</span>
+      </h1>
+
+      <p>
+        Explore the research journey, scientific interests,
+        technical work and contributions toward innovation
+        and practical problem solving.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       RESEARCH PROFILE
+  ================================================= -->
+
+  <section class="research-profile">
+
+    <div class="research-container">
+
+      <div class="profile-grid">
+
+
+        <!-- LEFT CONTENT -->
+
+        <div class="profile-content">
+
+          <span class="section-label">
+            RESEARCH PROFILE
+          </span>
+
+          <h2>
+            Exploring Science Through
+            <span>Research & Innovation</span>
+          </h2>
+
+          <p>
+            Research provides the foundation for scientific
+            discovery, technical development and meaningful
+            innovation. The research journey involves exploring
+            new ideas, studying practical challenges and
+            developing solutions through systematic investigation.
+          </p>
+
+          <p>
+            Through continuous experimentation, analysis and
+            learning, research interests extend across scientific,
+            engineering and technological areas with an emphasis
+            on practical applications.
+          </p>
+
+          <div class="profile-line"></div>
+
+          <div class="profile-stat-grid">
+
+            <div class="profile-stat">
+              <strong>01</strong>
+              <span>Scientific Research</span>
+            </div>
+
+            <div class="profile-stat">
+              <strong>02</strong>
+              <span>Innovation</span>
+            </div>
+
+            <div class="profile-stat">
+              <strong>03</strong>
+              <span>Applied Technology</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT VISUAL -->
+
+        <div class="research-visual">
+
+          <div class="visual-main">
+
+            <div class="visual-number">
+              01
+            </div>
+
+            <div class="visual-icon">
+              🔬
+            </div>
+
+            <span>
+              RESEARCH
+            </span>
+
+            <strong>
+              Discovering
+              New Possibilities
+            </strong>
+
+          </div>
+
+          <div class="visual-small visual-small-one">
+            <span>R&D</span>
+          </div>
+
+          <div class="visual-small visual-small-two">
+            <span>INNOVATION</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       RESEARCH AREAS
+  ================================================= -->
+
+  <section class="research-areas">
+
+    <div class="research-container">
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          AREAS OF EXPERTISE
+        </span>
+
+        <h2>
+          Research Areas
+        </h2>
+
+        <p>
+          Key areas of scientific and technical interest
+          developed through research and professional experience.
+        </p>
+
+      </div>
+
+
+      <div class="areas-grid">
+
+        @for (area of researchAreas; track area.number) {
+
+          <article class="area-card">
+
+            <span class="area-number">
+              {{ area.number }}
+            </span>
+
+            <div class="area-icon">
+              {{ area.number === '01' ? '🔬' :
+                 area.number === '02' ? '💡' :
+                 area.number === '03' ? '⚙️' : '🌱' }}
+            </div>
+
+            <h3>
+              {{ area.title }}
+            </h3>
+
+            <p>
+              {{ area.description }}
+            </p>
+
+            <div class="area-arrow">
+              →
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       RESEARCH PROJECTS
+  ================================================= -->
+
+  <section class="projects-section">
+
+    <div class="research-container">
+
+      <div class="section-heading">
+
+        <span class="section-label">
+          PROFESSIONAL WORK
+        </span>
+
+        <h2>
+          Research & Development
+        </h2>
+
+        <p>
+          Selected areas of research activity, technical
+          development and innovation.
+        </p>
+
+      </div>
+
+
+      <div class="projects-list">
+
+        @for (project of researchProjects; track project.number) {
+
+          <article class="project-item">
+
+            <div class="project-number">
+              {{ project.number }}
+            </div>
+
+            <div class="project-content">
+
+              <span class="project-category">
+                {{ project.category }}
+              </span>
+
+              <h3>
+                {{ project.title }}
+              </h3>
+
+              <p>
+                {{ project.description }}
+              </p>
+
+            </div>
+
+            <div class="project-arrow">
+              →
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       RESEARCH APPROACH
+  ================================================= -->
+
+  <section class="approach-section">
+
+    <div class="research-container">
+
+      <div class="approach-grid">
+
+
+        <div class="approach-heading">
+
+          <span class="section-label">
+            RESEARCH APPROACH
+          </span>
+
+          <h2>
+            From Questions
+            <span>To Solutions</span>
+          </h2>
+
+        </div>
+
+
+        <div class="approach-content">
+
+          <p>
+            Scientific research begins with curiosity and
+            progresses through observation, investigation,
+            experimentation and analysis.
+          </p>
+
+          <p>
+            The objective is to transform ideas and observations
+            into meaningful knowledge, innovative concepts and
+            practical solutions.
+          </p>
+
+
+          <div class="principles">
+
+            @for (principle of researchPrinciples; track $index) {
+
+              <span>
+                <b>
+                  {{ ($index + 1).toString().padStart(2, '0') }}
+                </b>
+
+                {{ principle }}
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =================================================
+       CTA
+  ================================================= -->
+
+  <section class="research-footer">
+
+    <div class="research-container">
+
+      <span class="section-label">
+        EXPLORE MORE
+      </span>
+
+      <h2>
+        Discover the Complete
+        <span>Professional Journey</span>
+      </h2>
+
+      <div class="footer-buttons">
+
+        <a
+          routerLink="/about"
+          class="about-button"
+        >
+          ← Return to About
+        </a>
+
+        <a
+          routerLink="/research"
+          class="research-button"
+        >
+          Explore Research →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
