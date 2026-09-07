@@ -249,11 +249,7 @@ border-radius: 4px;
 
 background: transparent;
 
-color: #666666;
-
-font-family: Arial, sans-serif;
-font-size: 18px;
-line-height: 1;
+color: #64748b;
 
 cursor: pointer;
 
@@ -267,15 +263,27 @@ background 0.2s ease;
 /* EYE HOVER */
 
 .login-card .password-wrapper .password-eye:hover {
-color: #111111;
-background: #f2f2f2;
+color: #0f172a;
+background: #f1f5f9;
 }
 
 /* EYE FOCUS */
 
 .login-card .password-wrapper .password-eye:focus {
-outline: 2px solid #111111;
-outline-offset: 1px;
+outline: 2px solid #0284c7;
+outline-offset: 2px;
+}
+
+.password-icon {
+display: block;
+width: 20px;
+height: 20px;
+
+fill: none;
+stroke: currentColor;
+stroke-width: 1.8;
+stroke-linecap: round;
+stroke-linejoin: round;
 }
 
 /* =========================================================
