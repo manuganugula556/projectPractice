@@ -160,6 +160,7 @@
         [(ngModel)]="name"
         placeholder="Enter your name"
         autocomplete="name"
+        maxlength="100"
         required
       />
 
@@ -181,6 +182,7 @@
         [(ngModel)]="email"
         placeholder="Enter your email"
         autocomplete="email"
+        maxlength="254"
         required
       />
 
@@ -201,6 +203,7 @@
         name="subject"
         [(ngModel)]="subject"
         placeholder="Enter subject"
+        maxlength="200"
         required
       />
 
@@ -221,6 +224,7 @@
         [(ngModel)]="message"
         placeholder="Write your message..."
         rows="6"
+        maxlength="5000"
         required
       ></textarea>
 
@@ -261,6 +265,7 @@
       type="submit"
       class="submit-button"
       [disabled]="isSubmitting"
+      [attr.aria-busy]="isSubmitting"
     >
       {{ isSubmitting ? 'Sending...' : 'Send Message' }}
     </button>

@@ -125,8 +125,6 @@ export class ResearchComponent {
 
   toggleCard(index: number): void {
 
-  console.log('CARD CLICKED:', index);
-
   if (this.activeCard === index) {
     this.activeCard = null;
   } else {
@@ -137,21 +135,14 @@ export class ResearchComponent {
 
 openResearchImage(area: any, event: MouseEvent): void {
 
-  console.log('EXPLORE BUTTON CLICKED');
-
   event.preventDefault();
   event.stopImmediatePropagation();
-
-  console.log('TITLE:', area.title);
-  console.log('IMAGE:', area.image);
 
   this.selectedResearch = area;
 }
 
 
 closeResearchImage(): void {
-
-  console.log('POPUP CLOSED');
 
   this.selectedResearch = null;
 }

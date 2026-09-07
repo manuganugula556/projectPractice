@@ -1,4 +1,4 @@
-# GapcoClient
+# GAPCO India Client
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.6.
 
@@ -35,6 +35,24 @@ ng build
 ```
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+### Production deployment
+
+Build the production bundle with:
+
+```bash
+npm ci
+npm run build
+```
+
+Deploy the contents of `dist/gapco-client/browser/` to the web server. The
+single-page application must rewrite unknown routes to `index.html`; `_redirects`
+is included for Netlify and `web.config` is included for IIS deployments.
+The production API URL is configured in `src/environments/environment.prod.ts`.
+
+The API must be served over HTTPS, allow the deployed origin through CORS, and
+enforce authorization on every admin API endpoint. The client guard is only a
+navigation convenience and is not a security boundary.
 
 ## Running unit tests
 

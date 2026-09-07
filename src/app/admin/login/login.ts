@@ -10,7 +10,6 @@ import { AuthService } from '../../services/auth.service';
 interface LoginResponse {
 token: string;
 fullName: string;
-role: string;
 }
 
 interface LoginErrorResponse {
@@ -103,8 +102,7 @@ this.http.post<LoginResponse>(
     // ----------------------------------------
 
     if (
-      !response?.token ||
-      !response?.role
+      !response?.token
     ) {
       this.errorMessage =
         'Invalid login response. Please try again.';

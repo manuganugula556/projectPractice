@@ -1,16 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ResearchExperience } from './research-experience';
+import { ResearchExperienceComponent } from './research-experience';
+import { provideRouter } from '@angular/router';
 
-describe('ResearchExperience', () => {
-  let component: ResearchExperience;
-  let fixture: ComponentFixture<ResearchExperience>;
+describe('ResearchExperienceComponent', () => {
+  let component: ResearchExperienceComponent;
+  let fixture: ComponentFixture<ResearchExperienceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ResearchExperience],
+      imports: [ResearchExperienceComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ResearchExperience);
+    fixture = TestBed.createComponent(ResearchExperienceComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

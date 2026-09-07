@@ -146,11 +146,6 @@ export class DashboardComponent implements OnInit {
 
       next: (images) => {
 
-        console.log(
-          'GALLERY API RESPONSE:',
-          images
-        );
-
         this.galleryImages = images || [];
 
         this.isLoadingImages = false;
@@ -159,11 +154,6 @@ export class DashboardComponent implements OnInit {
       },
 
       error: (error) => {
-
-        console.error(
-          'GALLERY LOAD ERROR:',
-          error
-        );
 
         this.galleryImages = [];
 
@@ -198,11 +188,6 @@ export class DashboardComponent implements OnInit {
 
       next: (messages) => {
 
-        console.log(
-          'CONTACT MESSAGES API RESPONSE:',
-          messages
-        );
-
         this.contactMessages =
           messages || [];
 
@@ -212,11 +197,6 @@ export class DashboardComponent implements OnInit {
       },
 
       error: (error) => {
-
-        console.error(
-          'CONTACT MESSAGES LOAD ERROR:',
-          error
-        );
 
         this.contactMessages = [];
 
@@ -365,11 +345,6 @@ export class DashboardComponent implements OnInit {
       this.selectedFile.name
     );
 
-    console.log(
-      'Starting upload:',
-      this.selectedFile.name
-    );
-
     this.http.post<GalleryImage>(
       `${this.galleryApiUrl}/upload`,
       formData
@@ -377,10 +352,6 @@ export class DashboardComponent implements OnInit {
     .pipe(
 
       finalize(() => {
-
-        console.log(
-          'UPLOAD REQUEST FINISHED'
-        );
 
         this.isUploading = false;
 
@@ -391,11 +362,6 @@ export class DashboardComponent implements OnInit {
     .subscribe({
 
       next: (response) => {
-
-        console.log(
-          'UPLOAD SUCCESS:',
-          response
-        );
 
         this.uploadMessage =
           'Photo uploaded successfully.';
@@ -411,11 +377,6 @@ export class DashboardComponent implements OnInit {
       },
 
       error: (error) => {
-
-        console.error(
-          'UPLOAD ERROR:',
-          error
-        );
 
         this.uploadError =
           error?.error?.message ||
@@ -466,11 +427,6 @@ export class DashboardComponent implements OnInit {
 
       error: (error) => {
 
-        console.error(
-          'DELETE ERROR:',
-          error
-        );
-
         this.uploadError =
           error?.error?.message ||
           'Unable to delete photo.';
@@ -506,11 +462,6 @@ export class DashboardComponent implements OnInit {
 
       next: () => {
 
-        console.log(
-          'CONTACT MESSAGE DELETED:',
-          message.id
-        );
-
         this.contactMessages =
           this.contactMessages.filter(
             x => x.id !== message.id
@@ -520,11 +471,6 @@ export class DashboardComponent implements OnInit {
       },
 
       error: (error) => {
-
-        console.error(
-          'CONTACT MESSAGE DELETE ERROR:',
-          error
-        );
 
         this.messageError =
           error?.error?.message ||

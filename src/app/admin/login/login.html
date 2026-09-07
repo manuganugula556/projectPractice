@@ -53,6 +53,7 @@
       [(ngModel)]="email"
       placeholder="Enter admin email"
       autocomplete="username"
+      maxlength="254"
       required
     />
 
@@ -78,6 +79,7 @@
         [(ngModel)]="password"
         placeholder="Enter password"
         autocomplete="current-password"
+        maxlength="128"
         required
       />
 
@@ -123,6 +125,7 @@
   <button
     type="submit"
     [disabled]="isLoading"
+    [attr.aria-busy]="isLoading"
   >
 
     @if (isLoading) {
