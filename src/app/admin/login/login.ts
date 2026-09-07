@@ -1,174 +1,154 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
+
+import { environment } from '../../../environments/environment';
+import { AuthService } from '../../services/auth.service';
 
 interface LoginResponse {
-
-  token: string;
-
-  fullName: string;
-
-  role: string;
-
+token: string;
+fullName: string;
+role: string;
 }
 
+interface LoginErrorResponse {
+message?: string;
+}
 
 @Component({
-
-  selector: 'app-login',
-
-  standalone: true,
-
-  imports: [FormsModule],
-
-  templateUrl: './login.html',
-
-  styleUrl: './login.css'
-
+selector: 'app-login',
+standalone: true,
+imports: [FormsModule],
+templateUrl: './login.html',
+styleUrl: './login.css'
 })
-
-
 export class LoginComponent {
 
+email = '';
+password = '';
 
-  email = '';
+errorMessage = '';
 
-  password = '';
+isLoading = false;
+showPassword = false;
 
-  errorMessage = '';
+private readonly apiUrl =
+`${environment.apiUrl}/api/Auth/login`;
 
-  isLoading = false;
+constructor(
+private readonly http: HttpClient,
+private readonly router: Router,
+private readonly authService: AuthService
+) {}
 
-  showPassword = false;
+// ==========================================
+// LOGIN
+// ==========================================
 
+login(): void {
 
-  private apiUrl =
-    'https://localhost:44331/api/Auth/login';
+this.errorMessage = '';
 
+const email = this.email.trim();
+const password = this.password;
 
-  constructor(
+// ------------------------------------------
+// VALIDATION
+// ------------------------------------------
 
-    private http: HttpClient,
+if (!email || !password) {
+  this.errorMessage =
+    'Please enter email and password.';
+  return;
+}
 
-    private router: Router
+// ------------------------------------------
+// PREVENT DUPLICATE LOGIN REQUESTS
+// ------------------------------------------
 
-  ) {}
+if (this.isLoading) {
+  return;
+}
 
+// ------------------------------------------
+// START LOADING
+// ------------------------------------------
 
-  // ==========================================
-  // LOGIN
-  // ==========================================
+this.isLoading = true;
 
-  login(): void {
+// ------------------------------------------
+// LOGIN API
+// ------------------------------------------
 
-    this.errorMessage = '';
+this.http.post<LoginResponse>(
+  this.apiUrl,
+  {
+    email,
+    password
+  }
+)
+.pipe(
+  finalize(() => {
+    this.isLoading = false;
+  })
+)
+.subscribe({
 
+  next: (response: LoginResponse) => {
+
+    // ----------------------------------------
+    // VALIDATE API RESPONSE
+    // ----------------------------------------
 
     if (
-      !this.email ||
-      !this.password
+      !response?.token ||
+      !response?.role
     ) {
-
       this.errorMessage =
-        'Please enter email and password.';
-
+        'Invalid login response. Please try again.';
       return;
-
     }
 
+    // ----------------------------------------
+    // STORE ADMIN SESSION
+    // ----------------------------------------
 
-    this.isLoading = true;
+    this.authService.setSession(
+      response.token,
+      response.fullName ?? ''
+    );
 
+    // ----------------------------------------
+    // NAVIGATE TO DASHBOARD
+    // ----------------------------------------
 
-    this.http.post<LoginResponse>(
+    this.router.navigate([
+      '/admin/dashboard'
+    ]);
 
-      this.apiUrl,
+  },
 
-      {
-        email: this.email,
+  error: (error: {
+    error?: LoginErrorResponse;
+  }) => {
 
-        password: this.password
-      }
-
-    )
-
-    .subscribe({
-
-      next: (response) => {
-
-
-        console.log(
-          'LOGIN SUCCESS:',
-          response
-        );
-
-
-        // ======================================
-        // STORE ADMIN SESSION
-        // ======================================
-
-        sessionStorage.setItem(
-          'token',
-          response.token
-        );
-
-
-        sessionStorage.setItem(
-          'role',
-          response.role
-        );
-
-
-        sessionStorage.setItem(
-          'fullName',
-          response.fullName
-        );
-
-        sessionStorage.setItem(
-          'justLoggedIn',
-          'true'
-        );
-
-
-        this.isLoading = false;
-
-
-        // ======================================
-        // NAVIGATE TO DASHBOARD
-        // ======================================
-
-        this.router.navigate([
-          '/admin/dashboard'
-        ]);
-
-      },
-
-
-      error: (error) => {
-
-
-        console.error(
-          'LOGIN ERROR:',
-          error
-        );
-
-
-        this.isLoading = false;
-
-
-        this.errorMessage =
-          error?.error?.message ??
-          'Login failed. Please try again.';
-
-      }
-
-    });
+    this.errorMessage =
+      error?.error?.message ??
+      'Login failed. Please check your credentials and try again.';
 
   }
 
-  togglePassword(): void {
-this.showPassword = !this.showPassword;
+});
+
 }
 
+// ==========================================
+// TOGGLE PASSWORD VISIBILITY
+// ==========================================
+
+togglePassword(): void {
+this.showPassword = !this.showPassword;
+}
 }

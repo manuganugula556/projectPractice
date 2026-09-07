@@ -1,127 +1,164 @@
-import { ChangeDetectorRef, Component } from '@angular/core';import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { finalize } from 'rxjs';
+
+import { environment } from '../../../environments/environment';
 
 interface ContactResponse {
-  message: string;
+message?: string;
+}
+
+interface ContactErrorResponse {
+message?: string;
 }
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './contact.html',
-  styleUrl: './contact.css'
+selector: 'app-contact',
+standalone: true,
+imports: [FormsModule],
+templateUrl: './contact.html',
+styleUrl: './contact.css'
 })
 export class ContactComponent {
 
-  name = '';
-  email = '';
-  subject = '';
-  message = '';
+name = '';
+email = '';
+subject = '';
+message = '';
 
-  isSubmitting = false;
+isSubmitting = false;
 
-  successMessage = '';
-  errorMessage = '';
+successMessage = '';
+errorMessage = '';
 
-  private apiUrl =
-    'https://localhost:44331/api/Contact';
-
+private readonly apiUrl =
+`${environment.apiUrl}/api/Contact`;
 
 constructor(
-  private http: HttpClient,
-  private cdr: ChangeDetectorRef
+private readonly http: HttpClient
 ) {}
+
+// ==========================================
+// SUBMIT CONTACT FORM
+// ==========================================
 
 submitForm(): void {
 
-  // Clear previous messages
-  this.successMessage = '';
-  this.errorMessage = '';
+// ------------------------------------------
+// CLEAR PREVIOUS MESSAGES
+// ------------------------------------------
 
-  // Validate fields
-  if (
-    !this.name.trim() ||
-    !this.email.trim() ||
-    !this.subject.trim() ||
-    !this.message.trim()
-  ) {
-    this.errorMessage =
-      'Please fill in all the required fields.';
+this.successMessage = '';
+this.errorMessage = '';
 
-    this.cdr.detectChanges();
+// ------------------------------------------
+// PREVENT DUPLICATE SUBMISSIONS
+// ------------------------------------------
 
-    return;
-  }
-
-  // Show Sending...
-  this.isSubmitting = true;
-
-  this.cdr.detectChanges();
-
-  // Prepare request
-  const contactData = {
-    name: this.name.trim(),
-    email: this.email.trim(),
-    subject: this.subject.trim(),
-    message: this.message.trim()
-  };
-
-  console.log('SENDING CONTACT DATA:', contactData);
-
-  // Call API
-  this.http.post<any>(
-    this.apiUrl,
-    contactData
-  ).subscribe({
-
-    next: (response) => {
-
-      console.log(
-        'CONTACT API SUCCESS:',
-        response
-      );
-
-      // Stop Sending...
-      this.isSubmitting = false;
-
-      // Show success message
-      this.successMessage =
-        response?.message ||
-        'Your message has been submitted successfully.';
-
-      // Clear form
-      this.name = '';
-      this.email = '';
-      this.subject = '';
-      this.message = '';
-
-      // Force Angular UI update
-      this.cdr.detectChanges();
-
-    },
-
-    error: (error) => {
-
-      console.error(
-        'CONTACT API ERROR:',
-        error
-      );
-
-      // Stop Sending...
-      this.isSubmitting = false;
-
-      // Show error
-      this.errorMessage =
-        error?.error?.message ||
-        'Unable to submit your message. Please try again.';
-
-      // Force Angular UI update
-      this.cdr.detectChanges();
-
-    }
-
-  });
+if (this.isSubmitting) {
+  return;
 }
 
+// ------------------------------------------
+// CLEAN INPUT VALUES
+// ------------------------------------------
+
+const name = this.name.trim();
+const email = this.email.trim();
+const subject = this.subject.trim();
+const message = this.message.trim();
+
+// ------------------------------------------
+// VALIDATION
+// ------------------------------------------
+
+if (
+  !name ||
+  !email ||
+  !subject ||
+  !message
+) {
+  this.errorMessage =
+    'Please fill in all the required fields.';
+  return;
+}
+
+// ------------------------------------------
+// BASIC EMAIL VALIDATION
+// ------------------------------------------
+
+const emailPattern =
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email)) {
+  this.errorMessage =
+    'Please enter a valid email address.';
+  return;
+}
+
+// ------------------------------------------
+// START SUBMISSION
+// ------------------------------------------
+
+this.isSubmitting = true;
+
+// ------------------------------------------
+// REQUEST DATA
+// ------------------------------------------
+
+const contactData = {
+  name,
+  email,
+  subject,
+  message
+};
+
+// ------------------------------------------
+// CONTACT API
+// ------------------------------------------
+
+this.http.post<ContactResponse>(
+  this.apiUrl,
+  contactData
+)
+.pipe(
+  finalize(() => {
+    this.isSubmitting = false;
+  })
+)
+.subscribe({
+
+  next: (response: ContactResponse) => {
+
+    // ----------------------------------------
+    // SUCCESS MESSAGE
+    // ----------------------------------------
+
+    this.successMessage =
+      response?.message ??
+      'Your message has been submitted successfully.';
+
+    // ----------------------------------------
+    // CLEAR FORM
+    // ----------------------------------------
+
+    this.name = '';
+    this.email = '';
+    this.subject = '';
+    this.message = '';
+  },
+
+  error: (error: {
+    error?: ContactErrorResponse;
+  }) => {
+
+    this.errorMessage =
+      error?.error?.message ??
+      'Unable to submit your message. Please try again.';
+  }
+
+});
+
+}
 }

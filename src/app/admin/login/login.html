@@ -2,14 +2,22 @@
 
   <div class="login-card">
 
+<!-- =========================
+     LOGIN HEADER
+========================= -->
 
 <div class="login-header">
 
-  <div class="login-logo">
+  <div
+    class="login-logo"
+    aria-hidden="true"
+  >
     AM
   </div>
 
-  <h1>Admin Login</h1>
+  <h1>
+    Admin Login
+  </h1>
 
   <p>
     Sign in to manage the GAPCO gallery.
@@ -18,68 +26,99 @@
 </div>
 
 
-<form (ngSubmit)="login()">
+<!-- =========================
+     LOGIN FORM
+========================= -->
+
+<form
+  #loginForm="ngForm"
+  (ngSubmit)="login()"
+  novalidate
+>
+
+  <!-- =========================
+       EMAIL
+  ========================= -->
 
   <div class="form-group">
 
-    <label for="email">
+    <label for="login-email">
       Email Address
     </label>
 
     <input
-      id="email"
+      id="login-email"
       type="email"
       name="email"
       [(ngModel)]="email"
       placeholder="Enter admin email"
       autocomplete="username"
+      required
     />
 
   </div>
 
-<div class="form-group">
 
-  <label for="password">
-    Password
-  </label>
+  <!-- =========================
+       PASSWORD
+  ========================= -->
 
-  <div class="password-wrapper">
+  <div class="form-group">
 
+    <label for="login-password">
+      Password
+    </label>
 
-<input
-  id="password"
-  [type]="showPassword ? 'text' : 'password'"
-  name="password"
-  [(ngModel)]="password"
-  placeholder="Enter password"
-  autocomplete="current-password"
-/>
+    <div class="password-wrapper">
 
-<button
-  type="button"
-  class="password-eye"
-  (click)="togglePassword()"
-  tabindex="-1"
-  aria-label="Show or hide password"
->
-  {{ showPassword ? '&#128065;' : '&#121366;' }}
-</button>
+      <input
+        id="login-password"
+        [type]="showPassword ? 'text' : 'password'"
+        name="password"
+        [(ngModel)]="password"
+        placeholder="Enter password"
+        autocomplete="current-password"
+        required
+      />
 
+      <button
+        type="button"
+        class="password-eye"
+        (click)="togglePassword()"
+        [attr.aria-label]="
+          showPassword
+            ? 'Hide password'
+            : 'Show password'
+        "
+        [attr.aria-pressed]="showPassword"
+      >
+        {{ showPassword ? '👁' : '/' }}
+      </button>
+
+    </div>
 
   </div>
 
-</div>
 
-
+  <!-- =========================
+       ERROR MESSAGE
+  ========================= -->
 
   @if (errorMessage) {
 
-    <div class="error-message">
+    <div
+      class="error-message"
+      role="alert"
+    >
       {{ errorMessage }}
     </div>
 
   }
 
+
+  <!-- =========================
+       LOGIN BUTTON
+  ========================= -->
 
   <button
     type="submit"
@@ -87,9 +126,13 @@
   >
 
     @if (isLoading) {
+
       Signing in...
+
     } @else {
+
       Sign In
+
     }
 
   </button>

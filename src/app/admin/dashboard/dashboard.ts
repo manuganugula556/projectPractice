@@ -5,12 +5,12 @@ import {
 } from '@angular/core';
 
 import { DatePipe } from '@angular/common';
-
 import { HttpClient } from '@angular/common/http';
-
 import { Router } from '@angular/router';
-
 import { finalize } from 'rxjs';
+
+import { environment } from '../../../environments/environment';
+import { AuthService } from '../../services/auth.service';
 
 
 // ==========================================
@@ -18,15 +18,10 @@ import { finalize } from 'rxjs';
 // ==========================================
 
 interface GalleryImage {
-
   id: number;
-
   fileName: string;
-
   filePath: string;
-
   uploadedAt: string;
-
 }
 
 
@@ -35,52 +30,36 @@ interface GalleryImage {
 // ==========================================
 
 interface ContactMessage {
-
   id: number;
-
   name: string;
-
   email: string;
-
   subject: string;
-
   message: string;
-
   submittedAt: string;
-
   isRead: boolean;
-
 }
 
 
 @Component({
-
   selector: 'app-dashboard',
-
   standalone: true,
-
   imports: [DatePipe],
-
   templateUrl: './dashboard.html',
-
   styleUrl: './dashboard.css'
-
 })
-
-
-export class DashboardComponent
-  implements OnInit {
-
+export class DashboardComponent implements OnInit {
 
   // ==========================================
   // API URLs
   // ==========================================
 
-  private galleryApiUrl =
-    'https://localhost:44331/api/Gallery';
+  private readonly apiBaseUrl = environment.apiUrl;
 
-  private contactApiUrl =
-    'https://localhost:44331/api/Contact';
+  private readonly galleryApiUrl =
+    `${this.apiBaseUrl}/api/Gallery`;
+
+  private readonly contactApiUrl =
+    `${this.apiBaseUrl}/api/Contact`;
 
 
   // ==========================================
@@ -94,26 +73,17 @@ export class DashboardComponent
   // GALLERY VARIABLES
   // ==========================================
 
-  selectedFile:
-    File | null = null;
+  selectedFile: File | null = null;
 
+  previewUrl: string | null = null;
 
-  previewUrl:
-    string | null = null;
-
-
-  galleryImages:
-    GalleryImage[] = [];
-
+  galleryImages: GalleryImage[] = [];
 
   isUploading = false;
 
-
   uploadMessage = '';
 
-
   uploadError = '';
-
 
   isLoadingImages = false;
 
@@ -122,12 +92,9 @@ export class DashboardComponent
   // CONTACT MESSAGE VARIABLES
   // ==========================================
 
-  contactMessages:
-    ContactMessage[] = [];
-
+  contactMessages: ContactMessage[] = [];
 
   isLoadingMessages = false;
-
 
   messageError = '';
 
@@ -137,13 +104,10 @@ export class DashboardComponent
   // ==========================================
 
   constructor(
-
     private http: HttpClient,
-
     private router: Router,
-
-    private cdr: ChangeDetectorRef
-
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService
   ) {}
 
 
@@ -154,19 +118,14 @@ export class DashboardComponent
   ngOnInit(): void {
 
     this.adminName =
-      sessionStorage.getItem(
-        'fullName'
-      ) ||
+      this.authService.getFullName() ||
       'Administrator';
-
 
     // Load gallery
     this.loadGalleryImages();
 
-
     // Load contact messages
     this.loadContactMessages();
-
   }
 
 
@@ -180,13 +139,9 @@ export class DashboardComponent
 
     this.cdr.detectChanges();
 
-
     this.http.get<GalleryImage[]>(
-
       this.galleryApiUrl
-
     )
-
     .subscribe({
 
       next: (images) => {
@@ -196,18 +151,12 @@ export class DashboardComponent
           images
         );
 
-
-        this.galleryImages =
-          images || [];
-
+        this.galleryImages = images || [];
 
         this.isLoadingImages = false;
 
-
         this.cdr.detectChanges();
-
       },
-
 
       error: (error) => {
 
@@ -216,23 +165,17 @@ export class DashboardComponent
           error
         );
 
-
         this.galleryImages = [];
 
-
         this.isLoadingImages = false;
-
 
         this.uploadError =
           'Unable to load gallery images.';
 
-
         this.cdr.detectChanges();
-
       }
 
     });
-
   }
 
 
@@ -248,13 +191,9 @@ export class DashboardComponent
 
     this.cdr.detectChanges();
 
-
     this.http.get<ContactMessage[]>(
-
       this.contactApiUrl
-
     )
-
     .subscribe({
 
       next: (messages) => {
@@ -264,18 +203,13 @@ export class DashboardComponent
           messages
         );
 
-
         this.contactMessages =
           messages || [];
 
-
         this.isLoadingMessages = false;
 
-
         this.cdr.detectChanges();
-
       },
-
 
       error: (error) => {
 
@@ -284,23 +218,17 @@ export class DashboardComponent
           error
         );
 
-
         this.contactMessages = [];
 
-
         this.isLoadingMessages = false;
-
 
         this.messageError =
           'Unable to load contact messages.';
 
-
         this.cdr.detectChanges();
-
       }
 
     });
-
   }
 
 
@@ -308,28 +236,21 @@ export class DashboardComponent
   // FILE SELECTION
   // ==========================================
 
-  onFileSelected(
-    event: Event
-  ): void {
+  onFileSelected(event: Event): void {
 
     const input =
       event.target as HTMLInputElement;
-
 
     if (
       !input.files ||
       input.files.length === 0
     ) {
-
       return;
-
     }
-
 
     this.selectFile(
       input.files[0]
     );
-
   }
 
 
@@ -337,30 +258,20 @@ export class DashboardComponent
   // SELECT FILE
   // ==========================================
 
-  selectFile(
-    file: File
-  ): void {
+  selectFile(file: File): void {
 
     this.uploadMessage = '';
 
     this.uploadError = '';
 
-
     const allowedTypes = [
-
       'image/jpeg',
-
       'image/png',
-
       'image/webp'
-
     ];
 
-
     if (
-      !allowedTypes.includes(
-        file.type
-      )
+      !allowedTypes.includes(file.type)
     ) {
 
       this.uploadError =
@@ -371,17 +282,12 @@ export class DashboardComponent
       this.previewUrl = null;
 
       return;
-
     }
-
 
     const maxSize =
       10 * 1024 * 1024;
 
-
-    if (
-      file.size > maxSize
-    ) {
+    if (file.size > maxSize) {
 
       this.uploadError =
         'Image size must be less than 10 MB.';
@@ -391,30 +297,21 @@ export class DashboardComponent
       this.previewUrl = null;
 
       return;
-
     }
-
 
     this.selectedFile = file;
 
-
-    const reader =
-      new FileReader();
-
+    const reader = new FileReader();
 
     reader.onload = () => {
 
       this.previewUrl =
         reader.result as string;
 
-
       this.cdr.detectChanges();
-
     };
 
-
     reader.readAsDataURL(file);
-
   }
 
 
@@ -432,9 +329,7 @@ export class DashboardComponent
 
     this.uploadError = '';
 
-
     this.cdr.detectChanges();
-
   }
 
 
@@ -442,110 +337,96 @@ export class DashboardComponent
   // UPLOAD IMAGE
   // ==========================================
 
-uploadImage(): void {
+  uploadImage(): void {
 
-  if (!this.selectedFile) {
+    if (!this.selectedFile) {
 
-    this.uploadError =
-      'Please select an image first.';
+      this.uploadError =
+        'Please select an image first.';
+
+      this.cdr.detectChanges();
+
+      return;
+    }
+
+    this.isUploading = true;
+
+    this.uploadMessage = '';
+
+    this.uploadError = '';
 
     this.cdr.detectChanges();
 
-    return;
+    const formData = new FormData();
+
+    formData.append(
+      'file',
+      this.selectedFile,
+      this.selectedFile.name
+    );
+
+    console.log(
+      'Starting upload:',
+      this.selectedFile.name
+    );
+
+    this.http.post<GalleryImage>(
+      `${this.galleryApiUrl}/upload`,
+      formData
+    )
+    .pipe(
+
+      finalize(() => {
+
+        console.log(
+          'UPLOAD REQUEST FINISHED'
+        );
+
+        this.isUploading = false;
+
+        this.cdr.detectChanges();
+      })
+
+    )
+    .subscribe({
+
+      next: (response) => {
+
+        console.log(
+          'UPLOAD SUCCESS:',
+          response
+        );
+
+        this.uploadMessage =
+          'Photo uploaded successfully.';
+
+        this.selectedFile = null;
+
+        this.previewUrl = null;
+
+        this.cdr.detectChanges();
+
+        // Reload gallery after successful upload
+        this.loadGalleryImages();
+      },
+
+      error: (error) => {
+
+        console.error(
+          'UPLOAD ERROR:',
+          error
+        );
+
+        this.uploadError =
+          error?.error?.message ||
+          error?.error?.title ||
+          'Photo upload failed.';
+
+        this.cdr.detectChanges();
+      }
+
+    });
   }
-
-  this.isUploading = true;
-  this.uploadMessage = '';
-  this.uploadError = '';
-
-  this.cdr.detectChanges();
-
-
-  const formData = new FormData();
-
-  formData.append(
-    'file',
-    this.selectedFile,
-    this.selectedFile.name
-  );
-
-
-  console.log(
-    'Starting upload:',
-    this.selectedFile.name
-  );
-
-
-  this.http.post<GalleryImage>(
-    `${this.galleryApiUrl}/upload`,
-    formData
-  )
-  .pipe(
-
-    finalize(() => {
-
-      console.log(
-        'UPLOAD REQUEST FINISHED'
-      );
-
-      this.isUploading = false;
-
-      this.cdr.detectChanges();
-
-    })
-
-  )
-  .subscribe({
-
-    next: (response) => {
-
-      console.log(
-        'UPLOAD SUCCESS:',
-        response
-      );
-
-
-      this.uploadMessage =
-        'Photo uploaded successfully.';
-
-
-      this.selectedFile = null;
-      this.previewUrl = null;
-
-
-      this.cdr.detectChanges();
-
-
-      // Reload gallery after successful upload
-      this.loadGalleryImages();
-
-    },
-
-
-    error: (error) => {
-
-      console.error(
-        'UPLOAD ERROR:',
-        error
-      );
-
-
-      this.uploadError =
-
-        error?.error?.message ||
-
-        error?.error?.title ||
-
-        'Photo upload failed.';
-
-
-      this.cdr.detectChanges();
-
-    }
-
-  });
-
-}
 
 
   // ==========================================
@@ -558,47 +439,30 @@ uploadImage(): void {
 
     const confirmed =
       window.confirm(
-
         `Are you sure you want to delete "${image.fileName}"?`
-
       );
 
-
     if (!confirmed) {
-
       return;
-
     }
 
-
     this.http.delete(
-
       `${this.galleryApiUrl}/${image.id}`
-
     )
-
     .subscribe({
 
       next: () => {
 
         this.galleryImages =
-
           this.galleryImages.filter(
-
-            x =>
-              x.id !== image.id
-
+            x => x.id !== image.id
           );
-
 
         this.uploadMessage =
           'Photo deleted successfully.';
 
-
         this.cdr.detectChanges();
-
       },
-
 
       error: (error) => {
 
@@ -607,20 +471,14 @@ uploadImage(): void {
           error
         );
 
-
         this.uploadError =
-
           error?.error?.message ||
-
           'Unable to delete photo.';
 
-
         this.cdr.detectChanges();
-
       }
 
     });
-
   }
 
 
@@ -634,25 +492,16 @@ uploadImage(): void {
 
     const confirmed =
       window.confirm(
-
         `Are you sure you want to delete the message from "${message.name}"?`
-
       );
 
-
     if (!confirmed) {
-
       return;
-
     }
 
-
     this.http.delete(
-
       `${this.contactApiUrl}/${message.id}`
-
     )
-
     .subscribe({
 
       next: () => {
@@ -662,21 +511,13 @@ uploadImage(): void {
           message.id
         );
 
-
         this.contactMessages =
-
           this.contactMessages.filter(
-
-            x =>
-              x.id !== message.id
-
+            x => x.id !== message.id
           );
 
-
         this.cdr.detectChanges();
-
       },
-
 
       error: (error) => {
 
@@ -685,20 +526,14 @@ uploadImage(): void {
           error
         );
 
-
         this.messageError =
-
           error?.error?.message ||
-
           'Unable to delete contact message.';
 
-
         this.cdr.detectChanges();
-
       }
 
     });
-
   }
 
 
@@ -708,25 +543,11 @@ uploadImage(): void {
 
   logout(): void {
 
-    sessionStorage.removeItem(
-      'token'
-    );
-
-
-    sessionStorage.removeItem(
-      'role'
-    );
-
-
-    sessionStorage.removeItem(
-      'fullName'
-    );
-
+    this.authService.clearSession();
 
     this.router.navigate([
       '/admin/login'
     ]);
-
   }
 
 
@@ -739,24 +560,16 @@ uploadImage(): void {
   ): string {
 
     if (!path) {
-
       return '';
-
     }
-
 
     if (
       path.startsWith('http://') ||
       path.startsWith('https://')
     ) {
-
       return path;
-
     }
 
-
-    return `https://localhost:44331${path}`;
-
+    return `${this.apiBaseUrl}${path}`;
   }
-
 }
