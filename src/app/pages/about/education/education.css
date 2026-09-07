@@ -70,16 +70,12 @@
 .back-link {
   display: inline-flex;
   align-items: center;
-
+  margin-right: 16px;
   margin-bottom: 55px;
-
   color: #cccccc;
-
   font-size: 13px;
   font-weight: 600;
-
   text-decoration: none;
-
   transition:
     color 0.25s ease,
     transform 0.25s ease;
